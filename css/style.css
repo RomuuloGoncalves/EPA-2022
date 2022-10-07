@@ -203,10 +203,6 @@ main {
         transition: .4s;
 }
 
-input:focus + .slider {
-        box-shadow: 0 0 1px #02CB3A;
-}
-
 input:checked + .slider {
         background-color: #02CB3A;
 }
