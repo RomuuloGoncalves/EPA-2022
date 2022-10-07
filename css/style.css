@@ -130,7 +130,7 @@ main {
 
 .card__comodo img {
         height: 100px;
-        margin: 0 30px 10px 0;
+        /* margin: 0 30px 10px 0; */
 }
 
 .card__comodo p {
@@ -156,11 +156,20 @@ main {
                 min-width: 200px;
         }
 
+        .card__comodo{
+                flex-direction: column;
+                gap: 10px;
+        }
+
+       .card__comodo img{
+                margin: 0;
+        }
+/* 
         .card__comodo p, .card__comodo a {
                 margin-top: 10px;
                 height: 35px;
                 text-align: center;
-        }
+        } */
 }
 
 /* Switch */
