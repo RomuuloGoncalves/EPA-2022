@@ -119,6 +119,7 @@ main {
 
 .card__lampada img {
         height: 150px;
+        cursor: pointer;
 }
 
 .card__comodo {
