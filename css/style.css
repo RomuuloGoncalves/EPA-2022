@@ -102,8 +102,8 @@ main {
 
 .card {
         min-width: 300px;
-	background: rgba(0, 56, 255, 0.1);
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
+	background: rgba(0, 56, 255, 0.05);
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
         font-size: 35px;
         flex: 1 0 200px ;
