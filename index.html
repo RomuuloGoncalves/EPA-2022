@@ -1,125 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Iluminação residencial</title>
-        <link rel="stylesheet" href="./css/style.css">
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Iluminação residencial</title>
+	<link rel="stylesheet" href="./css/style.css" />
 </head>
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
 <body>
-        <header>
-                <div id="container__logo">
-                        <img id="logo" src="./img/Logo DS - EPA.png" alt="Logo">
-                </div>
-                <h1>EPA-2022</h1>
-        </header>
+	<header>
+		<div id="container__logo">
+			<img id="logo" src="./img/Logo DS - EPA.png" alt="Logo" />
+		</div>
+		<h1>EPA-2022</h1>
+	</header>
 
-        <main>
-                <div class="containers" id="container__lampadas">
-                        <div class="texto__identificador">
-                                <h2>Lâmpadas</h2>
-                                <img src="./img/mais.png" alt="mais">
-                        </div>
-                        <div class="slide" id="lampadas">
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_ligada.png" onclick="controlarLeds(1)" alt="">
-                                        <p>Luz-1</p>
-                                </div>
+	<main>
+		<div class="containers" id="container__lampadas">
 
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_desligada.png" onclick="controlarLeds(2)" alt="">
-                                        <p>Luz-2</p>
-                                </div>
+			<div class="texto__identificador">
+				<h2>Lâmpadas</h2>
+				<img src="./img/mais.png" alt="mais" />
+			</div>
 
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_ligada.png" alt="">
-                                        <p>Luz-3</p>
-                                </div>
+			<div class="slide" id="lampadas">
+				<div class="card card__lampada">
+					<img src="./img/lampada_ligada.png" onclick="controlarLeds(1)" alt="" />
+					<p>Luz-1</p>
+				</div>
 
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <p>Luz-4</p>
-                                </div>
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <p>Luz-5</p>
-                                </div>
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <p>Luz-6</p>
-                                </div>
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_ligada.png" alt="">
-                                        <p>Luz-7</p>
-                                </div>
-                                <div class="card card__lampada">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <p>Luz-8</p>
-                                </div>
-                        </div>
-                </div>
+				<div class="card card__lampada">
+					<img src="./img/lampada_desligada.png" onclick="controlarLeds(2)" alt="" />
+					<p>Luz-2</p>
+				</div>
 
-                <div class="containers" id="container__comodos">
-                        <div class="texto__identificador">
-                                <h2>Cômodos</h2>
-                                <img src="./img/mais.png" alt="mais">
-                        </div>
+				<div class="card card__lampada">
+					<img src="./img/lampada_ligada.png" alt="" />
+					<p>Luz-3</p>
+				</div>
 
-                        <div class="slide" id="comodos">
-                                <div class="card card__comodo">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <label for="checkbox-0" class="switch">
-                                                <input type="checkbox" id="checkbox-0">
-                                                <span class="slider"></span>
-                                        </label>
-                                        <p>Quarto</p>
-                                        <a href="#">
-                                                <ion-icon name="information-circle-outline"></ion-icon>
-                                        </a>
-                                </div>
-                                <div class="card card__comodo">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <label for="checkbox-1" class="switch">
-                                                <input type="checkbox" id="checkbox-1">
-                                                <span class="slider"></span>
-                                        </label>
-                                        <p>Sala</p>
-                                        <a href="#">
-                                                <ion-icon name="information-circle-outline"></ion-icon>
-                                        </a>
-                                </div>
-                                <div class="card card__comodo">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <label for="checkbox-2" class="switch">
-                                                <input type="checkbox" id="checkbox-2">
-                                                <span class="slider"></span>
-                                        </label>
-                                        <p>Cozinha</p>
-                                        <a href="#">
-                                                <ion-icon name="information-circle-outline"></ion-icon>
-                                        </a>
-                                </div>
-                                <div class="card card__comodo">
-                                        <img src="./img/lampada_desligada.png" alt="">
-                                        <label for="checkbox-3" class="switch">
-                                                <input type="checkbox" id="checkbox-3">
-                                                <span class="slider"></span>
-                                        </label>
-                                        <p>Fachada</p>
-                                        <a href="#">
-                                                <ion-icon name="information-circle-outline"></ion-icon>
-                                        </a>
-                                </div>
-                        </div>
-                        
-                </div>
-        </main>
+				<div class="card card__lampada">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<p>Luz-4</p>
+				</div>
 
-        <footer>
-                <span>Desenvolvido por: </span>
-        </footer>
-        <script src="./js/script.js"></script>
+				<div class="card card__lampada">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<p>Luz-5</p>
+				</div>
+
+				<div class="card card__lampada">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<p>Luz-6</p>
+				</div>
+
+				<div class="card card__lampada">
+					<img src="./img/lampada_ligada.png" alt="" />
+					<p>Luz-7</p>
+				</div>
+
+				<div class="card card__lampada">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<p>Luz-8</p>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="containers" id="container__comodos">
+			<div class="texto__identificador">
+				<h2>Cômodos</h2>
+				<img src="./img/mais.png" alt="mais" />
+			</div>
+
+			<div class="slide" id="comodos">
+				<div class="card card__comodo">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<label for="checkbox-0" class="switch">
+						<input type="checkbox" id="checkbox-0" />
+						<span class="slider"></span>
+					</label>
+					<p>Quarto</p>
+					<a href="#">
+						<ion-icon name="information-circle-outline"></ion-icon>
+					</a>
+				</div>
+
+				<div class="card card__comodo">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<label for="checkbox-1" class="switch">
+						<input type="checkbox" id="checkbox-1" />
+						<span class="slider"></span>
+					</label>
+					<p>Sala</p>
+					<a href="#">
+						<ion-icon name="information-circle-outline"></ion-icon>
+					</a>
+				</div>
+
+				<div class="card card__comodo">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<label for="checkbox-2" class="switch">
+						<input type="checkbox" id="checkbox-2" />
+						<span class="slider"></span>
+					</label>
+					<p>Cozinha</p>
+					<a href="#">
+						<ion-icon name="information-circle-outline"></ion-icon>
+					</a>
+				</div>
+
+				<div class="card card__comodo">
+					<img src="./img/lampada_desligada.png" alt="" />
+					<label for="checkbox-3" class="switch">
+						<input type="checkbox" id="checkbox-3" />
+						<span class="slider"></span>
+					</label>
+					<p>Fachada</p>
+					<a href="#">
+						<ion-icon name="information-circle-outline"></ion-icon>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<span>Desenvolvido por: </span>
+	</footer>
+
+	<script src="./js/script.js"></script>
 </body>
+
 </html>

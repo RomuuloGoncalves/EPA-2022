@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-        font-family: Arial, sans-serif;
+	font-family: Arial, sans-serif;
 }
 
 body {
@@ -24,7 +24,7 @@ footer {
 }
 
 header {
-        align-items: center;
+	align-items: center;
 	min-height: 100px;
 	padding: 5px 20px;
 }
@@ -45,127 +45,132 @@ footer {
 }
 
 main {
-        flex: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        margin: 20px 0;
+	flex: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	margin: 20px 0;
 }
 
 .containers {
-        /* width: 100vw; */
-        display: flex;
-        flex-direction: column;
-        margin: 0 40px ;
-        background-color: rgba(128, 128, 128, 0.05);
-        border-radius: 10px;
-        padding: 0 15px;
+	/* width: 100vw; */
+	display: flex;
+	flex-direction: column;
+	margin: 0 40px;
+	background-color: rgba(128, 128, 128, 0.05);
+	border-radius: 10px;
+	padding: 0 15px;
 }
 
 .texto__identificador {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-        padding: 0 20px;
+	padding: 0 20px;
 }
 
 .texto__identificador img {
-        height: 50px;
+	height: 50px;
 }
 
 .slide {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        column-gap: 30px;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        scroll-padding: 25px;
-        padding: 20px 10px;
-        border-radius: 10px;
-        scrollbar-width: none;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	column-gap: 30px;
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+	scroll-padding: 25px;
+	padding: 20px 10px;
+	border-radius: 10px;
+	scrollbar-width: none;
 }
 
 .slide::-webkit-scrollbar {
-        height: 8px;               /* width of the entire scrollbar */
+	height: 8px;
 }
+
 .slide::-webkit-scrollbar-track {
-        background: transparent;        /* color of the tracking area */
+	/* color of the tracking area */
+	background: transparent;
 }
 
 .slide::-webkit-scrollbar-thumb {
-        background-color: grey;    /* color of the scroll thumb */
-        border-radius: 20px;       /* roundness of the scroll thumb */
+	/* color of the scroll thumb */
+	background-color: grey;
+	/* roundness of the scroll thumb */
+	border-radius: 20px;
 }
 
 .card {
-        min-width: 300px;
+	min-width: 300px;
 	background: rgba(0, 56, 255, 0.05);
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
-        font-size: 35px;
-        flex: 1 0 200px ;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+	font-size: 35px;
+	flex: 1 0 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .card__lampada {
-        padding: 20px 0;
+	padding: 20px 0;
 }
 
 .card__lampada img {
-        height: 150px;
-        cursor: pointer;
+	height: 150px;
+	cursor: pointer;
 }
 
 .card__comodo {
-        padding: 15px;
-        justify-content: space-around;
-        flex-direction: row;
-        flex-wrap: wrap;
+	padding: 15px;
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .card__comodo img {
-        height: 100px;
-        /* margin: 0 30px 10px 0; */
+	height: 100px;
+	/* margin: 0 30px 10px 0; */
 }
 
 .card__comodo p {
-        width: 110px;
+	width: 110px;
 }
 
 .card__comodo a {
-        width: 100px;
-        text-align: center;
-        color: #000;
+	width: 100px;
+	text-align: center;
+	color: #000;
 }
 
-@media(max-width: 500px) {
-        .containers {
-                padding: 0 10px;
-        }
+@media (max-width: 500px) {
+	.containers {
+		padding: 0 10px;
+	}
 
-        .slide {
-                padding: 20px 10px;
-        }
+	.slide {
+		padding: 20px 10px;
+	}
 
-        .card {
-                min-width: 200px;
-        }
+	.card {
+		min-width: 200px;
+	}
 
-        .card__comodo{
-                flex-direction: column;
-                gap: 10px;
-        }
+	.card__comodo {
+		flex-direction: column;
+		gap: 10px;
+	}
 
-       .card__comodo img{
-                margin: 0;
-        }
-/* 
+	.card__comodo img {
+		margin: 0;
+	}
+
+	/* 
         .card__comodo p, .card__comodo a {
                 margin-top: 10px;
                 height: 35px;
@@ -175,50 +180,50 @@ main {
 
 /* Switch */
 .switch {
-        position: relative;
-        display: inline-block;
-        width: 65px;
-        height: 34px;
+	position: relative;
+	display: inline-block;
+	width: 65px;
+	height: 34px;
 }
 
-.switch input { 
-        opacity: 0;
-        width: 0;
-        height: 0;
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
 }
 
 .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 34px;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 34px;
+	background-color: #ccc;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
 }
 
 .slider::before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        border-radius: 50%;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	border-radius: 50%;
+	background-color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
 }
 
-input:checked + .slider {
-        background-color: #02CB3A;
+input:checked+.slider {
+	background-color: #02cb3a;
 }
 
-input:checked + .slider::before {
-        -webkit-transform: translateX(31px);
-        -ms-transform: translateX(31px);
-        transform: translateX(31px);
+input:checked+.slider::before {
+	-webkit-transform: translateX(31px);
+	-ms-transform: translateX(31px);
+	transform: translateX(31px);
 }
