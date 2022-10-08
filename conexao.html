@@ -5,15 +5,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Conexão</title>
+        <script defer src="./js/script.js"></script>
 </head>
 <body>
-        <p>oi</p>
-        <script src="./js/script.js"></script>
+        <p id="p"></p>
         <script>
-                console.log("oi")
-                document.write(storageFunctions.pegarLed())
+                let p = document.getElementById("p")
+                p.innerHTML = storageFunctions.pegarLed()
 
-                setTimeout(sair, 1000)
+                // setTimeout(sair, 1000)
 
                 function sair(){
                         window.location.href = "./index.html"
