@@ -5,5 +5,5 @@ storageFunctions = {
 
 function controlarLeds(valor){
         storageFunctions.guardarLed(valor)
-        window.location.href = "../conexao.html"
+        window.location.href = "./conexao.html"
 }
