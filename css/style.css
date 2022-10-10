@@ -151,7 +151,8 @@ main {
 
 @media (max-width: 500px) {
 	.containers {
-		padding: 0 5px;
+		padding: 0 10px;
+		margin: 0 15px;
 	}
 
 	.slide {
