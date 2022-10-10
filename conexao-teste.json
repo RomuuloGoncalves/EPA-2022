@@ -1,0 +1,17 @@
+{
+    "error": false,
+    "category": "Programming",
+    "type": "single",
+    "joke": "oi",
+    "flags": {
+        "nsfw": false,
+        "religious": false,
+        "political": false,
+        "racist": false,
+        "sexist": false,
+        "explicit": false
+    },
+    "id": 45,
+    "safe": true,
+    "lang": "en"
+}
