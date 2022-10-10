@@ -13,17 +13,17 @@ let arrayLampadas = [
     },   
     
     {
-        nome: "luz-1",
+        nome: "luz-3",
         estado: 1
     },
     
     {
-        nome: "luz-1",
+        nome: "luz-4",
         estado: 0
     },
 
     {
-        nome: "luz-1",
+        nome: "luz-5",
         estado: 0
     },
 ]
