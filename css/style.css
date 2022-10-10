@@ -126,23 +126,23 @@ main {
 	cursor: pointer;
 }
 
-.card__comodo {
+.card__grupo {
 	padding: 15px;
 	justify-content: space-around;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
-.card__comodo img {
+.card__grupo img {
 	height: 100px;
 	/* margin: 0 30px 10px 0; */
 }
 
-.card__comodo p {
+.card__grupo p {
 	width: 110px;
 }
 
-.card__comodo a {
+.card__grupo a {
 	width: 100px;
 	text-align: center;
 	color: #000;
@@ -161,17 +161,17 @@ main {
 		min-width: 200px;
 	}
 
-	.card__comodo {
+	.card__grupo {
 		flex-direction: column;
 		gap: 10px;
 	}
 
-	.card__comodo img {
+	.card__grupo img {
 		margin: 0;
 	}
 
 	/* 
-        .card__comodo p, .card__comodo a {
+        .card__grupo p, .card__grupo a {
                 margin-top: 10px;
                 height: 35px;
                 text-align: center;
