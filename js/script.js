@@ -45,7 +45,7 @@ let arrayGrupos = [
         nome: "Varanda",
         estado: 1,
         lampadas: [],
-    }
+    },
 ]
 
 function atualizarConteudoPagina(){

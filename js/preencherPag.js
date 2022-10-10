@@ -18,8 +18,8 @@ function preencherGrupos(valor, index){
     containerGrupos.innerHTML += `
         <div class="card card__grupo">
             <img src=${imagem} alt="" />
-            <label for="checkbox-1" class="switch">
-                <input type="checkbox" id="checkbox-1" />
+            <label for="checkbox-${index}" class="switch">
+                <input type="checkbox" id="checkbox-${index}" />
                 <span class="slider"></span>
             </label>
             <p>${valor.nome}</p>
