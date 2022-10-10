@@ -17,15 +17,17 @@ function preencherGrupos(valor, index){
     
     containerGrupos.innerHTML += `
         <div class="card card__grupo">
-            <img src=${imagem} alt="" />
-            <label for="checkbox-${index}" class="switch">
-                <input type="checkbox" id="checkbox-${index}" />
-                <span class="slider"></span>
-            </label>
+        <img src=${imagem} alt="" />
+        <label for="checkbox-${index}" class="switch">
+            <input type="checkbox" id="checkbox-${index}">
+            <span class="slider"></span>
+        </label>
+        <div class="page__titulo">
             <p>${valor.nome}</p>
             <a href="#">
                 <ion-icon name="information-circle-outline"></ion-icon>
             </a>
         </div>
+    </div>
     `
 }
