@@ -71,6 +71,7 @@ main {
 }
 
 .texto__identificador img {
+	cursor: pointer;
 	height: 50px;
 }
 
