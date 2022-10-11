@@ -1,18 +1,1 @@
-{
-    "error": false,
-    "category": "Programming",
-    "type": "single",
-    "joke": "oi",
-    "flags": {
-        "nsfw": false,
-        "religious": false,
-        "political": false,
-        "racist": false,
-        "sexist": false,
-        "explicit": false
-    },
-    "id": 45,
-    "safe": true,
-    "lang": "en"
-}
-
+["{\"id\":1,\"h_inicio\":1,\"h_fim\":1,\"m_inicio\":1,\"m_fim\":1}","{\"id\":2,\"h_inicio\":2,\"h_fim\":2,\"m_inicio\":2,\"m_fim\":2}","{\"id\":3,\"h_inicio\":3,\"h_fim\":3,\"m_inicio\":3,\"m_fim\":3}","{\"id\":4,\"h_inicio\":4,\"h_fim\":4,\"m_inicio\":4,\"m_fim\":4}","{\"id\":5,\"h_inicio\":1,\"h_fim\":1,\"m_inicio\":1,\"m_fim\":1}","{\"id\":6,\"h_inicio\":2,\"h_fim\":2,\"m_inicio\":2,\"m_fim\":2}","{\"id\":7,\"h_inicio\":3,\"h_fim\":3,\"m_inicio\":3,\"m_fim\":3}","{\"id\":8,\"h_inicio\":4,\"h_fim\":4,\"m_inicio\":4,\"m_fim\":4}"]
