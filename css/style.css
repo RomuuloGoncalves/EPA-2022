@@ -23,7 +23,7 @@ footer {
 
 header {
 	height: 90px;
-	padding: 5px 65px;
+	padding: 5px 40px;
 	align-items: center;
 }
 
@@ -222,6 +222,7 @@ input:checked+.slider::before {
 }
 
 @media(max-width: 440px) {
+
 	.containers {
 		padding: 0 10px;
 		margin: 0 15px;
@@ -231,7 +232,7 @@ input:checked+.slider::before {
 		padding: 20px 10px;
 	}
 
-	.card{
+	.card {
 		min-width: 200px;
 	}
 
@@ -251,5 +252,11 @@ input:checked+.slider::before {
 
 	.switch {
 		margin: 0;
+	}
+}
+
+@media(max-width: 800px) {
+	header {
+		padding: 5px 30px;
 	}
 }
