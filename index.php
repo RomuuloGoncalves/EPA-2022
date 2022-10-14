@@ -22,6 +22,7 @@
 	<title>Dashboard</title>
 	<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="./assets/css/style.css" />
+	<link rel="stylesheet" href="./assets/css/style_index.css">
 </head>
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
@@ -84,7 +85,7 @@
 						$qtdd_lampadas_acessas = $lampadas_acessas->rowCount();
 
 						$select_lampadas = "SELECT * FROM LAMPADAS_GRUPO
-						WHERE LAMPADAS_GRUPOS.ID_GRUPOS = :id_grupo";
+						WHERE LAMPADAS_GRUPO.ID_GRUPO = :id_grupo";
 						$lampadas = $conn->prepare($select_lampadas);
 						$lampadas->bindValue(':id_grupo', $grupo->ID_GRUPO);
 						$lampadas->execute();

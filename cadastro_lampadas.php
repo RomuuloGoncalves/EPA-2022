@@ -23,7 +23,7 @@
         <div id="titulo__cadastro">
             <h1>Cadastro de lâmpadas</h1>
             <nav>
-                <a href="./index.html">
+                <a href="./index.php">
                     <img src="./assets/img/seta.png" alt="Voltar">
                 </a>
             </nav>
