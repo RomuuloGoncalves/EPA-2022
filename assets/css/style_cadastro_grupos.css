@@ -1,0 +1,201 @@
+body{
+    display: block;
+    min-height: 100vh;
+}
+
+main{
+    width: 90%;
+    height: max-content;
+    margin: 0 auto;
+    margin-bottom: auto;
+    background-color: #e9ecef;
+    padding: 50px 40px;
+    
+}
+
+#titulo__cadastro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+main img{
+    height: 20px;
+}
+
+.campos{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.campos label{
+    font-size: 18px;
+    color: #0b156d;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.campos input[type=text], select{
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    outline: 0;
+}
+
+.opcoes{
+    padding: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.opcao{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.opcao img{
+    height: 30px;
+}
+
+.opcao:hover, input[type="checkbox"], .opcao label{
+    cursor: pointer;
+}
+
+.opcao label{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+
+input[type="checkbox"]{
+    display: none;
+    position: absolute;
+    border-radius: 5px;
+    min-height: 50px;
+    min-width: 50px;
+}
+
+
+.opcao:has(input[type="checkbox"]:checked) 
+{ 
+   opacity: 0.8;
+}
+
+input[type="checkbox"]:checked ~ .card{
+    border: 2px solid rgb(116, 116, 192);
+
+}
+
+.botao{
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+}
+
+#btn__submit{
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+#btn__reset{
+    color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+#btn__submit:hover{
+    transition: 0.5s;
+    color: white;
+    background-color: #007bff;
+}
+
+#btn__reset:hover{
+    transition: 0.5s;
+    color: white;
+    background-color: #6c757d;
+}
+
+@media(max-width:500px){
+    main{
+        width: 100%;
+        padding: 50px 20px;
+    }
+
+    #titulo__cadastro{
+        gap: 20px;
+    }
+}
+
+
+.card {
+	min-width: 150px;
+	border-radius: 10px;
+	font-size: 25px;
+	display: flex;
+	color: #000;
+	text-decoration: none;
+	align-items: center;
+	background: rgba(0, 55, 255, 0.158);
+	background: rgba(0, 56, 255, 0.05);
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    gap: 10px;
+    padding: 15px 0;
+    flex-direction: column;
+}
+
+.card__lampada img {
+	height: 120px;
+	cursor: pointer;
+}
+
+
+@media(max-width: 500px) {
+    main{
+        padding: 20px 10px;
+    }
+    .opcoes{
+        gap: 0px;
+    }
+	.card{
+		min-width:100px;
+        padding: 15px 5px;
+	}
+}
+
+@media(max-width: 440px) {
+    main{
+        padding: 20px 10px;
+    }
+    .opcoes{
+        gap: 0px;
+        justify-content: center;
+    }
+	.card{
+		min-width:100px;
+        padding: 15px 0px;
+	}
+}

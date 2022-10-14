@@ -86,10 +86,11 @@ main img{
 @media(max-width:500px){
     main{
         width: 100%;
-        padding: 50px 20px;
+        padding: 20px 20px;
     }
 
     #titulo__cadastro{
         gap: 20px;
+        margin-bottom: 20px;
     }
 }
