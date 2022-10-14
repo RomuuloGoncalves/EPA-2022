@@ -1,0 +1,115 @@
+.modal{
+    height: max-content;
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+
+    background-color: #fff;
+}
+.modal.apagar{
+    display: none;
+}
+
+.texto{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.titulo{
+    font-size: 20px;
+}
+
+.close img{
+    height: 20px;
+}
+
+.simbolo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.simbolo img{
+    height: 100px;
+}
+
+.botaoModal{
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid grey;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#botao{
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    margin: 5px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.modal #botao{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;   
+}
+
+.aviso{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+
+
+}
+
+#aviso__certo{            
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;;
+}
+
+#aviso__errado{
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+@media (max-width:500px){
+    .modal{
+        width: 300px;
+    }
+}

@@ -75,4 +75,11 @@ function diminuirOpacidade(){
         elemento.style
     })
 }
+
+function fecharModal(){
+    document.querySelectorAll(".modal")[0].classList.add("apagar")
+    document.querySelectorAll(".modal")[1].classList.add("apagar")
+    location.reload()
+}
+
 atualizarConteudoPagina()
