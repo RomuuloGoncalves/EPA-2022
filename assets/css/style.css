@@ -162,8 +162,18 @@ main {
 .page__titulo {
 	margin-top: 20px;
 	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	display: flex;
 	justify-content: space-around;
+}
+
+.page__titulo p{
+	max-width: 80%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .card__grupo a {

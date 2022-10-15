@@ -56,19 +56,19 @@ main img{
     padding: 0 auto;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 20px;
+    row-gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
 
 .opcao{
-    height: 200px;
+    height: auto;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 5px 10px;
     border-radius: 5px;
 }
 
@@ -107,6 +107,37 @@ input[type="checkbox"]{
 input[type="checkbox"]:checked ~ .card{
     border: 2px solid rgb(116, 116, 192);
 
+}
+
+.card {
+    min-width: 150px;
+    max-width: 150px;
+    height: 200px;
+	border-radius: 10px;
+	font-size: 25px;
+	display: flex;
+	color: #000;
+	text-decoration: none;
+	align-items: center;
+	background: rgba(0, 55, 255, 0.158);
+	background: rgba(0, 56, 255, 0.05);
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    gap: 10px;
+    padding: 15px 10px;
+    flex-direction: column;
+}
+
+.card p{
+    max-width: 149px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.card__lampada img {
+	height: 120px;
+	cursor: pointer;
 }
 
 .botao{
@@ -151,37 +182,12 @@ input[type="checkbox"]:checked ~ .card{
 }
 
 
-.card {
-	min-width: 150px;
-	border-radius: 10px;
-	font-size: 25px;
-	display: flex;
-	color: #000;
-	text-decoration: none;
-	align-items: center;
-	background: rgba(0, 55, 255, 0.158);
-	background: rgba(0, 56, 255, 0.05);
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    gap: 10px;
-    padding: 15px 0;
-    flex-direction: column;
-}
-
-.card__lampada img {
-	height: 120px;
-	cursor: pointer;
-}
-
-
 @media(max-width: 500px) {
     main{
         padding: 20px 10px;
     }
-    .opcoes{
-        gap: 0px;
-    }
+
 	.card{
-		min-width:100px;
         padding: 15px 5px;
 	}
 }
@@ -191,11 +197,9 @@ input[type="checkbox"]:checked ~ .card{
         padding: 20px 10px;
     }
     .opcoes{
-        gap: 0px;
         justify-content: center;
     }
 	.card{
-		min-width:100px;
-        padding: 15px 0px;
+        padding: 15px 10px;
 	}
 }
