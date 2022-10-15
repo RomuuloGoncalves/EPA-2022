@@ -37,7 +37,7 @@
 	<title>Grupo - <?=$grupo->NOME?></title>
 	<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="./assets/css/style.css" />
-	<link rel="stylesheet" href="./assets/css/style_grupos.css">
+	<link rel="stylesheet" href="./assets/css/style_gerenciar_grupos.css">
     <link rel="stylesheet" href="./assets/css/style_modal.css">
 </head>
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
