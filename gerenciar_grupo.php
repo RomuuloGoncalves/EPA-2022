@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="formsModal">
-                    <form action="./functions/mudar_nome_grp.php" method="post">
+                    <form action="./functions/mudar_nome_grupo.php" method="post">
                         <div class="campos">
                             <label for="novoNome">Novo Nome</label>
                             <input id="novoNome" type="text" name="novoNome">

@@ -61,6 +61,7 @@ nav img {
 }
 
 .card {
+    flex: 2 1 auto;
 	min-width: 300px;
 	border-radius: 10px;
 	font-size: 35px;
@@ -88,4 +89,10 @@ nav img {
 
 #novoNome {
     width: 250px;
+}
+
+@media(max-width:500px){
+    .card{
+	    min-width: 200px;
+    }
 }
