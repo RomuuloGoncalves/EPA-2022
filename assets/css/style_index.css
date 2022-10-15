@@ -1,4 +1,3 @@
-
 main {
 	margin: 20px 0;
 	display: flex;
@@ -82,7 +81,7 @@ main {
 
 .card__grupo {
 	max-width: 300px;
-	padding: 15px 10px;
+	padding: 15px 0;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
@@ -93,8 +92,23 @@ main {
 
 .page__titulo {
 	margin-top: 20px;
+	width: 100%;
 	display: flex;
 	justify-content: space-around;
+}
+
+.card__lampada p{
+	max-width: 80%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.page__titulo p{
+	max-width: 70%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .card__grupo a {
@@ -170,22 +184,11 @@ input:checked+.slider::before {
 	.card__grupo,
 	.page__titulo {
 		margin: 0;
+		min-width: 200px;
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
 		gap: 15px;
-	}
-
-	.card__grupo{
-		min-width: 230px !important;
-	}
-
-	.page__titulo{
-		max-width: 70%;
-	}
-
-	.page__titulo p{
-		text-align: center;
 	}
 
 	.card__grupo img {
