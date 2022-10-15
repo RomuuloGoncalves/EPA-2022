@@ -142,7 +142,7 @@
 					foreach($lampadas as $lampada) {
 						?> 
                             <div class="card card__lampada">
-                            <a class="remover" href="functions/remover_lampada_grp.php?idLampada=<?=$lampada->ID_LAMPADA?>&idGrupo=<?=$id?>">
+                            <a class="remover" href="functions/remover_lampada_grupo.php?id_lampada=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$id?>&indendificacaoPag=gg">
                                 <img class="icon_remover" src="./assets/img/close.png" alt="X">
                             </a>
                                 <a href="./gerenciar_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
