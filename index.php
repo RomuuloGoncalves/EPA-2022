@@ -115,7 +115,6 @@
 
 							<div class="page__titulo">
 								<p><?=$grupo->NOME?></p>
-								<a href="#">
 									<ion-icon name="information-circle-outline"></ion-icon>
 								</a>
 							</div>
