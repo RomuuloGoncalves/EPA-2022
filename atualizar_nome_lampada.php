@@ -72,7 +72,7 @@
     ?>
     <main>
         <div id="titulo__cadastro">
-            <h1>Cadastro de lâmpadas</h1>
+            <h1>Atualizar nome</h1>
             <nav>
                 <a href="./gerenciar_lampada.php?id=<?=$_GET["id_lampada"]?>">
                     <img src="./assets/img/seta.png" alt="Voltar">
