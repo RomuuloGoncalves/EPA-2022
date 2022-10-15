@@ -67,12 +67,4 @@ function controlarLeds(valor) {
     window.location.href = "./conexao.html";
 }
 
-
-function diminuirOpacidade(){
-    selecionados = document.querySelectorAll("input[type='checkbox']:checked")
-
-    selecionados.forEach((elemento, indice)=>{
-        elemento.style
-    })
-}
 atualizarConteudoPagina()

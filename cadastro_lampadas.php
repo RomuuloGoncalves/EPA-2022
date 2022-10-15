@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,6 +20,49 @@
         <h1>EPA-2022</h1>
     </header>
 
+    <?php
+        if (!empty($_POST)) {
+            require_once './lib/conn.php';
+            $erros = false;
+
+            foreach ($_POST as $chave => $valor) {
+                $valor = trim(strip_tags($valor));
+                $$chave = $valor;
+
+                if (empty($valor)) {
+                    $erros .= "Campo $chave está em branco";
+                }
+            }
+
+            if (!$erros) {
+                require_once './functions/porta_cadastrada.php';
+
+                if (!is_numeric($porta)) {
+                    $erros = "Campo porta deve ser um número inteiro";
+                } else if ($porta <= 0) {
+                    $erros = "Porta deve ser maior que zero";
+                } else if (porta_cadastrada($porta)) {
+                    $erros = "Porta já cadastrada";
+                }
+            }
+            
+            if (!$erros) {
+                $sqlInsert = 'INSERT INTO LAMPADAS VALUES(0, :nome, :porta, 0)';
+                $stmt = $conn->prepare($sqlInsert);
+                $stmt->bindValue(":nome", $nome);
+                $stmt->bindValue(":porta", (int)$porta);
+                $stmt->execute();
+                ?>
+                    <script>alert("Cadastro realizado com sucesso :)");</script>
+                    <meta http-equiv="refresh" content="0; url=./index.php">
+                <?php
+            } else {
+                ?>
+                    <script>alert("<?=$erros?>");</script>
+                <?php
+            }
+        }
+    ?>
     <main>
         <div id="titulo__cadastro">
             <h1>Cadastro de lâmpadas</h1>
@@ -36,15 +80,8 @@
             </div>
 
             <div class="campos">
-                <label for="porta_de_conexao">Porta de conexão:*</label>
-                <input type="text" id="porta_de_conexao" name="porta_de_conexao">
-            </div>
-
-            <div class="campos">
-                <label for="">Grupos:</label>
-                <select name="Grupo" id="">
-                    <option value="">Selecione</option>
-                </select>
+                <label for="porta">Porta de conexão:*</label>
+                <input type="number" id="porta" name="porta" min="1">
             </div>
 
             <div class="botoes">

@@ -1,10 +1,10 @@
 <?php
 	require "./lib/conn.php";
 	require "./functions/atualizar_json.php";
-	
+
 	atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', './json/lampadas.json');
-	$selecGrupos = 'SELECT * FROM GRUPOS';
-	$stmt = $conn->query($selecGrupos);
+	$selectGrupos = 'SELECT * FROM GRUPOS';
+	$stmt = $conn->query($selectGrupos);
 	$grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 	$selectLampadas = 'SELECT * FROM LAMPADAS';
@@ -63,7 +63,7 @@
 
 		<div class="containers" id="container__grupos">
 			<div class="header__slider">
-				<h2>grupos</h2>
+				<h2>Grupos</h2>
 				<nav>
 					<a href="./cadastro_grupos.php">
 						<img src="./assets/img/mais.png" alt="mais" />
@@ -83,25 +83,31 @@
 						$lampadas_acessas->bindValue(':id_grupo', $grupo->ID_GRUPO);
 						$lampadas_acessas->execute();
 						$qtdd_lampadas_acessas = $lampadas_acessas->rowCount();
-
 						$select_lampadas = "SELECT * FROM LAMPADAS_GRUPO
+
 						WHERE LAMPADAS_GRUPO.ID_GRUPO = :id_grupo";
 						$lampadas = $conn->prepare($select_lampadas);
 						$lampadas->bindValue(':id_grupo', $grupo->ID_GRUPO);
 						$lampadas->execute();
 						$qtdd_lampadas = $lampadas->rowCount();
 
-						($qtdd_lampadas ===  $qtdd_lampadas_acessas)
-						? $estado_comodo = 1
-						: $estado_comodo = 0;
-						?>
+						if(isset($_POST['checkbox']) || $qtdd_lampadas ===  $qtdd_lampadas_acessas) {
+							$estado_comodo = 1;
+							$estado_switch = "checked";
+						} else {
+							$estado_comodo = 0;
+							$estado_switch = "";
+						}
+					?>
 						<div class="card card__grupo">
 							<img src="./assets/img/lampada_<?=$estado_comodo?>.png" alt="Lampada <?=$estado_comodo?>"/>
 
-							<label for="checkbox-<?=$grupo->ID_GRUPO?>" class="switch">
-								<input type="checkbox" id="checkbox-<?=$grupo->ID_GRUPO?>" />
-								<span class="slider"></span>
-							</label>
+								<label for="checkbox-<?=$grupo->ID_GRUPO?>" class="switch">
+									<a href="functions/mudar_estado_grp.php?id=<?=$grupo->ID_GRUPO?>&est=<?=($estado_comodo===1)?0:1?>">
+										<input type="checkbox" name="checkbox" id="checkbox-<?=$grupo->ID_GRUPO?>" <?=$estado_switch?>/>
+										<span class="slider"></span>
+									</a>
+								</label>
 
 							<div class="page__titulo">
 								<p><?=$grupo->NOME?></p>
