@@ -12,6 +12,10 @@ main{
 }
 
 .imagem img{
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     height: 60%;
 }
 
@@ -40,6 +44,8 @@ main{
 .grupos, .rotinas{
     height: 80%;
     width: 80%;
+
+    background-color: rgba(128, 128, 128, 0.226);
 
     display: flex;
     flex-direction: column;
@@ -83,6 +89,8 @@ main{
     align-items: center;
 
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+
 }
 
 .campo__informacoes img{
@@ -126,6 +134,10 @@ main{
     .imagem, .informacoes{
         width: 100vw;
         padding: 0;
+    }
+
+    .imagem img{
+        margin: 0;
     }
 
 
