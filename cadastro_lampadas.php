@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,6 +9,7 @@
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/style_cadastro_lampadas.css">
+    <link rel="stylesheet" href="./assets/css/style_modal.css">
 </head>
 
 <body>
@@ -21,47 +21,87 @@
     </header>
 
     <?php
-        if (!empty($_POST)) {
-            require_once './lib/conn.php';
-            $erros = false;
+    if (!empty($_POST)) {
+        require_once './lib/conn.php';
+        $erros = false;
 
-            foreach ($_POST as $chave => $valor) {
-                $valor = trim(strip_tags($valor));
-                $$chave = $valor;
+        foreach ($_POST as $chave => $valor) {
+            $valor = trim(strip_tags($valor));
+            $$chave = $valor;
 
-                if (empty($valor)) {
-                    $erros .= "Campo $chave está em branco";
-                }
-            }
-
-            if (!$erros) {
-                require_once './functions/porta_cadastrada.php';
-
-                if (!is_numeric($porta)) {
-                    $erros = "Campo porta deve ser um número inteiro";
-                } else if ($porta <= 0) {
-                    $erros = "Porta deve ser maior que zero";
-                } else if (porta_cadastrada($porta)) {
-                    $erros = "Porta já cadastrada";
-                }
-            }
-            
-            if (!$erros) {
-                $sqlInsert = 'INSERT INTO LAMPADAS VALUES(0, :nome, :porta, 0)';
-                $stmt = $conn->prepare($sqlInsert);
-                $stmt->bindValue(":nome", $nome);
-                $stmt->bindValue(":porta", (int)$porta);
-                $stmt->execute();
-                ?>
-                    <script>alert("Cadastro realizado com sucesso :)");</script>
-                    <meta http-equiv="refresh" content="0; url=./index.php">
-                <?php
-            } else {
-                ?>
-                    <script>alert("<?=$erros?>");</script>
-                <?php
+            if (empty($valor)) {
+                $erros .= "Campo '$chave' está em branco <br>";
             }
         }
+
+        if (!$erros) {
+            require_once './functions/porta_cadastrada.php';
+
+            if (!is_numeric($porta)) {
+                $erros = "Campo da porta de conexão deve ser um número inteiro";
+            } else if ($porta <= 0) {
+                $erros = "Porta deve ser maior que zero";
+            } else if (porta_cadastrada($porta)) {
+                $erros = "Porta já cadastrada";
+            }
+        }
+
+        if (!$erros) {
+            $sqlInsert = 'INSERT INTO LAMPADAS VALUES(0, :nome, :porta, 0)';
+            $stmt = $conn->prepare($sqlInsert);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->bindValue(":porta", (int)$porta);
+            $stmt->execute();
+    ?>
+            <div class="page">
+            </div>
+            <div class="modal" id="sucesso">
+                <div class="texto">
+                    <div class="titulo">Cadastrado!!!!</div>
+                    <div class="close">
+                        <img onclick="fecharModal('sucesso')" src="./assets/img/close.png" alt="">
+                    </div>
+                </div>
+                <div class="simbolo">
+                    <img src="./assets/img/sucesso.png" alt="">
+                    <div class="erro">
+                        <div class="aviso" id="aviso__certo">
+                            Lâmpada cadastrada com sucesso!!!
+                        </div>
+                    </div>
+                </div>
+                <div class="botaoModal">
+                    <button onclick="fecharModal('sucesso')" id="botao" style="background-color: rgba(79, 204, 79, 0.719);border:2px solid rgb(68, 131, 68);">Fechar</button>
+                </div>
+            </div>
+        <?php
+        } else {
+        ?>
+            <div class="page">
+            </div>
+
+            <div class="modal" id="erro">
+                <div class="texto">
+                    <div class="titulo">Erro!!!!</div>
+                    <div class="close">
+                        <img onclick="fecharModal('erro')" src="./assets/img/close.png" alt="">
+                    </div>
+                </div>
+                <div class="simbolo">
+                    <img src="./assets/img/erro.png" alt="">
+                    <div class="erro">
+                        <div class="aviso" id="aviso__errado">
+                            <?= $erros ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="botaoModal">
+                    <button onclick="fecharModal('erro')" id="botao"> Fechar</button>
+                </div>
+            </div>
+    <?php
+        }
+    }
     ?>
     <main>
         <div id="titulo__cadastro">
@@ -90,6 +130,8 @@
             </div>
         </form>
     </main>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

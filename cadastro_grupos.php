@@ -39,7 +39,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
             $$chave = $valor;
 
             if (empty($valor)) {
-                $erros .= "Campo $chave está em branco";
+                $erros .= "Campo '$chave' está em branco <br>";
             }
         }
 
