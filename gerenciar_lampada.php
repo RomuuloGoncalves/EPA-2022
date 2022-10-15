@@ -62,7 +62,7 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
                         ?>
                         <div class="campo__informacoes campo__grupo">
                             <p><?=$grupo->nome_grupo?></p>
-                            <a href="./remover_lampada_grupo.php?id_lampada=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
+                            <a href="functions/remover_lampada_grupo.php?id_lampada=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
                                 <img src="./assets/img/remover.png" alt="">
                             </a>
                         </div>
@@ -121,7 +121,7 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
                     </div>
                 </div>
             </div>
-            <a class="excluir" href="./excluir_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
+            <a class="excluir" href="functions/excluir_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
                 <p>excluir lampada</p>
                 <img src="./assets/img/lixeira.png" alt="exluir">
             </a>

@@ -3,7 +3,7 @@ if (empty($_GET)) {
     header('location: ./index.php');
 }
 
-require "./lib/conn.php";
+require "../lib/conn.php";
 $id_lampada = (int) $_GET["id"];
 
 $sql_excluir = "DELETE FROM LAMPADAS_GRUPO WHERE ID_LAMPADA = :id";
@@ -30,8 +30,8 @@ $stmt->execute();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>exluir lampada</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/style_modal.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style_modal.css">
 </head>
 
 <body>
@@ -41,13 +41,13 @@ $stmt->execute();
         <div class="texto">
             <div class="titulo">Sucesso!!!!</div>
             <div class="close">
-               <a href="./index.php">
-                 <img src="./assets/img/close.png" alt="">
+               <a href="../index.php">
+                 <img src="../assets/img/close.png" alt="">
                  </a>
             </div>
         </div>
         <div class="simbolo">
-            <img src="./assets/img/sucesso.png" alt="">
+            <img src="../assets/img/sucesso.png" alt="">
             <div class="erro">
                 <div class="aviso" id="aviso__certo">
                     Lâmpada excluída com sucesso!!!
