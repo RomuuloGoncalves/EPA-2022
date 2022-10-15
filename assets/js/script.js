@@ -67,4 +67,18 @@ function controlarLeds(valor) {
     window.location.href = "./conexao.html";
 }
 
+function diminuirOpacidade(){
+    selecionados = document.querySelectorAll("input[type='checkbox']:checked")
+
+    selecionados.forEach((elemento, indice)=>{
+        elemento.style
+    })
+}
+
+function fecharModal(){
+    document.querySelectorAll(".modal")[0].classList.add("apagar")
+    document.querySelectorAll(".modal")[1].classList.add("apagar")
+    location.reload()
+}
+
 atualizarConteudoPagina()

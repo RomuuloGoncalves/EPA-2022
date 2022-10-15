@@ -1,3 +1,3 @@
 <?php
-	$conn = new PDO('mysql:hostname=localhost;dbname=epa2022', 'root', '');
+	$conn = new PDO('mysql:hostname=localhost;dbname=EPA2022', 'root', '');
 ?>

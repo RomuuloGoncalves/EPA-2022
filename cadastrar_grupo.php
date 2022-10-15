@@ -89,9 +89,7 @@
         }else{
             ?>
             <div class="aviso" id="aviso__errado">
-                <i class="fas fa-times">
                     <?= $erro ?>
-                </i>
             </div>
             <meta http-equiv="refresh" content="3; url=./cadastro_grupos.php">
         <?php
