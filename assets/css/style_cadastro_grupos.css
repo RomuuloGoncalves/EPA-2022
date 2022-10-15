@@ -128,7 +128,7 @@ input[type="checkbox"]:checked ~ .card{
 }
 
 .card p{
-    max-width: 90%;
+    max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
