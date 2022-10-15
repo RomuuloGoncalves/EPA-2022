@@ -30,26 +30,24 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
     <?php
     if (!empty($_POST)) {
         require "./lib/conn.php";
-        $erros = false;
+        $erro = false;
+        if (empty($_POST) || !isset($_POST)) {
+            $erro = "Preencha os campos necessários";
+        }
 
+        if (empty($_POST["nome"])) {
+            $erro = "Preencha o campo 'nome'";
+        }
 
-        foreach ($_POST as $chave => $valor) {
-            if (!is_array($valor))
-            $valor = trim(strip_tags($valor));
-            $$chave = $valor;
-
-            if (empty($valor)) {
-                $erros .= "Campo $chave está em branco";
+        if (!$erro) {
+            if (empty($_POST["lampadas_selecionadas"]) || !isset($_POST["lampadas_selecionadas"])) {
+                $erro .= "É necessário escolher as lampadas para este grupo";
+            } else {
+                $lampadas_selecionadas = array_filter($_POST["lampadas_selecionadas"]);
             }
         }
 
-        if (!$erros) {
-            (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
-                ? $erros .= "É necessário escolher as lâmpadas para este grupo"
-                : $lampadas_selecionadas = array_filter($_POST["lampadas_selecionadas"]);
-        }
-
-        if (!$erros) {
+        if (!$erro) {
             $sql_cadastrar = "INSERT INTO GRUPOS VALUES(0, :nome)";
             $stmt = $conn->prepare($sql_cadastrar);
             $stmt->bindValue(":nome", $_POST["nome"]);
@@ -60,6 +58,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
             $id_grupo = $stmt->fetch(PDO::FETCH_OBJ);
 
             foreach ($lampadas_selecionadas as $lampada) {
+                // var_dump($id_grupo);
                 $sql_cadastrar = "INSERT INTO LAMPADAS_GRUPO VALUES($id_grupo->ID_GRUPO, :id_lampada)";
                 $stmt = $conn->prepare($sql_cadastrar);
                 $stmt->bindValue(":id_lampada", $lampada);
@@ -67,52 +66,17 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
             }
 
     ?>
-            <div class="page">
-            </div>
-            <div class="modal" id="sucesso">
-                <div class="texto">
-                    <div class="titulo">Cadastrado!!!!</div>
-                    <div class="close">
-                        <img onclick="fecharModal('sucesso')" src="./assets/img/close.png" alt="">
-                    </div>
-                </div>
-                <div class="simbolo">
-                    <img src="./assets/img/sucesso.png" alt="">
-                    <div class="erro">
-                        <div class="aviso" id="aviso__certo">
-                            Grupo adicionado com sucesso
-                        </div>
-                    </div>
-                </div>
-                <div class="botaoModal">
-                    <button onclick="fecharModal('sucesso')" id="botao" style="background-color: rgba(79, 204, 79, 0.719);border:2px solid rgb(68, 131, 68);">Fechar</button>
-                </div>
-            </div>
+                  <script src="./assets/js/script.js"></script>
+        <script>
+            toggleModal("sucesso")
+        </script>
         <?php
-        } else {
+               } else {
         ?>
-            <div class="page">
-            </div>
-
-            <div class="modal" id="erro">
-                <div class="texto">
-                    <div class="titulo">Erro!!!!</div>
-                    <div class="close">
-                        <img onclick="fecharModal('erro')" src="./assets/img/close.png" alt="">
-                    </div>
-                </div>
-                <div class="simbolo">
-                    <img src="./assets/img/erro.png" alt="">
-                    <div class="erro">
-                        <div class="aviso" id="aviso__errado">
-                            <?= $erros?>
-                        </div>
-                    </div>
-                </div>
-                <div class="botaoModal">
-                    <button onclick="fecharModal('erro')" id="botao"> Fechar</button>
-                </div>
-            </div>
+        <script src="./assets/js/script.js"></script>
+        <script>
+            toggleModal("erro")
+        </script>
     <?php
         }
     }
@@ -171,6 +135,46 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
         </form>
     </main>
 
+    <div class="modal desativar" id="sucesso">
+                <div class="texto">
+                    <div class="titulo">Cadastrado!!!!</div>
+                    <div class="close">
+                        <img onclick="fecharModal()" src="./assets/img/close.png" alt="">
+                    </div>
+                </div>
+                <div class="simbolo">
+                    <img src="./assets/img/sucesso.png" alt="">
+                    <div class="erro">
+                        <div class="aviso" id="aviso__certo">
+                            Grupo adicionado com sucesso
+                        </div>
+                    </div>
+                </div>
+                <div class="botaoModal">
+                    <button onclick="fecharModal()" id="botao" style="background-color: rgba(79, 204, 79, 0.719);border:2px solid rgb(68, 131, 68);">Fechar</button>
+                </div>
+            </div>
+
+
+            <div class="modal desativar" id="erro">
+                <div class="texto">
+                    <div class="titulo">Erro!!!!</div>
+                    <div class="close">
+                        <img onclick="fecharModal()"  src="./assets/img/close.png" alt="">
+                    </div>
+                </div>
+                <div class="simbolo">
+                    <img src="./assets/img/erro.png" alt="">
+                    <div class="erro">
+                        <div class="aviso" id="aviso__errado">
+                            <?=$erro?>
+                        </div>
+                    </div>
+                </div>
+                <div class="botaoModal">
+                    <button onclick="fecharModal()"  id="botao"> Fechar</button>
+                </div>
+               </div>
     <script src="./assets/js/script.js"></script>
 </body>
 

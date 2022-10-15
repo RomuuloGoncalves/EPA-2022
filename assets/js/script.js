@@ -75,10 +75,21 @@ function diminuirOpacidade(){
     })
 }
 
-function fecharModal(){
-    document.querySelectorAll(".modal")[0].classList.add("apagar")
-    document.querySelectorAll(".modal")[1].classList.add("apagar")
+function fecharModal(id){
+    document.getElementById(id).classList.add("apagar")
+    apagarBlur()
     location.reload()
+}
+
+function apagarBlur(){
+    document.querySelectorAll(".page")[0].classList.add("remover")
+    document.querySelectorAll(".page")[1].classList.add("remover")
+}
+
+function toggleModal(id){
+    alert("oi")
+    modal = document.getElementById(id)
+    modal.classList.toggle("desativar")
 }
 
 atualizarConteudoPagina()
