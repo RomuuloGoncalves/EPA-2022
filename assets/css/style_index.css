@@ -97,14 +97,27 @@ main {
 	justify-content: space-around;
 }
 
-.card__lampada p{
+.card__lampada a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	text-decoration: none;
+	color: black;
+}
+
+.card__lampada p {
 	max-width: 80%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-.page__titulo p{
+.card__lampada a:visited {
+	color: black;
+}
+
+.page__titulo p {
 	max-width: 70%;
 	white-space: nowrap;
 	overflow: hidden;
@@ -177,7 +190,7 @@ input:checked+.slider::before {
 		padding: 20px 10px;
 	}
 
-	.card{
+	.card {
 		min-width: 200px;
 	}
 
