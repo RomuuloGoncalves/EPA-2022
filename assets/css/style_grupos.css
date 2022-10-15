@@ -51,6 +51,9 @@ nav img {
     padding: 0 40px;
 }
 
+.wrapper_nome img{
+    height: 30px;
+}
 .container_lampadas {
     max-width: 100%;
     flex-wrap: wrap;

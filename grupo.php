@@ -27,6 +27,7 @@
     $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,7 +41,6 @@
 	<link rel="stylesheet" href="./assets/css/style_grupos.css">
     <link rel="stylesheet" href="./assets/css/style_modal.css">
 </head>
-<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 <body>
 	<header>
@@ -125,7 +125,7 @@
             <div id="titulo__grupo">
             <div class="wrapper_nome">
                 <h1><?=$grupo->NOME?></h1>
-                <ion-icon id="editar" name="create" onclick="abrirModal('alterarNomeGrupo');"></ion-icon>
+                <img src="./assets/img/editar.png" id="editar" name="create" onclick="abrirModal('alterarNomeGrupo');"></ion-icon>
             </div>
             <nav>
                 <a href="./index.php">
@@ -136,12 +136,7 @@
         </div>
 
         <div class="wrapper">
-            <div class="titulo">
             <h2>Lâmpadas</h2>
-            <a href="./adicionar_lampadas_grupo.php?id=<?=$grupo->ID_GRUPO?>">
-                <img src="./assets/img/mais.png" alt="adicionar lampadas">
-            </a>
-        </div>
             <div class="container_lampadas">
                 <?php
 					foreach($lampadas as $lampada) {

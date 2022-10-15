@@ -27,10 +27,10 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 <body>
-	<header>
-		<div id="container__logo">
+<header>
+		<a href="./index.php" id="container__logo">
 			<img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
-		</div>
+		</a>
 		<h1>EPA-2022</h1>
 	</header>
 
@@ -48,18 +48,18 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 			<div class="slide" id="lampadas">
 				<?php
-				foreach ($lampadas as $lampada) {
-				?>
-					<div class="card card__lampada">
-						<a href="functions/mudar_estado_lampada.php?id=<?= $lampada->ID_LAMPADA ?>&est=<?= $lampada->ESTADO ?>">
-							<img src="./assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada <?= $lampada->ESTADO ?>" />
-						</a>
-						<a href="gerenciar_lampada.php?id=<?= $lampada->ID_LAMPADA ?>">
-							<p><?= $lampada->NOME ?></p>
-						</a>
-					</div>
-				<?php
-				}
+					foreach($lampadas as $lampada) {
+						?>
+						<div class="card card__lampada">
+							<a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>">
+								<img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="Lampada <?=$lampada->ESTADO?>" />
+							</a>
+							<a href="gerenciar_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
+								<p><?=$lampada->NOME?></p>
+							</a>
+						</div>
+						<?php
+					}
 				?>
 			</div>
 

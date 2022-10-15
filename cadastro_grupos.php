@@ -20,9 +20,9 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 <body>
     <header>
-        <div id="container__logo">
+        <a href="./index.php" id="container__logo">
             <img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
-        </div>
+        </a>
         <h1>EPA-2022</h1>
     </header>
 
@@ -36,7 +36,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
         foreach ($_POST as $chave => $valor) {
             if (!is_array($valor))
-            $valor = trim(strip_tags($valor));
+                $valor = trim(strip_tags($valor));
             $$chave = $valor;
 
             if (empty($valor)) {
@@ -106,7 +106,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
                     <img src="./assets/img/erro.png" alt="">
                     <div class="erro">
                         <div class="aviso" id="aviso__errado">
-                            <?= $erros?>
+                            <?= $erros ?>
                         </div>
                     </div>
                 </div>

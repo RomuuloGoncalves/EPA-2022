@@ -2,8 +2,8 @@
 require "./lib/conn.php";
 $selectLampadas = 'SELECT * FROM LAMPADAS l WHERE l.ID_LAMPADA NOT IN (SELECT ID_LAMPADA FROM LAMPADAS_GRUPO WHERE ID_GRUPO = :id_grupo)';
 $stmt = $conn->prepare($selectLampadas);
-$stmt -> bindValue(":id_grupo", $_GET["id"]);
-$stmt -> execute();
+$stmt->bindValue(":id_grupo", $_GET["id"]);
+$stmt->execute();
 $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
 <!DOCTYPE html>
@@ -22,9 +22,9 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 <body>
     <header>
-        <div id="container__logo">
+        <a href="./index.php" id="container__logo">
             <img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
-        </div>
+        </a>
         <h1>EPA-2022</h1>
     </header>
 
@@ -38,7 +38,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
         foreach ($_POST as $chave => $valor) {
             if (!is_array($valor))
-            $valor = trim(strip_tags($valor));
+                $valor = trim(strip_tags($valor));
             $$chave = $valor;
 
             if (empty($valor)) {
@@ -101,7 +101,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
                     <img src="./assets/img/erro.png" alt="">
                     <div class="erro">
                         <div class="aviso" id="aviso__errado">
-                            <?= $erros?>
+                            <?= $erros ?>
                         </div>
                     </div>
                 </div>
@@ -125,27 +125,27 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
         </div>
 
         <form action="" method="post">
-            <input type="hidden" name="id" value="<?=$_GET["id"]?>">
+            <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
             <div class="campos">
                 <label for="selecao">Selecione as lâmpadas que serão adicionadas a este grupo*</label>
                 <div class="opcoes">
                     <?php
-                    if(count($lampadas) == 0){
+                    if (count($lampadas) == 0) {
                         echo "<label style='margin-right: auto;' >Não há lâmpadas disponiveis: todas as lâmpadas já estão neste grupo</label>";
-                    }else{
-                    foreach ($lampadas as $lampada) {
+                    } else {
+                        foreach ($lampadas as $lampada) {
                     ?>
-                        <div class="opcao">
-                            <label for="lampada-<?= $lampada->ID_LAMPADA ?>">
-                                <input type="checkbox" id="lampada-<?= $lampada->ID_LAMPADA ?>" name="lampadas_selecionadas[]" value="<?= $lampada->ID_LAMPADA ?>">
-                                <div class="card card__lampada">
-                                    <img src="./assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada">
-                                    <p><?= $lampada->NOME ?></p>
-                                </div>
-                            </label>
-                        </div>
+                            <div class="opcao">
+                                <label for="lampada-<?= $lampada->ID_LAMPADA ?>">
+                                    <input type="checkbox" id="lampada-<?= $lampada->ID_LAMPADA ?>" name="lampadas_selecionadas[]" value="<?= $lampada->ID_LAMPADA ?>">
+                                    <div class="card card__lampada">
+                                        <img src="./assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada">
+                                        <p><?= $lampada->NOME ?></p>
+                                    </div>
+                                </label>
+                            </div>
                     <?php
-                    }
+                        }
                     }
                     ?>
                 </div>

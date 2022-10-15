@@ -33,11 +33,11 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 <body>
     <header>
-        <div id="container__logo">
-            <img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
-        </div>
-        <h1>EPA-2022</h1>
-    </header>
+		<a href="./index.php" id="container__logo">
+			<img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
+		</a>
+		<h1>EPA-2022</h1>
+	</header>
     <main>
         <a id="voltar" href="./index.php">
             <img src="./assets/img/seta.png" alt="voltar">

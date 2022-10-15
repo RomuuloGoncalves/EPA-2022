@@ -14,9 +14,9 @@
 
 <body>
     <header>
-        <div id="container__logo">
+        <a href="./index.php" id="container__logo">
             <img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
-        </div>
+        </a>
         <h1>EPA-2022</h1>
     </header>
 
@@ -43,7 +43,7 @@
             $stmt->execute();
             header("location: ./gerenciar_lampada.php?id=$id");
         } else {
-        ?>
+    ?>
             <div class="page">
             </div>
 
@@ -74,14 +74,14 @@
         <div id="titulo__cadastro">
             <h1>Atualizar nome</h1>
             <nav>
-                <a href="./gerenciar_lampada.php?id=<?=$_GET["id_lampada"]?>">
+                <a href="./gerenciar_lampada.php?id=<?= $_GET["id_lampada"] ?>">
                     <img src="./assets/img/seta.png" alt="Voltar">
                 </a>
             </nav>
         </div>
 
         <form action="" method="post">
-            <input type="hidden" name="id" value="<?=$_GET["id_lampada"]?>">
+            <input type="hidden" name="id" value="<?= $_GET["id_lampada"] ?>">
             <div class="campos">
                 <label for="nome">Novo nome:*</label>
                 <input type="text" id="nome" name="nome">

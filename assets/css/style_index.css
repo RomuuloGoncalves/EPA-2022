@@ -8,7 +8,7 @@ main {
 
 .containers {
 	margin: 0 40px;
-	padding: 0 15px;
+	padding: 5px 15px;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
@@ -16,7 +16,7 @@ main {
 }
 
 .header__slider {
-	padding: 0 20px;
+	padding: 0 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -28,7 +28,7 @@ main {
 
 .slide {
 	width: 100%;
-	padding: 20px 10px;
+	padding: 15px 10px;
 	border-radius: 10px;
 	display: flex;
 	justify-content: flex-start;
@@ -97,36 +97,23 @@ main {
 	justify-content: space-around;
 }
 
-.card__lampada a {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
+.card__lampada a, .page__titulo p{
+	max-width: 180px;
+	text-align: center;
 	text-decoration: none;
-	color: black;
-}
-
-.card__lampada p {
-	max-width: 80%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	color: black;
 }
 
 .card__lampada a:visited {
 	color: black;
 }
 
-.page__titulo p {
-	max-width: 70%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
 .card__grupo a {
 	text-align: center;
-	color: #000;
+	color: black;
 }
 
 /* Switch */
@@ -190,7 +177,7 @@ input:checked+.slider::before {
 		padding: 20px 10px;
 	}
 
-	.card {
+	.card{
 		min-width: 200px;
 	}
 

@@ -9,7 +9,7 @@ main{
     margin: 0 auto;
     margin-bottom: auto;
     background-color: #e9ecef;
-    padding: 50px 40px;
+    padding: 30px 40px;
     
 }
 
@@ -18,7 +18,7 @@ main{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 main img{
@@ -28,7 +28,7 @@ main img{
 .campos{
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .campos label{
@@ -110,6 +110,7 @@ input[type="checkbox"]:checked ~ .card{
 }
 
 .card {
+    flex: 2 1 auto;
     min-width: 150px;
     max-width: 150px;
     height: 200px;
