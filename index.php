@@ -115,7 +115,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 						<div class="page__titulo">
 							<p><?= $grupo->NOME ?></p>
-							<a href="gerenciar_grupo.php?id=<?= $grupo->ID_GRUPO ?>">
+							<a href="grupo.php?id=<?= $grupo->ID_GRUPO ?>">
 								<ion-icon name="information-circle-outline"></ion-icon>
 							</a>
 						</div>

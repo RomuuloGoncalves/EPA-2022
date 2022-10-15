@@ -12,5 +12,5 @@ $stmt->bindValue(":id_lampada", $id_lampada);
 $stmt->bindValue(":id_grupo", $id_grupo);
 $stmt->execute();
 
-isset($_GET["indendificacaoPag"]) ? header("location: ../gerenciar_grupo.php?id=$id_grupo") : header("location: ../gerenciar_lampada.php?id=$id_lampada");
+header("location: ../gerenciar_lampada.php?id=$id_lampada");
 ?>

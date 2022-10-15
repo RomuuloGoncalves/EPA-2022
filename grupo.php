@@ -37,7 +37,7 @@
 	<title>Grupo - <?=$grupo->NOME?></title>
 	<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="./assets/css/style.css" />
-	<link rel="stylesheet" href="./assets/css/style_gerenciar_grupos.css">
+	<link rel="stylesheet" href="./assets/css/style_grupos.css">
     <link rel="stylesheet" href="./assets/css/style_modal.css">
 </head>
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
@@ -112,10 +112,10 @@
                     </div>
                 </div>
                 <div class="formsModal">
-                    <form action="./functions/mudar_nome_grupo.php" method="post">
+                    <form action="./functions/mudar_nome_grp.php" method="post">
                         <div class="campos">
-                            <label for="novoNome">Novo Nome</label>
-                            <input id="novoNome" type="text" name="novoNome">
+                            <label for="nomeNovo">Novo Nome</label>
+                            <input id="nomeNovo" type="text" name="nomeNovo">
                         </div>
                         <input type="hidden" name="id" value="<?=$id?>">
                         <button type="submit" id="salvar">Salvar</button>
@@ -137,20 +137,20 @@
 
         <div class="wrapper">
             <div class="titulo">
-                <h2>Lâmpadas</h2>
-                <a href="./adicionar_lampadas_grupo.php?id=<?=$grupo->ID_GRUPO?>">
-                    <img src="./assets/img/mais.png" alt="adicionar lampadas">
-                </a>
-            </div>
+            <h2>Lâmpadas</h2>
+            <a href="./adicionar_lampadas_grupo.php?id=<?=$grupo->ID_GRUPO?>">
+                <img src="./assets/img/mais.png" alt="adicionar lampadas">
+            </a>
+        </div>
             <div class="container_lampadas">
                 <?php
 					foreach($lampadas as $lampada) {
 						?> 
                             <div class="card card__lampada">
-                            <a class="remover" href="functions/remover_lampada_grupo.php?id_lampada=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$id?>&indendificacaoPag=gg">
+                            <a class="remover" href="functions/remover_lampada_grp.php?idLampada=<?=$lampada->ID_LAMPADA?>&idGrupo=<?=$id?>">
                                 <img class="icon_remover" src="./assets/img/close.png" alt="X">
                             </a>
-                                <a href="./gerenciar_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
+                                <a href="lampada.php?id=<?=$lampada->ID_LAMPADA?>">
                                     <img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="Lampada <?=$lampada->ESTADO?>" />
                                     <p><?=$lampada->NOME?></p>
                                 </a>

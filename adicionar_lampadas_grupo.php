@@ -118,7 +118,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
         <div id="titulo__cadastro">
             <h1>Adicionar lâmpadas:</h1>
             <nav>
-                <a href="gerenciar_grupo.php">
+                <a href="grupo.php">
                     <img src="./assets/img/seta.png" alt="Voltar">
                 </a>
             </nav>
