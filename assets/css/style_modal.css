@@ -43,7 +43,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 5px;
 }
 
 .titulo{
@@ -76,7 +76,7 @@
     align-items: center;
 }
 
-#botao{
+#botao, #salvar{
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
@@ -110,8 +110,6 @@
     align-items: center;
     padding: 1rem 1rem;
     border-radius: 5px;
-
-
 }
 
 #aviso__certo{            
@@ -125,6 +123,34 @@
     background-color: #f8d7da;
     border-color: #f5c2c7;
 }
+
+.campos {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.formsModal {
+    width: 100%;
+    padding: 25px;
+}
+
+.formsModal #salvar {
+    width: 100px;
+    color: #fff;
+    background-color: #0f5132;
+    border-color: #0f5132; 
+}
+.formsModal form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formsModal form label {
+    font-weight: bold;
+}
+
 
 @media (max-width:500px){
     .modal{

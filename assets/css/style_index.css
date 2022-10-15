@@ -97,24 +97,11 @@ main {
 	justify-content: space-around;
 }
 
-.card__lampada a{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	text-decoration: none;
-	color: black;
-}
-
 .card__lampada p{
 	max-width: 80%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-.card__lampada a:visited{
-	color: black;
 }
 
 .page__titulo p{
