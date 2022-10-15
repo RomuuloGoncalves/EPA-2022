@@ -59,7 +59,14 @@ nav img {
     gap: 30px;
     margin-top: 30px;
 }
-
+.titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.titulo img{
+    height: 50px;
+}
 .card {
     flex: 2 1 auto;
 	min-width: 300px;

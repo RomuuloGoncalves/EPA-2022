@@ -136,7 +136,12 @@
         </div>
 
         <div class="wrapper">
-            <h2>Lâmpadas</h2>
+            <div class="titulo">
+                <h2>Lâmpadas</h2>
+                <a href="./adicionar_lampadas_grupo.php?id=<?=$grupo->ID_GRUPO?>">
+                    <img src="./assets/img/mais.png" alt="adicionar lampadas">
+                </a>
+            </div>
             <div class="container_lampadas">
                 <?php
 					foreach($lampadas as $lampada) {
