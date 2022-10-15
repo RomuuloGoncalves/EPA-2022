@@ -12,5 +12,6 @@
     $stmt = $conn->prepare($sqlUpdate);
     $stmt->bindValue(":est", $est);
     $stmt->bindValue(":id", $id);
-    var_dump($stmt->execute());
+    $stmt->execute();
+    header("location: ../index.php")
 ?>
