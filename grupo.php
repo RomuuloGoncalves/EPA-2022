@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div id="titulo__grupo">
-            <div class="wrapper_nome">
+            <div class="wrapper__nome">
                 <h1><?=$grupo->NOME?></h1>
                 <img src="./assets/img/editar.png" id="editar" name="create" onclick="abrirModal('alterarNomeGrupo');"></ion-icon>
             </div>
@@ -136,7 +136,12 @@
         </div>
 
         <div class="wrapper">
-            <h2>Lâmpadas</h2>
+            <div class="titulo">
+                <h2>Lâmpadas</h2>
+                <a href="./adicionar_lampadas_grupo.php?id=<?=$grupo->ID_GRUPO?>">
+                    <img src="./assets/img/mais.png" alt="adicionar">
+                </a>
+            </div>
             <div class="container_lampadas">
                 <?php
 					foreach($lampadas as $lampada) {

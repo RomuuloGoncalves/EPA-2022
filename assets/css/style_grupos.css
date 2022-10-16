@@ -19,7 +19,7 @@ a {
     transition: all .2s linear;
 }
 
-.wrapper_nome {
+.wrapper__nome {
     display: flex;
     align-items: center;
     column-gap: 20px;
@@ -51,7 +51,7 @@ nav img {
     padding: 0 40px;
 }
 
-.wrapper_nome img{
+.wrapper__nome img{
     height: 30px;
 }
 .container_lampadas {
