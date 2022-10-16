@@ -16,9 +16,9 @@
     if (!$erros) {
         require '../lib/conn.php';
 
-        $update = 'UPDATE LAMPADAS SET NOME = :nome WHERE ID_LAMPADA = :id';
+        $update = 'UPDATE LAMPADAS SET NOME = :nomeNovo WHERE ID_LAMPADA = :id';
         $stmt = $conn->prepare($update);
-        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':nomeNovo', $nomeNovo);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         header('location:../lampada.php?id='.$id.'&sucesso=true');
