@@ -130,7 +130,7 @@
             <nav>
                 <a href="./index.php">
                     <img src="./assets/img/seta.png" alt="Voltar">
-                </a>a
+                </a>
             </nav>
         </div>
         </div>
