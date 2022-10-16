@@ -1,4 +1,7 @@
 <?php
+if (empty($_GET)) {
+    header("location:./index.php");
+}
 require "./lib/conn.php";
 $selectLampadas = 'SELECT * FROM LAMPADAS l WHERE l.ID_LAMPADA NOT IN (SELECT ID_LAMPADA FROM LAMPADAS_GRUPO WHERE ID_GRUPO = :id_grupo)';
 $stmt = $conn->prepare($selectLampadas);
@@ -151,7 +154,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
                 </div>
 
                 <div class="botoes">
-                    <button type="submit" class="botao" id="btn__submit">Cadastrar</button>
+                    <button type="submit" class="botao" id="btn__submit">Adicionar</button>
                     <button type="reset" class="botao" id="btn__reset">Limpar</button>
                 </div>
         </form>
