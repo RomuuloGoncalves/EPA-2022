@@ -20,10 +20,18 @@ a {
 }
 
 .wrapper__nome {
+    width: 80%;
     display: flex;
     align-items: center;
     column-gap: 20px;
 }
+
+.wrapper__nome h1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
+}   
 
 #editar {
     font-size: 1.5em;

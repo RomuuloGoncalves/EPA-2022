@@ -12,5 +12,5 @@ $stmt->bindValue(":id_lampada", $id_lampada);
 $stmt->bindValue(":id_grupo", $id_grupo);
 $stmt->execute();
 
-header("location: ../gerenciar_lampada.php?id=$id_lampada");
+header("location: ../lampada.php?id=$id_lampada");
 ?>

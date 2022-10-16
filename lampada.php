@@ -38,22 +38,35 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 		</a>
 		<h1>EPA-2022</h1>
 	</header>
+    <div id="titulo__grupo">
+        <div class="wrapper__nome">
+            <h1><?=$lampada->NOME?></h1>
+            <a href="./atualizar_nome_lampada.php?id_lampada=<?=$lampada->ID_LAMPADA?>">
+            <img src="./assets/img/editar.png" id="editar" name="create" onclick="abrirModal('alterarNomeGrupo');"></ion-icon>
+            </a>
+        </div>
+        <nav>
+            <a href="./index.php">
+                <img src="./assets/img/seta.png" alt="Voltar">
+            </a>
+        </nav>
+    </div>
     <main>
-        <a id="voltar" href="./index.php">
+        <!-- <a id="voltar" href="./index.php">
             <img src="./assets/img/seta.png" alt="voltar">
-        </a>
+        </a> -->
         <div class="imagem">
             <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&indicativoPag=g">
                 <img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
             </a>
         </div>
         <div class="informacoes">
-            <div class="nome__lampada">
-                <h1>Lâmpada: <?=$lampada->NOME?></h1>
+            <!-- <div class="nome__lampada">
+               <h1>Lâmpada: <?=$lampada->NOME?></h1>
                 <a href="./atualizar_nome_lampada.php?id_lampada=<?=$lampada->ID_LAMPADA?>">
                     <img src="./assets/img/editar.png" alt="Editar nome">
-                </a>
-            </div>
+                </a> 
+            </div> -->
             <div class="grupos__pertencentes">
                 <h2>Grupos:</h2>
                 <div class="containers grupos">

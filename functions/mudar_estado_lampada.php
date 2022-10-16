@@ -6,6 +6,7 @@
     
     $id = (int)$_GET['id'];
     $est = (int)$_GET['est'];
+    $id_grupo = (int)$_GET["id_grupo"];
 
     $novo_estado = $est == 1 ? 0 : 1;
 
@@ -15,6 +16,12 @@
     $stmt->bindValue(":id", $id);
     $stmt->execute();
 
-    isset($_GET["indicativoPag"]) ? header("location: ../lampada.php?id=$id") : header("location: ../index.php");
+    if(isset($_GET["indicativoPag"])){
+        header("location: ../lampada.php?id=$id");
+    }else if(isset($_GET["indicativoPag-2"])){
+        header("location: ../grupo.php?id=$id_grupo");
+    }else{
+        header("location: ../index.php");
+    }
 
 ?>
