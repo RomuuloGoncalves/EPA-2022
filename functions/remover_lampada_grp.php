@@ -1,6 +1,7 @@
 <?php
-    if (empty($_GET)) 
+    if (empty($_GET)){
         header('location:../index.php');
+    }
     
     require '../lib/conn.php';
     $idLampada = (int) $_GET['idLampada'];
@@ -8,7 +9,7 @@
 
     $select = 'SELECT ID_LAMPADA FROM LAMPADAS_GRUPO WHERE ID_GRUPO = :idGrupo';
     $stmt = $conn->prepare($select);
-    $stmt->bindValue('idGrupo', $idGrupo);
+    $stmt->bindValue(':idGrupo', $idGrupo);
     $stmt->execute();
 
     if ($stmt->rowCount() > 1) {
@@ -19,7 +20,8 @@
         $stmt->execute();
 
         header('location:../grupo.php?id='.$idGrupo);
+    }else{
+        $erros = 'O grupo deve possuir no minimo uma lâmpada';
+        header('location:../grupo.php?id='.$idGrupo.'&erros='.$erros);
     }
-    $erros = 'O grupo deve possuir no minimo uma lâmpada';
-    header('location:../grupo.php?id='.$idGrupo.'&erros='.$erros);
 ?>

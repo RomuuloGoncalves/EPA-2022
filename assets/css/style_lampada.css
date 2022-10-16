@@ -1,88 +1,67 @@
-.wrapper__nome {
-    width: 80%;
+main{
+    min-height: calc(100vh - 90px);
     display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.wrapper__nome h1{
-    max-width: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#titulo__grupo {
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 56, 255, 0.05);
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-nav img {
-    height: 20px;
-}
-
-.wrapper__nome img{
-    height: 30px;
-}
-
-.content {
-    width: 100%;
-    display: flex;
+	background-color:#e9ecef;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .imagem{
-    margin: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.imagem img{
-    padding: 15px;
-    border-radius: 10px;
-    background: #F2F5FF;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-    transition: ease-out .2s;
+.imagem a{
+    height: max-content;
+    width: max-content;
+    margin-left: 50px;
 }
 
-.imagem img:hover,
-.imagem img:active{
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+.imagem img{
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    height: 60%;
 }
 
 .informacoes{
-    margin-top: 10px;
-    width: 50%;
+    flex: 2 1 auto;
+    height: 100%;
     padding: 10px 0;
+}
+
+.nome__lampada{
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.nome__lampada img{
+    height: 30px;
 }
 
 .grupos__pertencentes, .rotinas__pertencentes{
-    width: 100%;
+    margin: 0 20px;
     height: 300px;
 }
 
-.containers {
-    margin: 5px auto;
+.grupos, .rotinas{
     height: 80%;
-    width: 90%;
-    padding: 13px;
-    border-radius: 10px;
+    width: 80%;
+    background-color: rgba(128, 128, 128, 0.08);    
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 5px auto;
+    padding: 5px;
+    margin-left: 50px;
     overflow-y: scroll;
-    background: #F2F5FF;
+    border-radius: 10px;
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+    border: 8px solid rgba(128, 128, 128, 0);
 }
 
 .containers::-webkit-scrollbar {
@@ -107,104 +86,71 @@ nav img {
 }
 
 .campo__informacoes{
-    padding: 10px 10px;
     border-radius: 10px;
+    padding: 20px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFF;
+
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-}
+    background-color: #fff;
 
-.campo__informacoes p{
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.campo__informacoes a{
-    padding: 5px;
-    display: grid;
-    place-items: center;
-    text-decoration: none;
-    color: #000;
-}
-
-.campo__informacoes a:visited{
-    color: #000;
 }
 
 .campo__informacoes img{
     height: 25px;
 }
 
-.excluir{
-    margin: 0 55px;
-    width: max-content;
-    border-radius: 5px;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: #000;
-    background-color: #D75A4A;
-    transition: ease-out .2s;
+#voltar{
+    position: absolute;
+    left: 20px;
+    top: 120px;
 }
 
-.excluir:hover{
-    background: #963B2F;
-}
-
-.excluir:visited{
-    color: #000;
-}
-
-.excluir img{
+#voltar img{
     height: 20px;
-}
 
-@media(max-width:1090px){
-    .imagem img{
-        height: 400px;
+}
+@media(max-width:800px){
+    .imagem, .informacoes{
+        width: 100vw;
+        padding: 0;
     }
-}
 
-@media(max-width:830px){
-    .imagem, 
-    .informacoes{
-        width: 100%;
+    .imagem a {
+        margin: 0;
     }
 
     .imagem img{
+        margin: 0;
         height: 500px;
     }
 
-    .grupos__pertencentes, 
-    .rotinas__pertencentes{
-        margin: 0 auto;
+
+    .grupos__pertencentes, .rotinas__pertencentes{
         max-height: 300px;
         width: 90vw;
     }
     
-    .grupos__pertencentes h2, 
-    .rotinas__pertencentes h2{
+    .grupos__pertencentes h2, .rotinas__pertencentes h2{
         margin: 0;
     }
 
-    .grupos,
-    .rotinas{
+    .grupos,.rotinas{
         margin: 0;
         width: 100%;
+        
+    }
+
+    .excluir{
+        margin-left: 20px;
+        margin-bottom: 10px;
     }
 }
 
-@media(max-width:500px){
+@media(max-width:400px){
     .imagem img{
         margin: 0;
         height: 250px;
-    }
-
-    .informacoes{
-        align-items: center;
     }
 }

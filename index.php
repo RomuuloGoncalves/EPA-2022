@@ -53,14 +53,14 @@
 				<?php
 				foreach ($lampadas as $lampada) {
 				?>
-					<div class="card card__lampada">
-						<a href="functions/mudar_estado_lampada.php?id=<?= $lampada->ID_LAMPADA ?>&est=<?= $lampada->ESTADO ?>">
-							<img src="assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada <?= $lampada->ESTADO ?>" />
-						</a>
-						<a href="lampada.php?id=<?= $lampada->ID_LAMPADA ?>">
-							<p><?= $lampada->NOME ?></p>
-						</a>
-					</div>
+						<div class="card card__lampada">
+							<a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>">
+								<img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="Lampada <?=$lampada->ESTADO?>" />
+							</a>
+							<a href="lampada.php?id=<?=$lampada->ID_LAMPADA?>">
+								<p><?=$lampada->NOME?></p>
+							</a>
+						</div>
 				<?php
 				}
 				unset($lampadas);

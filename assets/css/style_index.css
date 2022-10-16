@@ -1,5 +1,13 @@
+main {
+	margin: 20px 0;
+	display: flex;
+	flex: auto;
+	flex-direction: column;
+	gap: 40px;
+}
+
 .containers {
-	margin: 20px 40px;
+	margin: 0 40px;
 	padding: 5px 15px;
 	border-radius: 10px;
 	display: flex;
@@ -25,10 +33,11 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 30px;
+	column-gap: 30px;
 	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
 	scroll-padding: 20px;
+	scrollbar-width: none;
 }
 
 .slide::-webkit-scrollbar {
@@ -51,11 +60,11 @@
 .card {
 	min-width: 300px;
 	border-radius: 10px;
-	display: flex;
-	align-items: center;
 	font-size: 35px;
-	text-decoration: none;
+	display: flex;
 	color: #000;
+	text-decoration: none;
+	align-items: center;
 	background: rgba(0, 56, 255, 0.05);
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
@@ -88,23 +97,25 @@
 	justify-content: space-around;
 }
 
-.page__titulo p,
-.card__lampada p,
-.card__lampada a {
+.card__lampada a, .card__lampada p, .page__titulo p{
 	max-width: 180px;
+	text-align: center;
+	text-decoration: none;
+
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	text-align: center;
-	text-decoration: none;
-	color: #000;
+	color: black;
+}
+
+.card__lampada a:visited {
+	color: black;
 }
 
 .card__grupo a {
 	text-align: center;
-	color: #000;
+	color: black;
 }
-
 /* Switch */
 .switch {
 	margin-bottom: 25px;
@@ -156,7 +167,6 @@ input:checked+.slider::before {
 	transform: translateX(40px);
 }
 
-/* Media Query */
 @media(max-width: 440px) {
 	.containers {
 		padding: 0 10px;

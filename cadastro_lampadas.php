@@ -1,8 +1,3 @@
-<?php
-    require 'functions/atualizar_json.php';
-    atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -70,7 +65,7 @@
                 <div class="simbolo">
                     <img src="./assets/img/sucesso.png" alt="">
                     <div class="erro">
-                        <div class="aviso" id="aviso__certo">
+                        <div class="aviso" id="aviso__sucesso">
                             Lâmpada cadastrada com sucesso!!!
                         </div>
                     </div>
@@ -95,7 +90,7 @@
                 <div class="simbolo">
                     <img src="./assets/img/erro.png" alt="">
                     <div class="erro">
-                        <div class="aviso" id="aviso__errado">
+                        <div class="aviso" id="aviso__erro">
                             <?= $erros ?>
                         </div>
                     </div>

@@ -17,6 +17,10 @@
     $stmt->execute();
     $grupo = $stmt->fetch(PDO::FETCH_OBJ);
 
+    if ($stmt->rowCount() == 0){
+        header('location: ./index.php');
+    }
+
     $select = "SELECT * FROM LAMPADAS INNER JOIN LAMPADAS_GRUPO ON LAMPADAS_GRUPO.ID_LAMPADA = LAMPADAS.ID_LAMPADA WHERE LAMPADAS_GRUPO.ID_GRUPO = :id";
     $stmt = $conn->prepare($select);
     $stmt->bindValue(':id', $id);
@@ -147,7 +151,7 @@
             </div>
         </div>
         <a class="excluir" href="functions/excluir_grp.php?id=<?=$grupo->ID_GRUPO?>">
-            <p>Excluir lâmpada</p>
+            <p>Excluir grupo</p>
             <img src="assets/img/lixeira.png" alt="exluir">
         </a>
 	</main>

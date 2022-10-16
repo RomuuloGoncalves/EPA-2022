@@ -101,7 +101,7 @@
         <div id="titulo__cadastro">
             <h1>Adicionar lâmpadas:</h1>
             <nav>
-                <a href="grupo?id=<?=$id?>.php">
+                <a href="grupo.php?id=<?=$id?>">
                     <img src="assets/img/seta.png" alt="Voltar">
                 </a>
             </nav>
@@ -127,7 +127,7 @@
 
                     if ($qtddLampadas === 0) {
                         ?>
-                        <label>Não há lâmpadas disponiveis: todas as lâmpadas já estão neste grupo</label>
+                        <label style="margin-right: auto;">Não há lâmpadas disponiveis: todas as lâmpadas já estão neste grupo</label>
                         <?php
                     } else {
                         foreach ($lampadas as $lampada) {

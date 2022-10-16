@@ -1,4 +1,7 @@
 <?php
+    if (empty($_GET)){
+        header('location: ./index.php');
+    }
     require 'lib/conn.php';
 
     $id = (int)$_GET['id'];
@@ -9,13 +12,17 @@
     $stmt -> execute();
     $lampada = $stmt->fetch(PDO::FETCH_OBJ);
 
+    if ($stmt->rowCount() == 0){
+        header('location: ./index.php');
+    }
+
     $select = 'SELECT G.ID_GRUPO, G.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_GRUPO LG INNER JOIN GRUPOS G ON L.ID_LAMPADA = LG.ID_LAMPADA AND LG.ID_GRUPO = G.ID_GRUPO WHERE L.ID_LAMPADA = :id';
     $stmt = $conn -> prepare($select);
     $stmt -> bindValue(':id', $id);
     $stmt -> execute();
     $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-    $select = 'SELECT R.ID_ROTINA, R.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_ROTINA LR INNER JOIN ROTINAS R ON L.ID_LAMPADA = LR.ID_LAMPADA AND LR.ID_GRUPO = R.ID_GRUPO WHERE L.ID_LAMPADA = :id';
+    $select = 'SELECT R.ID_ROTINA, R.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_ROTINA LR INNER JOIN ROTINAS R ON L.ID_LAMPADA = LR.ID_LAMPADA AND LR.ID_ROTINA = R.ID_ROTINA WHERE L.ID_LAMPADA = :id';
     $stmt = $conn -> prepare($select);
     $stmt -> bindValue(':id', $id);
     $stmt -> execute();
@@ -38,7 +45,7 @@
     <title>Lampada - <?=$lampada->NOME?></title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style_lampada.css">
+    <link rel="stylesheet" href="assets/css/style_lampadas.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
@@ -49,6 +56,17 @@
 		</a>
 		<h1>EPA-2022</h1>
 	</header>
+    <div id="titulo__grupo">
+        <div class="wrapper__nome">
+            <h1><?=$lampada->NOME?></h1>
+            <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>            </a>
+        </div>
+        <nav>
+            <a href="./index.php">
+                <img src="./assets/img/seta.png" alt="Voltar">
+            </a>
+        </nav>
+    </div>
     <main>
     <?php
             if (isset($_GET['erros']) || isset($_GET['sucesso'])) {
@@ -106,20 +124,20 @@
                     </form>
                 </div>
             </div>
-        <a id="voltar" href="index.php">
+        <!-- <a id="voltar" href="index.php">
             <img src="assets/img/seta.png" alt="voltar">
-        </a>
+        </a> -->
         <div class="imagem">
             <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=lampada">
                 <img src="assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
             </a>
         </div>
         <div class="informacoes">
-            <div class="nome__lampada">
+            <!-- <div class="nome__lampada">
                 <h1>Lâmpada: <?=$lampada->NOME?></h1>
                 <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
 
-            </div>
+            </div> -->
             <div class="grupos__pertencentes">
                 <h2>Grupos:</h2>
                 <div class="containers grupos">
@@ -154,7 +172,7 @@
                     ?>
                 </div>
             </div>
-            <a class="excluir" href="functions/excluir_grp.php?id=<?=$id?>">
+            <a class="excluir" href="functions/excluir_lampada.php?id=<?=$id?>">
                 <p>Excluir lâmpada</p>
                 <img src="assets/img/lixeira.png" alt="exluir">
             </a>

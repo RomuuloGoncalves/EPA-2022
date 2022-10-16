@@ -5,12 +5,14 @@
     require '../lib/conn.php';
     
     $id = (int)$_GET['id'];
-    $delete = 'DELETE FROM GRUPOS WHERE ID_GRUPO = :id';
+
+    $delete = 'DELETE FROM LAMPADAS_GRUPO WHERE ID_GRUPO = :id';
     $stmt = $conn->prepare($delete);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
 
-    $delete = 'DELETE FROM LAMPADAS_GRUPO WHERE ID_GRUPO = :id';
+
+    $delete = 'DELETE FROM GRUPOS WHERE ID_GRUPO = :id';
     $stmt = $conn->prepare($delete);
     $stmt->bindValue(':id', $id);
     $stmt->execute();

@@ -3,7 +3,7 @@
         header('location:../index.php');
     
     require '../lib/conn.php';
-    require 'atualizar_json.php';
+    // require 'atualizar_json.php';
 
     $id = (int)$_GET['id'];
     $est = (int)$_GET['est'];
@@ -15,7 +15,7 @@
     $stmt->bindValue(':id', $id);
     $stmt->execute();
 
-    atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', '../json/lampadas.json');
+    // atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', '/json/lampadas.json');
 
     header('location:../index.php')
 ?>
