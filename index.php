@@ -54,7 +54,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 							<a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>">
 								<img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="Lampada <?=$lampada->ESTADO?>" />
 							</a>
-							<a href="gerenciar_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
+							<a href="lampada.php?id=<?=$lampada->ID_LAMPADA?>">
 								<p><?=$lampada->NOME?></p>
 							</a>
 						</div>

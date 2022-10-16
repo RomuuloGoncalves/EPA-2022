@@ -15,6 +15,6 @@
     $stmt->bindValue(":id", $id);
     $stmt->execute();
 
-    isset($_GET["indicativoPag"]) ? header("location: ../gerenciar_lampada.php?id=$id") : header("location: ../index.php");
+    isset($_GET["indicativoPag"]) ? header("location: ../lampada.php?id=$id") : header("location: ../index.php");
 
 ?>

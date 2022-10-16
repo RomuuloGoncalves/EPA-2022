@@ -87,7 +87,7 @@ main{
 
 .campo__informacoes{
     border-radius: 10px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -95,6 +95,23 @@ main{
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     background-color: #fff;
 
+}
+
+.campo__informacoes a{
+    max-width: 80%;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    padding: 5px;
+    color: #000;
+
+    word-spacing: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.campo__informacoes a:visited{
+    color: #000;
 }
 
 .campo__informacoes img{

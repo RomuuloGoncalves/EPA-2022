@@ -41,7 +41,7 @@
             $stmt->bindValue(":nome", $nome);
             $stmt->bindValue(":id", $id);
             $stmt->execute();
-            header("location: ./gerenciar_lampada.php?id=$id");
+            header("location: ./lampada.php?id=$id");
         } else {
     ?>
             <div class="page">
@@ -74,7 +74,7 @@
         <div id="titulo__cadastro">
             <h1>Atualizar nome</h1>
             <nav>
-                <a href="./gerenciar_lampada.php?id=<?= $_GET["id_lampada"] ?>">
+                <a href="./lampada.php?id=<?= $_GET["id_lampada"] ?>">
                     <img src="./assets/img/seta.png" alt="Voltar">
                 </a>
             </nav>

@@ -28,7 +28,7 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
     <title>Gerenciar lampadas</title>
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/style_gerenciar_lampadas.css">
+    <link rel="stylesheet" href="./assets/css/style_lampadas.css">
 </head>
 
 <body>
@@ -61,7 +61,7 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
                     foreach($grupos as $grupo){
                         ?>
                         <div class="campo__informacoes campo__grupo">
-                            <p><?=$grupo->nome_grupo?></p>
+                            <a href="./grupo.php?id=<?=$grupo->ID_GRUPO?>"><?=$grupo->nome_grupo?></a>
                             <a href="functions/remover_lampada_grupo.php?id_lampada=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
                                 <img src="./assets/img/remover.png" alt="">
                             </a>
@@ -81,43 +81,10 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
                 <div class="containers rotinas">
                     <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div>
-
-                    <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div>
-
-                    <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div>
-
-                    <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div>
-
-                    <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div>
-
-                    <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div>
-
-                    <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div>
-
-                    <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
+                        <a href="#">Quarto</a>
+                        <a href="#">
+                            <img src="./assets/img/remover.png" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
