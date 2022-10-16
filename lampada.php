@@ -104,17 +104,16 @@
             </div>
 
             <div id="titulo__grupo">
-            <div class="wrapper__nome">
-                <h1><?=$lampada->NOME?></h1>
-                <a href="./atualizar_nome_lampada.php?id_lampada=<?=$lampada->ID_LAMPADA?>">
-                <img src="./assets/img/editar.png" id="editar" name="create" onclick="abrirModal('alterarNomeGrupoLampada');"></ion-icon>
-                </a>
+                <div class="wrapper__nome">
+                    <h1><?=$lampada->NOME?></h1>
+                    <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
+                </div>
+                <nav>
+                    <a href="./index.php">
+                        <img src="./assets/img/seta.png" alt="Voltar">
+                    </a>
+                </nav>
             </div>
-            <nav>
-                <a href="./index.php">
-                    <img src="./assets/img/seta.png" alt="Voltar">
-                </a>
-            </nav>
         </div>
 
         <div class="content">
