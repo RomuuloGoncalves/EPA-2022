@@ -101,6 +101,34 @@ nav img {
     width: 250px;
 }
 
+.excluir{
+    margin: 0 55px;
+    width: max-content;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #D75A4A;
+    transition: ease-out .2s;
+}
+
+.excluir:hover{
+    background: #963B2F;
+}
+
+.excluir:visited{
+    color: #000;
+}
+
+.excluir img{
+    height: 20px;
+}
+
+
+
 @media(max-width:500px){
     .card{
         min-width: 200px;
