@@ -1,16 +1,25 @@
 <?php
-if (empty($_GET)) {
-    header('location: ../index.php');
-}
-require "../lib/conn.php";
-$idLampada = (int) $_GET["idLampada"];
-$idGrupo = (int) $_GET["idGrupo"];
+    if (empty($_GET)) 
+        header('location:../index.php');
+    
+    require '../lib/conn.php';
+    $idLampada = (int) $_GET['idLampada'];
+    $idGrupo = (int) $_GET['idGrupo'];
 
-$sqlDelete = "DELETE FROM LAMPADAS_GRUPO WHERE ID_LAMPADA = :idLampada AND ID_GRUPO = :idGrupo";
-$stmt = $conn->prepare($sqlDelete);
-$stmt->bindValue(":idLampada", $idLampada);
-$stmt->bindValue(":idGrupo", $idGrupo);
-$stmt->execute();
+    $select = 'SELECT ID_LAMPADA FROM LAMPADAS_GRUPO WHERE ID_GRUPO = :idGrupo';
+    $stmt = $conn->prepare($select);
+    $stmt->bindValue('idGrupo', $idGrupo);
+    $stmt->execute();
 
-header("location: ../grupo.php?id=$idGrupo");
+    if ($stmt->rowCount() > 1) {
+        $delete = 'DELETE FROM LAMPADAS_GRUPO WHERE ID_LAMPADA = :idLampada AND ID_GRUPO = :idGrupo';
+        $stmt = $conn->prepare($delete);
+        $stmt->bindValue(':idLampada', $idLampada);
+        $stmt->bindValue(':idGrupo', $idGrupo);
+        $stmt->execute();
+
+        header('location:../grupo.php?id='.$idGrupo);
+    }
+    $erros = 'O grupo deve possuir no minimo uma lâmpada';
+    header('location:../grupo.php?id='.$idGrupo.'&erros='.$erros);
 ?>

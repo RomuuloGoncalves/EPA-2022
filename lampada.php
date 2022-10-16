@@ -1,21 +1,27 @@
 <?php
-require "./lib/conn.php";
-$id_lampada = (int)$_GET["id"];
+    require "lib/conn.php";
+    $id = (int)$_GET["id"];
 
-$sql_lampada = "SELECT * FROM LAMPADAS WHERE ID_LAMPADA = :id";
-$stmt = $conn -> prepare($sql_lampada);
-$stmt -> bindValue(":id", $id_lampada);
-$stmt -> execute();
-$lampada = $stmt->fetch(PDO::FETCH_OBJ);
+    $select = "SELECT * FROM LAMPADAS WHERE ID_LAMPADA = :id";
+    $stmt = $conn -> prepare($select);
+    $stmt -> bindValue(":id", $id);
+    $stmt -> execute();
+    $lampada = $stmt->fetch(PDO::FETCH_OBJ);
 
-$sql = "SELECT *, G.NOME as 'nome_grupo', L.NOME as 'nome_lampada' FROM LAMPADAS L INNER JOIN LAMPADAS_GRUPO LG INNER JOIN GRUPOS G ON L.ID_LAMPADA = LG.ID_LAMPADA AND LG.ID_GRUPO = G.ID_GRUPO WHERE L.ID_LAMPADA = :id";
-$stmt = $conn -> prepare($sql);
-$stmt -> bindValue(":id", $id_lampada);
-$stmt -> execute();
+    $select = "SELECT G.ID_GRUPO, G.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_GRUPO LG INNER JOIN GRUPOS G ON L.ID_LAMPADA = LG.ID_LAMPADA AND LG.ID_GRUPO = G.ID_GRUPO WHERE L.ID_LAMPADA = :id";
+    $stmt = $conn -> prepare($select);
+    $stmt -> bindValue(":id", $id);
+    $stmt -> execute();
+    $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-$grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $select = "SELECT R.ID_ROTINA, R.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_ROTINA LR INNER JOIN ROTINAS R ON L.ID_LAMPADA = LR.ID_LAMPADA AND LR.ID_GRUPO = R.ID_GRUPO WHERE L.ID_LAMPADA = :id";
+    $stmt = $conn -> prepare($select);
+    $stmt -> bindValue(":id", $id);
+    $stmt -> execute();
+    $rotinas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-
+    unset($select);
+    unset($stmt);
 ?>
 
 <!DOCTYPE html>
@@ -25,89 +31,133 @@ $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar lampadas</title>
-    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/style_lampadas.css">
+    <title>Lampada - <?=$lampada->NOME?></title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_lampada.css">
+    <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
 <body>
     <header>
-		<a href="./index.php" id="container__logo">
-			<img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
+		<a href="index.php" id="container__logo">
+			<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
 		</a>
 		<h1>EPA-2022</h1>
 	</header>
-    <div id="titulo__grupo">
-        <div class="wrapper__nome">
-            <h1><?=$lampada->NOME?></h1>
-            <a href="./atualizar_nome_lampada.php?id_lampada=<?=$lampada->ID_LAMPADA?>">
-            <img src="./assets/img/editar.png" id="editar" name="create" onclick="abrirModal('alterarNomeGrupo');"></ion-icon>
-            </a>
-        </div>
-        <nav>
-            <a href="./index.php">
-                <img src="./assets/img/seta.png" alt="Voltar">
-            </a>
-        </nav>
-    </div>
     <main>
-        <!-- <a id="voltar" href="./index.php">
-            <img src="./assets/img/seta.png" alt="voltar">
-        </a> -->
+    <?php
+            if (isset($_GET['erros']) || isset($_GET['sucesso'])) {
+                if (isset($_GET['erros'])) {
+                    $idModal = 'erro';
+                    $txtModal = $_GET['erros'];
+                } else {
+                    $idModal = 'sucesso';
+                    $txtModal = 'Nome alterado com sucesso';
+                }
+                ?>
+                <div class="page">
+                    </div>
+
+                    <div class="modal" id="<?=$idModal?>">
+                        <div class="texto">
+                            <div class="titulo"><?=$idModal?></div>
+                            <div class="close">
+                                <img onclick="fecharModal('<?=$idModal?>')" src="assets/img/close.png" alt="X">
+                            </div>
+                        </div>
+                        <div class="simbolo">
+                            <img src="assets/img/<?=$idModal?>.png" alt="X">
+                            <div class="erro">
+                                <div class="aviso" id="aviso__<?=$idModal?>">
+                                    <?=$txtModal?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="botaoModal">
+                            <button onclick="fecharModal('<?=$idModal?>')" id="botao"> Fechar</button>
+                        </div>
+                    </div>
+        <?php
+            unset($idModal);
+            unset($txtModal);
+            }
+        ?>
+        <div class="page remover"></div>
+            <div class="modal apagar" id="alterarNomeLampada">
+                <div class="texto">
+                    <div class="titulo">Alterar nome da lâmpada</div>
+                    <div class="close">
+                        <img onclick="fecharModal('alterarNomeLampada')" src="assets/img/close.png" alt="X">
+                    </div>
+                </div>
+                <div class="formsModal">
+                    <form action="functions/mudar_nome_lampada.php" method="post">
+                        <div class="campos">
+                            <label for="nomeNovo">Novo Nome</label>
+                            <input id="nomeNovo" type="text" name="nomeNovo">
+                        </div>
+                        <input type="hidden" name="id" value="<?=$id?>">
+                        <button type="submit" id="salvar">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        <a id="voltar" href="index.php">
+            <img src="assets/img/seta.png" alt="voltar">
+        </a>
         <div class="imagem">
-            <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&indicativoPag=g">
-                <img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
+            <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=lampada">
+                <img src="assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
             </a>
         </div>
         <div class="informacoes">
-            <!-- <div class="nome__lampada">
-               <h1>Lâmpada: <?=$lampada->NOME?></h1>
-                <a href="./atualizar_nome_lampada.php?id_lampada=<?=$lampada->ID_LAMPADA?>">
-                    <img src="./assets/img/editar.png" alt="Editar nome">
-                </a> 
-            </div> -->
+            <div class="nome__lampada">
+                <h1>Lâmpada: <?=$lampada->NOME?></h1>
+                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
+
+            </div>
             <div class="grupos__pertencentes">
                 <h2>Grupos:</h2>
                 <div class="containers grupos">
                     <?php
-                    foreach($grupos as $grupo){
-                        ?>
-                        <div class="campo__informacoes campo__grupo">
-                            <a href="./grupo.php?id=<?=$grupo->ID_GRUPO?>"><?=$grupo->nome_grupo?></a>
-                            <a href="functions/remover_lampada_grupo.php?id_lampada=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
-                                <img src="./assets/img/remover.png" alt="">
-                            </a>
-                        </div>
-                        <?php
-                    }
+                        foreach($grupos as $grupo){
+                            ?>
+                            <div class="campo__informacoes campo__grupo">
+                                <p><?=$grupo->NOME?></p>
+                                <a href="functions/remover_lampada_grupo.php?id=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
+                                    <img src="assets/img/close.png" alt="X">
+                                </a>
+                            </div>
+                            <?php
+                        }
+                        unset($grupos);
                     ?>
-                    <!-- <div class="campo__informacoes campo__grupo">
-                        <p>Quarto</p>
-                        <img src="./assets/img/remover.png" alt="">
-                    </div> -->
-
                 </div>
             </div>
             <div class="rotinas__pertencentes">
                 <h2>Rotinas:</h2>
-
                 <div class="containers rotinas">
-                    <div class="campo__informacoes campo__grupo">
-                        <a href="#">Quarto</a>
-                        <a href="#">
-                            <img src="./assets/img/remover.png" alt="">
-                        </a>
-                    </div>
+                    <?php
+                        foreach ($rotinas as $rotina) {
+                            ?>
+                                <div class="campo__informacoes campo__grupo">
+                                    <p><?=$rotina->NOME?></p>
+                                    <img src="assets/img/remover.png" alt="X">
+                                </div>
+                            <?php
+                        }
+                        unset($rotinas);
+                    ?>
                 </div>
             </div>
-            <a class="excluir" href="functions/excluir_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
-                <p>excluir lampada</p>
-                <img src="./assets/img/lixeira.png" alt="exluir">
+            <a class="excluir" href="functions/excluir_grp.php?id=<?=$id?>">
+                <p>Excluir lâmpada</p>
+                <img src="assets/img/lixeira.png" alt="exluir">
             </a>
         </div>
 
     </main>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

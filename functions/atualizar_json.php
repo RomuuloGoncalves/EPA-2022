@@ -1,6 +1,6 @@
 <?php
     function atualizar_json ($sql, $path) {
-        require "./lib/conn.php";
+        require './lib/conn.php';
         
         $stmt = $conn->query($sql);
         $objects = $stmt->fetchAll(PDO::FETCH_OBJ);

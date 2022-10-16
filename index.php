@@ -1,15 +1,18 @@
 <?php
-require "./lib/conn.php";
-require "./functions/atualizar_json.php";
+require 'lib/conn.php';
+require 'functions/atualizar_json.php';
 
-atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', './json/lampadas.json');
-$selectGrupos = 'SELECT * FROM GRUPOS';
-$stmt = $conn->query($selectGrupos);
+atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
+$select = 'SELECT * FROM GRUPOS';
+$stmt = $conn->query($select);
 $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-$selectLampadas = 'SELECT * FROM LAMPADAS';
-$stmt = $conn->query($selectLampadas);
+$select = 'SELECT * FROM LAMPADAS';
+$stmt = $conn->query($select);
 $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+unset($select);
+unset($stmt);
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +23,16 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Dashboard</title>
-	<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="./assets/css/style.css" />
-	<link rel="stylesheet" href="./assets/css/style_index.css">
+	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/css/style.css" />
+	<link rel="stylesheet" href="assets/css/style_index.css">
 </head>
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 <body>
-<header>
-		<a href="./index.php" id="container__logo">
-			<img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
+	<header>
+		<a href="index.php" id="container__logo">
+			<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
 		</a>
 		<h1>EPA-2022</h1>
 	</header>
@@ -40,26 +43,27 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 			<div class="header__slider">
 				<h2>Lâmpadas</h2>
 				<nav>
-					<a href="./cadastro_lampadas.php">
-						<img src="./assets/img/mais.png" alt="mais" />
+					<a href="cadastro_lampadas.php">
+						<img src="assets/img/mais.png" alt="mais" />
 					</a>
 				</nav>
 			</div>
 
 			<div class="slide" id="lampadas">
 				<?php
-					foreach($lampadas as $lampada) {
-						?>
-						<div class="card card__lampada">
-							<a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>">
-								<img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="Lampada <?=$lampada->ESTADO?>" />
-							</a>
-							<a href="lampada.php?id=<?=$lampada->ID_LAMPADA?>">
-								<p><?=$lampada->NOME?></p>
-							</a>
-						</div>
-						<?php
-					}
+				foreach ($lampadas as $lampada) {
+				?>
+					<div class="card card__lampada">
+						<a href="functions/mudar_estado_lampada.php?id=<?= $lampada->ID_LAMPADA ?>&est=<?= $lampada->ESTADO ?>">
+							<img src="assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada <?= $lampada->ESTADO ?>" />
+						</a>
+						<a href="lampada.php?id=<?= $lampada->ID_LAMPADA ?>">
+							<p><?= $lampada->NOME ?></p>
+						</a>
+					</div>
+				<?php
+				}
+				unset($lampadas);
 				?>
 			</div>
 
@@ -69,8 +73,8 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 			<div class="header__slider">
 				<h2>Grupos</h2>
 				<nav>
-					<a href="./cadastro_grupos.php">
-						<img src="./assets/img/mais.png" alt="mais" />
+					<a href="cadastro_grupos.php">
+						<img src="assets/img/mais.png" alt="mais" />
 					</a>
 				</nav>
 			</div>
@@ -78,36 +82,37 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 			<div class="slide" id="grupos">
 				<?php
 				foreach ($grupos as $grupo) {
-					$select_lampadas_acessas = "SELECT * FROM LAMPADAS_GRUPO
-						INNER JOIN LAMPADAS
-						ON LAMPADAS.ID_LAMPADA = LAMPADAS_GRUPO.ID_LAMPADA
-						WHERE LAMPADAS.ESTADO = 1
-						AND LAMPADAS_GRUPO.ID_GRUPO = :id_grupo";
-					$lampadas_acessas = $conn->prepare($select_lampadas_acessas);
-					$lampadas_acessas->bindValue(':id_grupo', $grupo->ID_GRUPO);
-					$lampadas_acessas->execute();
-					$qtdd_lampadas_acessas = $lampadas_acessas->rowCount();
-					$select_lampadas = "SELECT * FROM LAMPADAS_GRUPO
+					$select = 'SELECT * FROM LAMPADAS_GRUPO INNER JOIN LAMPADAS ON LAMPADAS.ID_LAMPADA = LAMPADAS_GRUPO.ID_LAMPADA WHERE LAMPADAS.ESTADO = 1 AND LAMPADAS_GRUPO.ID_GRUPO = :id_grupo';
+					$stmt = $conn->prepare($select);
+					$stmt->bindValue(':id_grupo', $grupo->ID_GRUPO);
+					$stmt->execute();
+					$qtdd_acessas = $stmt->rowCount();
 
-						WHERE LAMPADAS_GRUPO.ID_GRUPO = :id_grupo";
-					$lampadas = $conn->prepare($select_lampadas);
-					$lampadas->bindValue(':id_grupo', $grupo->ID_GRUPO);
-					$lampadas->execute();
-					$qtdd_lampadas = $lampadas->rowCount();
+					$select = 'SELECT * FROM LAMPADAS_GRUPO WHERE LAMPADAS_GRUPO.ID_GRUPO = :id_grupo';
+					$stmt = $conn->prepare($select);
+					$stmt->bindValue(':id_grupo', $grupo->ID_GRUPO);
+					$stmt->execute();
+					$qtdd_lampadas = $stmt->rowCount();
 
-					if (isset($_POST['checkbox']) || $qtdd_lampadas ===  $qtdd_lampadas_acessas) {
-						$estado_comodo = 1;
-						$estado_switch = "checked";
+					unset($select);
+					unset($stmt);
+
+					if ($qtdd_lampadas ===  $qtdd_acessas) {
+						$est_grp = 1;
+						$estado_switch = 'checked';
 					} else {
-						$estado_comodo = 0;
-						$estado_switch = "";
+						$est_grp = 0;
+						$estado_switch = '';
 					}
+
+					unset($qtdd_lampadas);
+					unset($qtdd_acessas);
 				?>
 					<div class="card card__grupo">
-						<img src="./assets/img/lampada_<?= $estado_comodo ?>.png" alt="Lampada <?= $estado_comodo ?>" />
+						<img src="assets/img/lampada_<?= $est_grp ?>.png" alt="Lampada <?= $est_grp ?>" />
 
 						<label for="checkbox-<?= $grupo->ID_GRUPO ?>" class="switch">
-							<a href="functions/mudar_estado_grp.php?id=<?= $grupo->ID_GRUPO ?>&est=<?= ($estado_comodo === 1) ? 0 : 1 ?>">
+							<a href="functions/mudar_estado_grp.php?id=<?= $grupo->ID_GRUPO ?>&est=<?= ($est_grp === 1) ? 0 : 1 ?>">
 								<input type="checkbox" name="checkbox" id="checkbox-<?= $grupo->ID_GRUPO ?>" <?= $estado_switch ?> />
 								<span class="slider"></span>
 							</a>
@@ -122,6 +127,9 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 					</div>
 				<?php
 				}
+				unset($grupos);
+				unset($est_grp);
+				unset($estado_switch);
 				?>
 			</div>
 		</div>

@@ -66,3 +66,26 @@ footer span {
 	border-top: 1px solid #FFF;
 	width: 90%;
 }
+
+.excluir{
+    color: black;
+    text-decoration: none;
+    width: max-content;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    background-color: #D75A4A;    
+    gap: 10px;
+    border-radius: 5px;
+    align-self: flex-end;
+    margin-left: 40px;
+}
+
+
+.excluir:visited{
+    color: black;
+}
+
+.excluir img{
+    height: 20px;
+}

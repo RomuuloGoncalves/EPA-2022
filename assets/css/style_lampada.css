@@ -1,0 +1,156 @@
+main{
+    min-height: calc(100vh - 90px);
+    display: flex;
+	background-color:#e9ecef;
+    flex-wrap: wrap;
+}
+
+.imagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem a{
+    height: max-content;
+    width: max-content;
+    margin-left: 50px;
+}
+
+.imagem img{
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    height: 60%;
+}
+
+.informacoes{
+    flex: 2 1 auto;
+    height: 100%;
+    padding: 10px 0;
+}
+
+.nome__lampada{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.nome__lampada img{
+    height: 30px;
+}
+
+.grupos__pertencentes, .rotinas__pertencentes{
+    margin: 0 20px;
+    height: 300px;
+}
+
+.grupos, .rotinas{
+    height: 80%;
+    width: 80%;
+    background-color: rgba(128, 128, 128, 0.08);    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5px auto;
+    padding: 5px;
+    margin-left: 50px;
+    overflow-y: scroll;
+    border-radius: 10px;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+    border: 8px solid rgba(128, 128, 128, 0);
+}
+
+.containers::-webkit-scrollbar {
+	/* width of the entire scrollbar */
+	width: 8px;
+}
+
+.containers::-webkit-scrollbar-track {
+	/* color of the tracking area */
+	background: transparent;
+}
+
+.containers::-webkit-scrollbar-thumb {
+	/* roundness of the scroll thumb */
+	border-radius: 20px;
+	/* color of the scroll thumb */
+	background-color: rgba(128, 128, 128, 0.5);
+}
+
+.grupos__pertencentes h2, .rotinas__pertencentes h2{
+    margin-left: 20px;
+}
+
+.campo__informacoes{
+    border-radius: 10px;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+
+}
+
+.campo__informacoes img{
+    height: 25px;
+}
+
+#voltar{
+    position: absolute;
+    left: 20px;
+    top: 120px;
+}
+
+#voltar img{
+    height: 20px;
+
+}
+@media(max-width:800px){
+    .imagem, .informacoes{
+        width: 100vw;
+        padding: 0;
+    }
+
+    .imagem a {
+        margin: 0;
+    }
+
+    .imagem img{
+        margin: 0;
+        height: 500px;
+    }
+
+
+    .grupos__pertencentes, .rotinas__pertencentes{
+        max-height: 300px;
+        width: 90vw;
+    }
+    
+    .grupos__pertencentes h2, .rotinas__pertencentes h2{
+        margin: 0;
+    }
+
+    .grupos,.rotinas{
+        margin: 0;
+        width: 100%;
+        
+    }
+
+    .excluir{
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width:400px){
+    .imagem img{
+        margin: 0;
+        height: 250px;
+    }
+}
