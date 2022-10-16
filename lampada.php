@@ -1,27 +1,31 @@
 <?php
-    require "lib/conn.php";
-    $id = (int)$_GET["id"];
+    require 'lib/conn.php';
 
-    $select = "SELECT * FROM LAMPADAS WHERE ID_LAMPADA = :id";
+    $id = (int)$_GET['id'];
+
+    $select = 'SELECT * FROM LAMPADAS WHERE ID_LAMPADA = :id';
     $stmt = $conn -> prepare($select);
-    $stmt -> bindValue(":id", $id);
+    $stmt -> bindValue(':id', $id);
     $stmt -> execute();
     $lampada = $stmt->fetch(PDO::FETCH_OBJ);
 
-    $select = "SELECT G.ID_GRUPO, G.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_GRUPO LG INNER JOIN GRUPOS G ON L.ID_LAMPADA = LG.ID_LAMPADA AND LG.ID_GRUPO = G.ID_GRUPO WHERE L.ID_LAMPADA = :id";
+    $select = 'SELECT G.ID_GRUPO, G.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_GRUPO LG INNER JOIN GRUPOS G ON L.ID_LAMPADA = LG.ID_LAMPADA AND LG.ID_GRUPO = G.ID_GRUPO WHERE L.ID_LAMPADA = :id';
     $stmt = $conn -> prepare($select);
-    $stmt -> bindValue(":id", $id);
+    $stmt -> bindValue(':id', $id);
     $stmt -> execute();
     $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-    $select = "SELECT R.ID_ROTINA, R.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_ROTINA LR INNER JOIN ROTINAS R ON L.ID_LAMPADA = LR.ID_LAMPADA AND LR.ID_GRUPO = R.ID_GRUPO WHERE L.ID_LAMPADA = :id";
+    $select = 'SELECT R.ID_ROTINA, R.NOME FROM LAMPADAS L INNER JOIN LAMPADAS_ROTINA LR INNER JOIN ROTINAS R ON L.ID_LAMPADA = LR.ID_LAMPADA AND LR.ID_GRUPO = R.ID_GRUPO WHERE L.ID_LAMPADA = :id';
     $stmt = $conn -> prepare($select);
-    $stmt -> bindValue(":id", $id);
+    $stmt -> bindValue(':id', $id);
     $stmt -> execute();
     $rotinas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     unset($select);
     unset($stmt);
+    
+    require 'functions/atualizar_json.php';
+    atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
 ?>
 
 <!DOCTYPE html>
@@ -102,67 +106,60 @@
                     </form>
                 </div>
             </div>
-
-            <div id="titulo__grupo">
-                <div class="wrapper__nome">
-                    <h1><?=$lampada->NOME?></h1>
-                    <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
-                </div>
-                <nav>
-                    <a href="./index.php">
-                        <img src="./assets/img/seta.png" alt="Voltar">
-                    </a>
-                </nav>
-            </div>
+        <a id="voltar" href="index.php">
+            <img src="assets/img/seta.png" alt="voltar">
+        </a>
+        <div class="imagem">
+            <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=lampada">
+                <img src="assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
+            </a>
         </div>
+        <div class="informacoes">
+            <div class="nome__lampada">
+                <h1>Lâmpada: <?=$lampada->NOME?></h1>
+                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
 
-        <div class="content">
-            <div class="imagem">
-                <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=lampada">
-                    <img src="assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
-                </a>
             </div>
-            <div class="informacoes">
-                <div class="grupos__pertencentes">
-                    <h2>Grupos:</h2>
-                    <div class="containers grupos">
-                        <?php
-                            foreach($grupos as $grupo){
-                                ?>
+            <div class="grupos__pertencentes">
+                <h2>Grupos:</h2>
+                <div class="containers grupos">
+                    <?php
+                        foreach($grupos as $grupo){
+                            ?>
+                            <div class="campo__informacoes campo__grupo">
+                                <p><?=$grupo->NOME?></p>
+                                <a href="functions/remover_lampada_grupo.php?id=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
+                                    <img src="assets/img/close.png" alt="X">
+                                </a>
+                            </div>
+                            <?php
+                        }
+                        unset($grupos);
+                    ?>
+                </div>
+            </div>
+            <div class="rotinas__pertencentes">
+                <h2>Rotinas:</h2>
+                <div class="containers rotinas">
+                    <?php
+                        foreach ($rotinas as $rotina) {
+                            ?>
                                 <div class="campo__informacoes campo__grupo">
-                                    <p><?=$grupo->NOME?></p>
-                                    <a href="functions/remover_lampada_grupo.php?id=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
-                                        <img src="assets/img/close.png" alt="X">
-                                    </a>
+                                    <p><?=$rotina->NOME?></p>
+                                    <img src="assets/img/remover.png" alt="X">
                                 </div>
-                                <?php
-                            }
-                            unset($grupos);
-                        ?>
-                    </div>
+                            <?php
+                        }
+                        unset($rotinas);
+                    ?>
                 </div>
-                <div class="rotinas__pertencentes">
-                    <h2>Rotinas:</h2>
-                    <div class="containers rotinas">
-                        <?php
-                            foreach ($rotinas as $rotina) {
-                                ?>
-                                    <div class="campo__informacoes campo__grupo">
-                                        <p><?=$rotina->NOME?></p>
-                                        <img src="assets/img/remover.png" alt="X">
-                                    </div>
-                                <?php
-                            }
-                            unset($rotinas);
-                        ?>
-                    </div>
-                </div>
-                <a class="excluir" href="functions/excluir_grp.php?id=<?=$id?>">
-                    <p>Excluir lâmpada</p>
-                    <img src="assets/img/lixeira.png" alt="exluir">
-                </a>
             </div>
+            <a class="excluir" href="functions/excluir_grp.php?id=<?=$id?>">
+                <p>Excluir lâmpada</p>
+                <img src="assets/img/lixeira.png" alt="exluir">
+            </a>
         </div>
+
     </main>
     <script src="assets/js/script.js"></script>
 </body>

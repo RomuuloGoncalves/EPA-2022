@@ -1,3 +1,8 @@
+<?php
+    require 'functions/atualizar_json.php';
+    atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
