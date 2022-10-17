@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div id="titulo__grupo">
-            <div class="wrapper_nome">
+            <div class="wrapper__nome">
                 <h1><?=$grupo->NOME?></h1>
                 <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeGrupo');"/>
             </div>

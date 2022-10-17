@@ -71,6 +71,16 @@ nav img {
     height: 300px;
 }
 
+.header__slider{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__slider img{
+    height: 30px;
+}
+
 .containers {
     margin: 5px auto;
     height: 80%;

@@ -97,6 +97,10 @@ main {
 	justify-content: space-around;
 }
 
+.page__titulo img{
+	height: 30px;
+}
+
 .card__lampada a, .card__lampada p, .page__titulo p{
 	max-width: 180px;
 	text-align: center;
@@ -193,6 +197,10 @@ input:checked+.slider::before {
 
 	.card__grupo img {
 		height: 150px;
+	}
+
+	.page__titulo img{
+		height: 40px;
 	}
 
 	.switch {

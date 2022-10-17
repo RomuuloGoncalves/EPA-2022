@@ -122,7 +122,7 @@
 						<div class="page__titulo">
 							<p><?= $grupo->NOME ?></p>
 							<a href="grupo.php?id=<?= $grupo->ID_GRUPO ?>">
-								<ion-icon name="information-circle-outline"></ion-icon>
+								<img src="./assets/img/info.png" alt="">
 							</a>
 						</div>
 					</div>
