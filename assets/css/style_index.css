@@ -1,7 +1,10 @@
+body {
+	justify-content: space-between;
+}
+
 main {
 	margin: 20px 0;
 	display: flex;
-	flex: auto;
 	flex-direction: column;
 	gap: 40px;
 }
@@ -13,13 +16,6 @@ main {
 	display: flex;
 	flex-direction: column;
 	background-color: rgba(128, 128, 128, 0.08);
-}
-
-.header__slider {
-	padding: 0 10px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 .header__slider img {
@@ -57,28 +53,6 @@ main {
 	background-color: rgba(128, 128, 128, 0.5);
 }
 
-.card {
-	min-width: 300px;
-	border-radius: 10px;
-	font-size: 35px;
-	display: flex;
-	color: #000;
-	text-decoration: none;
-	align-items: center;
-	background: rgba(0, 56, 255, 0.05);
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.card__lampada {
-	padding: 20px 0;
-	flex-direction: column;
-}
-
-.card__lampada img {
-	height: 150px;
-	cursor: pointer;
-}
-
 .card__grupo {
 	max-width: 300px;
 	padding: 15px 0;
@@ -97,29 +71,14 @@ main {
 	justify-content: space-around;
 }
 
-.page__titulo img{
+.page__titulo img {
 	height: 30px;
 }
 
-.card__lampada a, .card__lampada p, .page__titulo p{
-	max-width: 180px;
-	text-align: center;
-	text-decoration: none;
-
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	color: black;
-}
-
 .card__lampada a:visited {
-	color: black;
+	color: #000;
 }
 
-.card__grupo a {
-	text-align: center;
-	color: black;
-}
 /* Switch */
 .switch {
 	margin-bottom: 25px;
@@ -171,6 +130,37 @@ input:checked+.slider::before {
 	transform: translateX(40px);
 }
 
+footer {
+	height: 25vh;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+footer h3 {
+	margin: 10px 0;
+	font-size: 1.3em;
+}
+
+footer p {
+	margin: 0 15px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #FFF;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+footer span {
+	padding: 10px 0 0;
+	border-top: 1px solid #FFF;
+	width: 90%;
+}
+
 @media(max-width: 440px) {
 	.containers {
 		padding: 0 10px;
@@ -199,7 +189,7 @@ input:checked+.slider::before {
 		height: 150px;
 	}
 
-	.page__titulo img{
+	.page__titulo img {
 		height: 40px;
 	}
 

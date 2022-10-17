@@ -27,15 +27,23 @@
 	<link rel="stylesheet" href="assets/css/style.css" />
 	<link rel="stylesheet" href="assets/css/style_index.css">
 </head>
-<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-
 <body>
 	<header>
-			<a href="index.php" id="container__logo">
-				<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
-				<h1>EPA-2022</h1>
+		<a href="index.php" id="container__logo">
+			<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+			<h1>EPA-2022</h1>
+		</a>
+
+		<label for="responsive-menu" class="responsive-menu"></label>
+		<input type="checkbox" id="responsive-menu">
+
+		<nav class="menu">
+			<a href="cadastro_lampadas.php">Lâmpadas</a>
+			<a href="cadastro_grupos.php">Grupos</a>
+			<a href="cadastro_rotinas.php">Rotina 
+				<img src="assets/img/mais.png" alt="mais">
 			</a>
-		<a href="cadastro_rotinas.php">Nova Rotina</a>
+		</nav>
 	</header>
 
 	<main>

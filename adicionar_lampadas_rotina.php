@@ -1,9 +1,9 @@
 <?php
-require 'lib/conn.php';
-$selectLampadas = 'SELECT * FROM LAMPADAS';
-$stmt = $conn->query($selectLampadas);
-$lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
+    if (empty($_GET))
+        header('location:index.php');
+    $id = (int) $_GET['id'];
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +11,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de grupos</title>
+    <title>Gerenciamento rotina</title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
@@ -44,36 +44,29 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
         if (!$erros) {
             (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
-                ? $erros .= 'É necessário escolher as lâmpadas para este grupo'
-                : $lampadas_selecionadas = array_filter($lampadas_selecionadas);
+                ? $erros .= 'É necessário escolher as lâmpadas para esta rotina'
+                : $lampadas_selecionadas = array_filter($lampadas);
         }
 
         if (!$erros) {
             $idModal = 'sucesso';
-            $txtModal = 'Grupo cadastrado com sucesso';
-
-            $insert = 'INSERT INTO GRUPOS VALUES(0, :nome)';
-            $stmt = $conn->prepare($insert);
-            $stmt->bindValue(':nome', $_POST['nome']);
-            $stmt->execute();
-
-            $select = 'SELECT ID_GRUPO FROM GRUPOS ORDER BY ID_GRUPO DESC LIMIT 1';
-            $stmt = $conn->query($select);
-            $grupo = $stmt->fetch(PDO::FETCH_OBJ);
-            $idGrupo = $grupo->ID_GRUPO;
-
-            unset($grupo);
+            $txtModal = 'Lâmpadas adicionada com sucesso';
 
             foreach ($lampadas_selecionadas as $lampada) {
-                $insert = 'INSERT INTO LAMPADAS_GRUPO VALUES(:idGrupo, :idLampada)';
+                $insert = 'INSERT INTO LAMPADAS_ROTINA VALUES(:idRotina, :id)';
                 $stmt = $conn->prepare($insert);
-                $stmt->bindValue(':idGrupo', $idGrupo);
-                $stmt->bindValue(':idLampada', $lampada);
+                $stmt->bindValue(':idRotina', $id);
+                $stmt->bindValue(':id', $lampada);
                 $stmt->execute();
             }
+
+            unset($insert);
+            unset($stmt);
+            unset($erros);
         } else {
             $idModal = 'erro';
             $txtModal = $erros;
+
             unset($erros);
         }
     ?>
@@ -104,47 +97,62 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
         unset($txtModal);
     }
     ?>
+
     <main>
         <div id="titulo__cadastro">
-            <h1>Cadastro de grupos:</h1>
+            <h1>Adicionar lâmpadas:</h1>
             <nav>
-                <a href="index.php">
+                <a href="rotina.php?id=<?=$id?>">
                     <img src="assets/img/seta.png" alt="Voltar">
                 </a>
             </nav>
         </div>
 
         <form action="" method="post">
-
+            <input type="hidden" name="id" value="<?= $id ?>">
             <div class="campos">
-                <label for="nome">Nome:*</label>
-                <input type="text" id="nome" name="nome">
-            </div>
-
-            <div class="campos">
-                <label for="selecao">Selecione as lâmpadas que pertencerão a este grupo*</label>
+                <label for="selecao">Selecione as lâmpadas que serão adicionadas a esta rotina*</label>
                 <div class="opcoes">
+                <?php
+                    require 'lib/conn.php';
+
+                    $select = 'SELECT * FROM LAMPADAS l WHERE l.ID_LAMPADA NOT IN (SELECT ID_LAMPADA FROM LAMPADAS_ROTINA WHERE ID_ROTINA = :id)';
+                    $stmt = $conn->prepare($select);
+                    $stmt->bindValue(':id', $id);
+                    $stmt->execute();
+                    $qtddLampadas = $stmt->rowCount();
+                    $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+                    unset($select);
+                    unset($stmt);
+
+                    if ($qtddLampadas === 0) {
+                        ?>
+                        <label style="margin-right: auto;">Não há lâmpadas disponiveis: todas as lâmpadas já estão nesta rotina</label>
+                        <?php
+                    } else {
+                        foreach ($lampadas as $lampada) {
+                        ?>
+                            <div class="opcao">
+                                <label for="lampada-<?= $lampada->ID_LAMPADA ?>">
+                                    <input type="checkbox" id="lampada-<?= $lampada->ID_LAMPADA ?>" name="lampadas_selecionadas[]" value="<?= $lampada->ID_LAMPADA ?>">
+                                    <div class="card card__lampada">
+                                        <img src="assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada">
+                                        <p><?= $lampada->NOME ?></p>
+                                    </div>
+                                </label>
+                            </div>
                     <?php
-                    foreach ($lampadas as $lampada) {
-                    ?>
-                        <div class="opcao">
-                            <label for="lampada-<?= $lampada->ID_LAMPADA ?>">
-                                <input type="checkbox" id="lampada-<?= $lampada->ID_LAMPADA ?>" name="lampadas_selecionadas[]" value="<?= $lampada->ID_LAMPADA ?>">
-                                <div class="card card__lampada">
-                                    <img src="assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada">
-                                    <p><?= $lampada->NOME ?></p>
-                                </div>
-                            </label>
-                        </div>
-                    <?php
+                        }
+                        unset($lampadas);
                     }
                     ?>
                 </div>
+
                 <div class="botoes">
                     <button type="submit" class="botao" id="btn__submit">Cadastrar</button>
                     <button type="reset" class="botao" id="btn__reset">Limpar</button>
                 </div>
-            </div>
         </form>
     </main>
 

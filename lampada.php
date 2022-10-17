@@ -45,6 +45,7 @@
     <title>Lampada - <?=$lampada->NOME?></title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_paginas.css">
     <link rel="stylesheet" href="assets/css/style_lampada.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
@@ -57,18 +58,18 @@
         </a>
 	</header>
 
-    <div id="titulo__grupo">
-        <div class="wrapper__nome">
-            <h1><?=$lampada->NOME?></h1>
-            <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>            </a>
-        </div>
-        <nav>
-            <a href="./index.php">
-                <img src="./assets/img/seta.png" alt="Voltar">
-            </a>
-        </nav>
-    </div>
     <main>
+        <div id="titulo__grupo">
+            <div class="wrapper__nome">
+                <h1><?=$lampada->NOME?></h1>
+                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>            </a>
+            </div>
+            <nav>
+                <a href="./index.php">
+                    <img src="./assets/img/seta.png" alt="Voltar">
+                </a>
+            </nav>
+        </div>
     <?php
             if (isset($_GET['erros']) || isset($_GET['sucesso'])) {
                 if (isset($_GET['erros'])) {
@@ -125,9 +126,6 @@
                     </form>
                 </div>
             </div>
-        <!-- <a id="voltar" href="index.php">
-            <img src="assets/img/seta.png" alt="voltar">
-        </a> -->
         <div class="content">
             <div class="imagem">
                 <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=lampada">
@@ -135,16 +133,11 @@
                 </a>
             </div>
             <div class="informacoes">
-                <!-- <div class="nome__lampada">
-                    <h1>Lâmpada: <?=$lampada->NOME?></h1>
-                    <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
-
-                </div> -->
                 <div class="grupos__pertencentes">
                     <div class="header__slider">
                         <h2>Grupos:</h2>
                         <nav>
-                            <a href="cadastro_rotinas.php">
+                            <a href="adicionar_grupos_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
                                 <img src="assets/img/mais.png" alt="mais" />
                             </a>
                         </nav>
@@ -170,7 +163,7 @@
                     <div class="header__slider">
                         <h2>Rotinas:</h2>
                         <nav>
-                            <a href="cadastro_rotinas.php">
+                            <a href="adicionar_rotinas_lampada.php?id=<?=$id?>">
                                 <img src="assets/img/mais.png" alt="mais" />
                             </a>
                         </nav>
@@ -182,7 +175,9 @@
                                 ?>
                                     <div class="campo__informacoes campo__grupo">
                                         <p><?=$rotina->NOME?></p>
-                                        <img src="assets/img/remover.png" alt="X">
+                                        <a href="functions/remover_lampada_rotina.php?idLampada=<?=$id?>&idRotina=<?=$rotina->ID_ROTINA?>">
+                                            <img src="assets/img/close.png" alt="X">
+                                        </a>
                                     </div>
                                 <?php
                             }

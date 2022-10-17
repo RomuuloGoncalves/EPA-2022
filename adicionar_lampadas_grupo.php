@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de grupos</title>
+    <title>Gerenciamento grupo</title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
@@ -45,7 +45,7 @@
         if (!$erros) {
             (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
                 ? $erros .= 'É necessário escolher as lâmpadas para este grupo'
-                : $lampadas_selecionadas = array_filter($_POST['lampadas_selecionadas']);
+                : $lampadas_selecionadas = array_filter($lampadas);
         }
 
         if (!$erros) {
