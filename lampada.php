@@ -156,7 +156,7 @@
                                 ?>
                                 <div class="campo__informacoes campo__grupo">
                                     <p><?=$grupo->NOME?></p>
-                                    <a href="functions/remover_lampada_grupo.php?id=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
+                                    <a href="functions/remover_lampada_grupo.php?id_lampada=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
                                         <img src="assets/img/close.png" alt="X">
                                     </a>
                                 </div>
