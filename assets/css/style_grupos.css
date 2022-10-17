@@ -19,11 +19,19 @@ a {
     transition: all .2s linear;
 }
 
-.wrapper_nome {
+.wrapper__nome {
+    width: 80%;
     display: flex;
     align-items: center;
     column-gap: 20px;
 }
+
+.wrapper__nome h1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
+}   
 
 #editar {
     font-size: 1.5em;
@@ -51,7 +59,7 @@ nav img {
     padding: 0 40px;
 }
 
-.wrapper_nome img{
+.wrapper__nome img{
     height: 30px;
 }
 .container_lampadas {
@@ -83,16 +91,6 @@ nav img {
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.card a {
-    text-align: center;
-}
-.card a p{
-    width: 180px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 .card__lampada {
 	padding-bottom: 20px;
 	flex-direction: column;
@@ -111,12 +109,8 @@ nav img {
     width: 250px;
 }
 
-.excluir{
-    margin: 20px 0 20px 40px;
-}
-
 @media(max-width:500px){
     .card{
-        min-width: 200px;
+	    min-width: 200px;
     }
 }

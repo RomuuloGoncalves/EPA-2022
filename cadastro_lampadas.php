@@ -1,3 +1,8 @@
+<?php
+    require 'functions/atualizar_json.php';
+    atualizar_json();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,50 +13,48 @@
     <title>Cadastrar Lâmpada</title>
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/style_cadastros.css">
     <link rel="stylesheet" href="./assets/css/style_cadastro_lampadas.css">
     <link rel="stylesheet" href="./assets/css/style_modal.css">
 </head>
 
 <body>
-    <header>
-        <a href="index.php" id="container__logo">
-            <img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
-            <h1>EPA-2022</h1>
-        </a>
+<header>
+		<a href="./index.php" id="container__logo">
+			<img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
+		</a>
+		<h1>EPA-2022</h1>
 	</header>
 
     <?php
     if (!empty($_POST)) {
-        require_once './lib/conn.php';
+        require './lib/conn.php';
         $erros = false;
 
         foreach ($_POST as $chave => $valor) {
             $valor = trim(strip_tags($valor));
             $$chave = $valor;
 
-            if (empty($valor)) {
-                $erros .= "Campo '$chave' está em branco <br>";
-            }
+            if (empty($valor)) 
+                $erros .= 'Campo "'.$chave.'" está em branco <br>';
         }
 
         if (!$erros) {
             require_once './functions/porta_cadastrada.php';
 
             if (!is_numeric($porta)) {
-                $erros = "Campo da porta de conexão deve ser um número inteiro";
+                $erros = 'Campo da porta de conexão deve ser um número inteiro';
             } else if ($porta <= 0) {
-                $erros = "Porta deve ser maior que zero";
+                $erros = 'Porta deve ser maior que zero';
             } else if (porta_cadastrada($porta)) {
-                $erros = "Porta já cadastrada";
+                $erros = 'Porta já cadastrada';
             }
         }
 
         if (!$erros) {
-            $sqlInsert = 'INSERT INTO LAMPADAS VALUES(0, :nome, :porta, 0)';
-            $stmt = $conn->prepare($sqlInsert);
-            $stmt->bindValue(":nome", $nome);
-            $stmt->bindValue(":porta", (int)$porta);
+            $insert = 'INSERT INTO LAMPADAS VALUES(0, :nome, :porta, 0)';
+            $stmt = $conn->prepare($insert);
+            $stmt->bindValue(':nome', $nome);
+            $stmt->bindValue(':porta', $porta);
             $stmt->execute();
     ?>
             <div class="page">
@@ -132,7 +135,7 @@
         </form>
     </main>
 
-    <script src="./assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

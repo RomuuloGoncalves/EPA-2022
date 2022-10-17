@@ -5,6 +5,43 @@ main{
     flex-wrap: wrap;
 }
 
+.wrapper__nome {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.wrapper__nome h1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
+}
+
+#titulo__grupo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 56, 255, 0.05);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 40px;
+}
+
+nav img {
+    height: 20px;
+}
+
+.wrapper {
+    flex-wrap: wrap;
+    margin-top: 60px;
+    padding: 0 40px;
+}
+
+.wrapper__nome img{
+    height: 30px;
+}
 .imagem{
     display: flex;
     justify-content: center;
@@ -87,7 +124,7 @@ main{
 
 .campo__informacoes{
     border-radius: 10px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,8 +134,48 @@ main{
 
 }
 
+.campo__informacoes a{
+    max-width: 80%;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    padding: 5px;
+    color: #000;
+
+    word-spacing: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.campo__informacoes a:visited{
+    color: #000;
+}
+
 .campo__informacoes img{
     height: 25px;
+}
+
+.excluir{
+    color: black;
+    text-decoration: none;
+    width: max-content;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    background-color: #D75A4A;    
+    gap: 10px;
+    border-radius: 5px;
+    align-self: flex-end;
+    margin-left: 40px;
+}
+
+
+.excluir:visited{
+    color: black;
+}
+
+.excluir img{
+    height: 20px;
 }
 
 #voltar{
