@@ -47,11 +47,12 @@
 
 <body>
 	<header>
-		<div id="container__logo">
-			<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
-		</div>
-		<h1>EPA-2022</h1>
+        <a href="index.php" id="container__logo">
+            <img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+            <h1>EPA-2022</h1>
+        </a>
 	</header>
+
 	<main>
         <?php
             if (isset($_GET['erros']) || isset($_GET['sucesso'])) {

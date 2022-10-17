@@ -8,16 +8,17 @@
     <title>Cadastrar Lâmpada</title>
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style_cadastros.css">
     <link rel="stylesheet" href="./assets/css/style_cadastro_lampadas.css">
     <link rel="stylesheet" href="./assets/css/style_modal.css">
 </head>
 
 <body>
-<header>
-		<a href="./index.php" id="container__logo">
-			<img id="logo" src="./assets/img/Logo DS - EPA.png" alt="Logo" />
-		</a>
-		<h1>EPA-2022</h1>
+    <header>
+        <a href="index.php" id="container__logo">
+            <img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+            <h1>EPA-2022</h1>
+        </a>
 	</header>
 
     <?php

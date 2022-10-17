@@ -25,11 +25,23 @@ header {
 	height: 90px;
 	padding: 5px 65px;
 	align-items: center;
+	justify-content: space-between;
+}
+
+header a {
+	text-decoration: none;
+	color: #FFF;
 }
 
 #container__logo {
-	width: 75px;
+	width: 220px;
 	height: 75px;
+	display: flex;
+	align-items: center;
+}
+
+#container__logo h1 {
+	margin: 0 10px;
 }
 
 #logo {
@@ -67,6 +79,7 @@ footer span {
 	width: 90%;
 }
 
+/* Botão excluir */
 .excluir{
     color: black;
     text-decoration: none;
@@ -80,7 +93,6 @@ footer span {
     align-self: flex-end;
     margin-left: 40px;
 }
-
 
 .excluir:visited{
     color: black;

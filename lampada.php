@@ -45,17 +45,18 @@
     <title>Lampada - <?=$lampada->NOME?></title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style_lampadas.css">
+    <link rel="stylesheet" href="assets/css/style_lampada.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
 <body>
-    <header>
-		<a href="index.php" id="container__logo">
-			<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
-		</a>
-		<h1>EPA-2022</h1>
+	<header>
+        <a href="index.php" id="container__logo">
+            <img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+            <h1>EPA-2022</h1>
+        </a>
 	</header>
+
     <div id="titulo__grupo">
         <div class="wrapper__nome">
             <h1><?=$lampada->NOME?></h1>
@@ -127,57 +128,74 @@
         <!-- <a id="voltar" href="index.php">
             <img src="assets/img/seta.png" alt="voltar">
         </a> -->
-        <div class="imagem">
-            <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=lampada">
-                <img src="assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
-            </a>
-        </div>
-        <div class="informacoes">
-            <!-- <div class="nome__lampada">
-                <h1>Lâmpada: <?=$lampada->NOME?></h1>
-                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
-
-            </div> -->
-            <div class="grupos__pertencentes">
-                <h2>Grupos:</h2>
-                <div class="containers grupos">
-                    <?php
-                        foreach($grupos as $grupo){
-                            ?>
-                            <div class="campo__informacoes campo__grupo">
-                                <p><?=$grupo->NOME?></p>
-                                <a href="functions/remover_lampada_grupo.php?id=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
-                                    <img src="assets/img/close.png" alt="X">
-                                </a>
-                            </div>
-                            <?php
-                        }
-                        unset($grupos);
-                    ?>
-                </div>
+        <div class="content">
+            <div class="imagem">
+                <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=lampada">
+                    <img src="assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="">
+                </a>
             </div>
-            <div class="rotinas__pertencentes">
-                <h2>Rotinas:</h2>
-                <div class="containers rotinas">
-                    <?php
-                        foreach ($rotinas as $rotina) {
-                            ?>
+            <div class="informacoes">
+                <!-- <div class="nome__lampada">
+                    <h1>Lâmpada: <?=$lampada->NOME?></h1>
+                    <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>
+
+                </div> -->
+                <div class="grupos__pertencentes">
+                    <div class="header__slider">
+                        <h2>Grupos:</h2>
+                        <nav>
+                            <a href="cadastro_rotinas.php">
+                                <img src="assets/img/mais.png" alt="mais" />
+                            </a>
+                        </nav>
+                    </div>                    
+                    
+                    <div class="containers grupos">
+                        <?php
+                            foreach($grupos as $grupo){
+                                ?>
                                 <div class="campo__informacoes campo__grupo">
-                                    <p><?=$rotina->NOME?></p>
-                                    <img src="assets/img/remover.png" alt="X">
+                                    <p><?=$grupo->NOME?></p>
+                                    <a href="functions/remover_lampada_grupo.php?id=<?=$lampada->ID_LAMPADA?>&id_grupo=<?=$grupo->ID_GRUPO?>">
+                                        <img src="assets/img/close.png" alt="X">
+                                    </a>
                                 </div>
-                            <?php
-                        }
-                        unset($rotinas);
-                    ?>
+                                <?php
+                            }
+                            unset($grupos);
+                        ?>
+                    </div>
                 </div>
-            </div>
-            <a class="excluir" href="functions/excluir_lampada.php?id=<?=$id?>">
-                <p>Excluir lâmpada</p>
-                <img src="assets/img/lixeira.png" alt="exluir">
-            </a>
-        </div>
+                <div class="rotinas__pertencentes">
+                    <div class="header__slider">
+                        <h2>Rotinas:</h2>
+                        <nav>
+                            <a href="cadastro_rotinas.php">
+                                <img src="assets/img/mais.png" alt="mais" />
+                            </a>
+                        </nav>
+                    </div>
 
+                    <div class="containers rotinas">
+                        <?php
+                            foreach ($rotinas as $rotina) {
+                                ?>
+                                    <div class="campo__informacoes campo__grupo">
+                                        <p><?=$rotina->NOME?></p>
+                                        <img src="assets/img/remover.png" alt="X">
+                                    </div>
+                                <?php
+                            }
+                            unset($rotinas);
+                        ?>
+                    </div>
+                </div>
+                <a class="excluir" href="functions/excluir_lampada.php?id=<?=$id?>">
+                    <p>Excluir lâmpada</p>
+                    <img src="assets/img/lixeira.png" alt="exluir">
+                </a>
+            </div>
+        </div>
     </main>
     <script src="assets/js/script.js"></script>
 </body>
