@@ -1,9 +1,8 @@
 <?php
 	require 'lib/conn.php';
 	require 'functions/atualizar_json.php';
-    
-	atualizar_json();
 
+	atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
 	$select = 'SELECT * FROM GRUPOS';
 	$stmt = $conn->query($select);
 	$grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -32,10 +31,11 @@
 
 <body>
 	<header>
-		<a href="index.php" id="container__logo">
-			<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
-		</a>
-		<h1>EPA-2022</h1>
+			<a href="index.php" id="container__logo">
+				<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+				<h1>EPA-2022</h1>
+			</a>
+		<a href="cadastro_rotinas.php">Nova Rotina</a>
 	</header>
 
 	<main>
@@ -122,7 +122,7 @@
 						<div class="page__titulo">
 							<p><?= $grupo->NOME ?></p>
 							<a href="grupo.php?id=<?= $grupo->ID_GRUPO ?>">
-								<ion-icon name="information-circle-outline"></ion-icon>
+								<img src="./assets/img/info.png" alt="">
 							</a>
 						</div>
 					</div>

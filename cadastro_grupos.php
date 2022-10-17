@@ -1,15 +1,11 @@
 <?php
-    require 'lib/conn.php';
-    require 'functions/atualizar_json.php';
-
-    atualizar_json();
-    $selectLampadas = 'SELECT * FROM LAMPADAS';
-    $stmt = $conn->query($selectLampadas);
-    $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
+require "lib/conn.php";
+$selectLampadas = 'SELECT * FROM LAMPADAS';
+$stmt = $conn->query($selectLampadas);
+$lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -18,6 +14,7 @@
     <title>Cadastro de grupos</title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_cadastros.css">
     <link rel="stylesheet" href="assets/css/style_cadastro_grupos.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
@@ -26,12 +23,12 @@
     <header>
         <a href="index.php" id="container__logo">
             <img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+            <h1>EPA-2022</h1>
         </a>
-        <h1>EPA-2022</h1>
     </header>
     <?php
     if (!empty($_POST)) {
-        require 'lib/conn.php';
+        require "lib/conn.php";
         $erros = false;
 
 
@@ -41,14 +38,14 @@
             $$chave = $valor;
 
             if (empty($valor)) {
-                $erros .= 'Campo "'.$chave.'" está em branco <br>';
+                $erros .= "Campo '$chave' está em branco <br>";
             }
         }
 
         if (!$erros) {
             (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
-                ? $erros .= 'É necessário escolher as lâmpadas para este grupo'
-                : $lampadas_selecionadas = array_filter($_POST['lampadas_selecionadas']);
+                ? $erros .= "É necessário escolher as lâmpadas para este grupo"
+                : $lampadas_selecionadas = array_filter($_POST["lampadas_selecionadas"]);
         }
 
         if (!$erros) {

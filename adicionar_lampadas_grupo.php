@@ -1,11 +1,7 @@
 <?php
-
     if (empty($_GET))
         header('location:index.php');
     $id = (int) $_GET['id'];
-
-    require 'functions/atualizar_json.php';
-    atualizar_json();
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +14,7 @@
     <title>Cadastro de grupos</title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_cadastros.css">
     <link rel="stylesheet" href="assets/css/style_cadastro_grupos.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
@@ -26,8 +23,8 @@
     <header>
         <a href="index.php" id="container__logo">
             <img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+            <h1>EPA-2022</h1>
         </a>
-        <h1>EPA-2022</h1>
     </header>
     <?php
     if (!empty($_POST)) {

@@ -1,7 +1,7 @@
 <?php
-    if (empty($_GET))
+    if (empty($_GET)) {
         header("location:index.php");
-    
+    }
 
     $id = (int)$_GET['id'];
     unset($_GET['id']);
@@ -9,7 +9,7 @@
 	require 'lib/conn.php';
 	require 'functions/atualizar_json.php';
 
-    atualizar_json();
+	atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
 
     $select = "SELECT * FROM GRUPOS WHERE ID_GRUPO = :id";
     $stmt = $conn->prepare($select);
@@ -17,11 +17,11 @@
     $stmt->execute();
     $grupo = $stmt->fetch(PDO::FETCH_OBJ);
 
-    if ($stmt->rowCount() === 0){
+    if ($stmt->rowCount() == 0){
         header('location: ./index.php');
     }
 
-    $select = 'SELECT * FROM LAMPADAS INNER JOIN LAMPADAS_GRUPO ON LAMPADAS_GRUPO.ID_LAMPADA = LAMPADAS.ID_LAMPADA WHERE LAMPADAS_GRUPO.ID_GRUPO = :id';
+    $select = "SELECT * FROM LAMPADAS INNER JOIN LAMPADAS_GRUPO ON LAMPADAS_GRUPO.ID_LAMPADA = LAMPADAS.ID_LAMPADA WHERE LAMPADAS_GRUPO.ID_GRUPO = :id";
     $stmt = $conn->prepare($select);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
@@ -47,11 +47,12 @@
 
 <body>
 	<header>
-		<div id="container__logo">
-			<img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
-		</div>
-		<h1>EPA-2022</h1>
+        <a href="index.php" id="container__logo">
+            <img id="logo" src="assets/img/Logo DS - EPA.png" alt="Logo" />
+            <h1>EPA-2022</h1>
+        </a>
 	</header>
+
 	<main>
         <?php
             if (isset($_GET['erros']) || isset($_GET['sucesso'])) {
@@ -86,8 +87,8 @@
                         </div>
                     </div>
         <?php
-                unset($idModal);
-                unset($txtModal);
+            unset($idModal);
+            unset($txtModal);
             }
         ?>
             <div class="page remover"></div>
@@ -110,7 +111,7 @@
                 </div>
             </div>
             <div id="titulo__grupo">
-            <div class="wrapper_nome">
+            <div class="wrapper__nome">
                 <h1><?=$grupo->NOME?></h1>
                 <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeGrupo');"/>
             </div>
