@@ -17,5 +17,11 @@
     $stmt->bindValue(':id', $id);
     $stmt->execute();
 
-    header('location:../index.php');
+    $pag = $_GET["pag"];
+
+    if($pag == "listar_grupos"){
+        header('location: ../listar_grupos.php');
+    }else{
+        header('location:../index.php');
+    }
 ?>

@@ -54,9 +54,11 @@
                     $erros = 'Hora de inicio invalído';
                 } else if (!valida_horas($hora_fim)) {
                     $erros = 'Hora de fim invalído';
-                } else if (($hora_fim[0] < $hora_inicio[0] && $hora_fim[0] != 0) || ($hora_fim[0] === $hora_inicio[0] && $hora_fim[1] <= $hora_inicio[1])) {
-                    $erros = 'Horario do inicio da rotina deve ser menor ao de seu fim';
                 }
+
+                require 'functions/formatar12h.php';
+                $hora_fim = formatar12h($hora_fim);
+                $hora_inicio = formatar12h($hora_inicio);
                 
                 (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
                     ? $erros .= "É necessário escolher as lâmpadas para este grupo"
@@ -64,13 +66,12 @@
             }
 
             if (!$erros) {
-                $insert = 'INSERT INTO ROTINAS VALUES(0, :nome, :h_inicio, :h_fim, :m_inicio, :m_fim)';
+                $insert = 'INSERT INTO ROTINAS VALUES(0, :nome, 0, :h_inicio, :h_fim)';
                 $stmt = $conn->prepare($insert);
                 $stmt->bindValue(':nome', $nome);
-                $stmt->bindValue(':h_inicio', $hora_inicio[0]);
-                $stmt->bindValue(':h_fim', $hora_fim[0]);
-                $stmt->bindValue(':m_inicio', $hora_inicio[1]);
-                $stmt->bindValue(':m_fim', $hora_fim[1]);
+                $stmt->bindValue(':h_inicio', $hora_inicio);
+                $stmt->bindValue(':h_fim', $hora_fim);
+
                 $stmt->execute();
                 $select = 'SELECT ID_ROTINA FROM ROTINAS ORDER BY ID_ROTINA DESC LIMIT 1';
                 $stmt = $conn->query($select);
