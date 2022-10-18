@@ -201,6 +201,10 @@ footer span {
 		height: 40px;
 	}
 
+	.page__titulo p{
+		text-align: center;
+	}
+
 	.switch {
 		margin: 0;
 	}
