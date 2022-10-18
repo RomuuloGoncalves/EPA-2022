@@ -15,7 +15,6 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
-    <link rel="stylesheet" href="assets/css/style_cadastro_grupos.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
@@ -38,7 +37,7 @@ $lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
             $$chave = $valor;
 
             if (empty($valor)) {
-                $erros .= 'Campo "' . $chave . '" está em branco <br>';
+                $erros .= "Campo '" . $chave . "' está em branco <br>";
             }
         }
 

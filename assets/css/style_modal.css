@@ -1,35 +1,37 @@
-.modal{
-    height: max-content;
-    width: 500px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid black;
-    z-index: 20;
-    background-color: #fff;
-}
-
-
-.modal.desativar{
-    display: none;
-}
-
 .page{
+    width: 100%;
     height: 100vh;
-    width: 100vw;
     position: absolute;
     left: 50%;
     top: 50%;
     z-index: 10;
-    background-color: rgba(112, 111, 111, 0.281);
+    background-color: rgba(0, 0, 0, 0.26);
     backdrop-filter: blur(2px);
     transform: translate(-50%, -50%);
+}
+
+.modal{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 10px;
+    border-radius: 15px;
+    width: 500px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    background-color: #E9ECEF;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.modal.desativar{
+    display: none;
 }
 
 .modal.apagar, .page.remover{
@@ -39,11 +41,11 @@
 .texto{
     width: 100%;
     height: 50px;
-    border-bottom: 1px solid grey;
+    padding: 0 5px;
+    border-bottom: 1px solid #BFC2C5;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5px;
 }
 
 .titulo{
@@ -52,6 +54,7 @@
 
 .close img{
     height: 20px;
+    cursor: pointer;
 }
 
 .simbolo{
@@ -70,90 +73,108 @@
 .botaoModal{
     width: 100%;
     height: 50px;
-    border-top: 1px solid grey;
+    border-top: 1px solid #BFC2C5;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
 #botao, #salvar{
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
     margin: 5px;
-    font-size: 1rem;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    line-height: 1.5;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent;
+    transition: all .15s ease-in-out;
 }
 
-.modal #botao{
+#erro .botaoModal #botao{
     color: #fff;
     background-color: #D75A4A;
     border-color: #D75A4A;   
 }
 
+#erro .botaoModal #botao:hover{
+    background-color: #963B2F;
+    border-color: #963B2F;
+}
+
+#sucesso .botaoModal #botao,
+.formsModal #salvar{
+    color: #FFF;
+    background-color: #25AE88;
+    border-color: #25AE88;
+}
+
+#sucesso .botaoModal #botao:hover,
+.formsModal #salvar:hover{
+    background-color: #176E55;
+    border-color: #176E55;
+}
+
 .aviso{
     height: 50px;
+    padding: 16px;
+    border-radius: 5px;
+    text-transform: initial;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 1rem;
-    border-radius: 5px;
 }
 
 #aviso__sucesso{            
     color: #0f5132;
     background-color: #d1e7dd;
-    border-color: #badbcc;;
 }
 
 #aviso__erro{
     color: #842029;
     background-color: #f8d7da;
-    border-color: #f5c2c7;
 }
 
-.campos {
-    display: flex;
-    justify-content: space-between;
+.campos{
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.formsModal {
+.formsModal{
     width: 100%;
     padding: 25px;
 }
 
-.formsModal #salvar {
+.formsModal #salvar{
     width: 100px;
-    color: #fff;
-    background-color: #0f5132;
-    border-color: #0f5132; 
 }
-.formsModal form {
+
+.formsModal form{
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.formsModal form label {
+.formsModal form label{
+    margin: 5px;
     font-weight: bold;
 }
 
+.formsModal form input{
+    width: 70%;
+    height: 25px;
+    border: 1px solid #CED4DA;  
+    color: #495057;
+}
 
 @media (max-width:500px){
     .modal{
         width: 300px;
     }
+
+    .formsModal form input{
+        width: 100%;
+    }    
 }

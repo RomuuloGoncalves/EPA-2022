@@ -30,9 +30,7 @@
 
     unset($select);
     unset($stmt);
-    
-    require 'functions/atualizar_json.php';
-    atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +40,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lampada - <?=$lampada->NOME?></title>
+    <title>Lâmpada - <?=$lampada->NOME?></title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_paginas.css">
@@ -59,17 +57,17 @@
 	</header>
 
     <main>
-        <div id="titulo__grupo">
-            <div class="wrapper__nome">
-                <h1><?=$lampada->NOME?></h1>
-                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>            </a>
-            </div>
-            <nav>
-                <a href="./index.php">
-                    <img src="./assets/img/seta.png" alt="Voltar">
-                </a>
-            </nav>
+    <div id="titulo__grupo">
+        <div class="wrapper__nome">
+            <h1><?=$lampada->NOME?></h1>
+            <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>            </a>
         </div>
+        <nav>
+            <a href="./index.php">
+                <img src="./assets/img/seta.png" alt="Voltar">
+            </a>
+        </nav>
+    </div>
     <?php
             if (isset($_GET['erros']) || isset($_GET['sucesso'])) {
                 if (isset($_GET['erros'])) {
@@ -137,7 +135,7 @@
                     <div class="header__slider">
                         <h2>Grupos:</h2>
                         <nav>
-                            <a href="adicionar_grupos_lampada.php?id=<?=$lampada->ID_LAMPADA?>">
+                            <a href="adicionar_grupos_lampada.php?id=<?=$id?>">
                                 <img src="assets/img/mais.png" alt="mais" />
                             </a>
                         </nav>
@@ -194,5 +192,4 @@
     </main>
     <script src="assets/js/script.js"></script>
 </body>
-
 </html>

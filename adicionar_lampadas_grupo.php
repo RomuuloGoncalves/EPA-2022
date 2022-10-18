@@ -15,7 +15,6 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
-    <link rel="stylesheet" href="assets/css/style_cadastro_grupos.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 

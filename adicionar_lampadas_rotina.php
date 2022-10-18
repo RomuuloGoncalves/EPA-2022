@@ -15,7 +15,6 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
-    <link rel="stylesheet" href="assets/css/style_cadastro_grupos.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
@@ -45,7 +44,7 @@
         if (!$erros) {
             (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
                 ? $erros .= 'É necessário escolher as lâmpadas para esta rotina'
-                : $lampadas_selecionadas = array_filter($lampadas);
+                : $lampadas_selecionadas = array_filter($lampadas_selecionadas);
         }
 
         if (!$erros) {

@@ -15,7 +15,6 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
-    <link rel="stylesheet" href="assets/css/style_cadastro_rotinas.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
@@ -100,7 +99,7 @@
 
     <main>
         <div id="titulo__cadastro">
-            <h1>Adicionar lâmpadas:</h1>
+            <h1>Adicionar Rotinas:</h1>
             <nav>
                 <a href="lampada.php?id=<?=$id?>">
                     <img src="assets/img/seta.png" alt="Voltar">
@@ -137,6 +136,7 @@
                                 <label for="rotina-<?= $rotina->ID_ROTINA ?>">
                                     <input type="checkbox" id="rotina-<?= $rotina->ID_ROTINA ?>" name="rotinas_selecionados[]" value="<?= $rotina->ID_ROTINA ?>">
                                     <div class="card card__lampada">
+                                        <img src="assets/img/engrenagem.svg"/>
                                         <p><?= $rotina->NOME ?></p>
                                     </div>
                                 </label>

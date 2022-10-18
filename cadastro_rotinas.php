@@ -11,9 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de rotinas</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
-    <link rel="stylesheet" href="assets/css/style_cadastro_rotinas.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
@@ -71,7 +71,7 @@
                 $stmt->bindValue(':h_fim', $hora_fim[0]);
                 $stmt->bindValue(':m_inicio', $hora_inicio[1]);
                 $stmt->bindValue(':m_fim', $hora_fim[1]);
-
+                $stmt->execute();
                 $select = 'SELECT ID_ROTINA FROM ROTINAS ORDER BY ID_ROTINA DESC LIMIT 1';
                 $stmt = $conn->query($select);
                 $rotina = $stmt->fetch(PDO::FETCH_OBJ);
@@ -138,11 +138,14 @@
             <input type="text" id="nome" name="nome">
 
             <div class="campo__horario">
-            <label for="hora_inicio">Horário de inicio:*</label>
-            <input type="time" id="hora_inicio" name="hora_inicio">
-
-            <label for="hora_fim">Horário de fim:*</label>
-            <input type="time" id="hora_fim" name="hora_fim">
+                <div class="campo">
+                    <label for="hora_inicio">Horário de inicio:*</label>
+                    <input type="time" id="hora_inicio" name="hora_inicio">
+                </div>
+                <div class="campo">
+                    <label for="hora_fim">Horário de fim:*</label>
+                    <input type="time" id="hora_fim" name="hora_fim">
+                </div>
             </div>
         </div>
 

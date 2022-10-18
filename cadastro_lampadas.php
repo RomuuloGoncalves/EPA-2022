@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/style_cadastros.css">
-    <link rel="stylesheet" href="./assets/css/style_cadastro_lampadas.css">
     <link rel="stylesheet" href="./assets/css/style_modal.css">
 </head>
 
@@ -58,7 +57,7 @@
             </div>
             <div class="modal" id="sucesso">
                 <div class="texto">
-                    <div class="titulo">Cadastrado!!!!</div>
+                    <div class="titulo">Cadastrado</div>
                     <div class="close">
                         <img onclick="fecharModal('sucesso')" src="./assets/img/close.png" alt="">
                     </div>
@@ -67,12 +66,12 @@
                     <img src="./assets/img/sucesso.png" alt="">
                     <div class="erro">
                         <div class="aviso" id="aviso__sucesso">
-                            Lâmpada cadastrada com sucesso!!!
+                            Lâmpada cadastrada com sucesso
                         </div>
                     </div>
                 </div>
                 <div class="botaoModal">
-                    <button onclick="fecharModal('sucesso')" id="botao" style="background-color: rgba(79, 204, 79, 0.719);border:2px solid rgb(68, 131, 68);">Fechar</button>
+                    <button onclick="fecharModal('sucesso')" id="botao">Fechar</button>
                 </div>
             </div>
         <?php
@@ -83,7 +82,7 @@
 
             <div class="modal" id="erro">
                 <div class="texto">
-                    <div class="titulo">Erro!!!!</div>
+                    <div class="titulo">Erro</div>
                     <div class="close">
                         <img onclick="fecharModal('erro')" src="./assets/img/close.png" alt="">
                     </div>

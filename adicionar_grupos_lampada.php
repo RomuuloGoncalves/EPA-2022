@@ -15,7 +15,6 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style_cadastros.css">
-    <link rel="stylesheet" href="./assets/css/adicionar_grupos_lampada.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
@@ -43,19 +42,19 @@
         }
 
         if (!$erros) {
-            (empty($rotinas_selecionados) || !isset($rotinas_selecionados))
-                ? $erros .= 'É necessário escolher as rotinas para esta lâmpada'
-                : $rotinas_selecionados = array_filter($rotinas_selecionados);
+            (empty($grupos_selecionados) || !isset($grupos_selecionados))
+                ? $erros .= 'É necessário escolher as grupos para esta lâmpada'
+                : $grupos_selecionados = array_filter($grupos_selecionados);
         }
 
         if (!$erros) {
             $idModal = 'sucesso';
-            $txtModal = 'Rotinas adicionadas com sucesso';
+            $txtModal = 'Grupos adicionadas com sucesso';
 
-            foreach ($rotinas_selecionados as $rotina) {
-                $insert = 'INSERT INTO LAMPADAS_ROTINA VALUES(:idRotina, :id)';
+            foreach ($grupos_selecionados as $grupo) {
+                $insert = 'INSERT INTO LAMPADAS_GRUPO VALUES(:idRotina, :id)';
                 $stmt = $conn->prepare($insert);
-                $stmt->bindValue(':idRotina', $rotina);
+                $stmt->bindValue(':idRotina', $grupo);
                 $stmt->bindValue(':id', $id);
                 $stmt->execute();
             }
@@ -100,7 +99,7 @@
 
     <main>
         <div id="titulo__cadastro">
-            <h1>Adicionar lâmpadas:</h1>
+            <h1>Adicionar Grupos:</h1>
             <nav>
                 <a href="lampada.php?id=<?=$id?>">
                     <img src="assets/img/seta.png" alt="Voltar">
@@ -111,42 +110,39 @@
         <form action="" method="post">
             <input type="hidden" name="id" value="<?= $id ?>">
             <div class="campos">
-                <label for="selecao">Selecione os grupos que adicionarão esta lâmpada*</label>
+                <label for="selecao">Selecione os grupos que adicionaram esta lâmpada*</label>
                 <div class="opcoes">
                 <?php
                     require 'lib/conn.php';
 
-                    $select = 'SELECT * FROM LAMPADAS l WHERE l.ID_LAMPADA NOT IN (SELECT ID_LAMPADA FROM LAMPADAS_GRUPO WHERE ID_GRUPO = :id)';
+                    $select = 'SELECT * FROM GRUPOS WHERE ID_GRUPO NOT IN (SELECT ID_GRUPO FROM LAMPADAS_GRUPO WHERE ID_LAMPADA= :id)';
                     $stmt = $conn->prepare($select);
                     $stmt->bindValue(':id', $id);
                     $stmt->execute();
-                    $qtddRotinas = $stmt->rowCount();
-                    $rotinas = $stmt->fetchAll(PDO::FETCH_OBJ);
+                    $qtddGrupos = $stmt->rowCount();
+                    $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
                     unset($select);
                     unset($stmt);
 
-                    if ($qtddRotinas === 0) {
+                    if ($qtddGrupos === 0) {
                         ?>
-                        <label style="margin-right: auto;">Não há rotinas disponiveis: todos as rotinas já possuem esta lâmpada</label>
+                        <label style="margin-right: auto;">Não há grupos disponiveis: todos as grupos já possuem esta lâmpada</label>
                         <?php
                     } else {
-                        foreach ($rotinas as $rotina) {
+                        foreach ($grupos as $grupo) {
                         ?>
-                            <div class="opcao">
-                                <label for="rotina-<?= $rotina->ID_LAMPADA ?>">
-                                    <input type="checkbox" id="rotina-<?= $rotina->ID_LAMPADA ?>" name="rotinas_selecionados[]" value="<?= $rotina->ID_GRUPO ?>">
-                                    <div class="card card__lampada">
-                                        <p><?= $rotina->NOME ?></p>
+                            <div class="opcao_grupos_lampada">
+                                <label for="grupo-<?= $grupo->ID_GRUPO ?>">
+                                    <input type="checkbox" id="grupo-<?= $grupo->ID_GRUPO ?>" name="grupos_selecionados[]" value="<?= $grupo->ID_GRUPO ?>">
+                                    <div class="card card_grupos_lampada">
+                                        <p><?= $grupo->NOME ?></p>
                                     </div>
                                 </label>
                             </div>
-
-
-
                     <?php
                         }
-                        unset($rotinas);
+                        unset($grupos);
                     }
                     ?>
                 </div>
