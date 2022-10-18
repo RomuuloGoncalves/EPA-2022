@@ -1,5 +1,7 @@
-# EPA-2022
- Website built for the EPA-2022 project (Open Doors ETEC) 
+# **EPA-2022**
+## _**Website built for the EPA-2022 project (Open Doors ETEC)**_
+
+---
 
 ## Index -Dashboard
 ![image](https://user-images.githubusercontent.com/104324780/196550422-e655de9e-5bf7-4d5f-973c-18c3fdef78d6.png)
