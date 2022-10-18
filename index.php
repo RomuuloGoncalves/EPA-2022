@@ -1,22 +1,22 @@
 <?php
-	require 'lib/conn.php';
-	require 'functions/atualizar_json.php';
+require 'lib/conn.php';
+require 'functions/atualizar_json.php';
 
-	atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
-	$select = 'SELECT * FROM GRUPOS';
-	$stmt = $conn->query($select);
-	$grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
+atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
+$select = 'SELECT * FROM GRUPOS';
+$stmt = $conn->query($select);
+$grupos = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-	$select = 'SELECT * FROM LAMPADAS';
-	$stmt = $conn->query($select);
-	$lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
+$select = 'SELECT * FROM LAMPADAS';
+$stmt = $conn->query($select);
+$lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-	$select = 'SELECT * FROM ROTINAS';
-	$stmt = $conn->query($select);
-	$rotinas = $stmt->fetchAll(PDO::FETCH_OBJ);
+$select = 'SELECT * FROM ROTINAS';
+$stmt = $conn->query($select);
+$rotinas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-	unset($select);
-	unset($stmt);
+unset($select);
+unset($stmt);
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +31,7 @@
 	<link rel="stylesheet" href="assets/css/style.css" />
 	<link rel="stylesheet" href="assets/css/style_index.css">
 </head>
+
 <body>
 	<header>
 		<a href="index.php" id="container__logo">
@@ -48,7 +49,7 @@
 			<a href="cadastro_grupos.php">Grupos
 				<img src="assets/img/mais.png" alt="mais">
 			</a>
-			<a href="cadastro_rotinas.php">Rotina 
+			<a href="cadastro_rotinas.php">Rotina
 				<img src="assets/img/mais.png" alt="mais">
 			</a>
 		</nav>
@@ -58,7 +59,9 @@
 		<div class="containers" id="container__lampadas">
 
 			<div class="header__slider">
-				<h2>Lâmpadas</h2>
+				<a class="link__listagem" href="listar_lampadas.php">
+					<h2>Lâmpadas</h2>
+				</a>
 				<nav>
 					<a href="cadastro_lampadas.php">
 						<img src="assets/img/mais.png" alt="mais" />
@@ -70,14 +73,14 @@
 				<?php
 				foreach ($lampadas as $lampada) {
 				?>
-						<div class="card card__lampada">
-							<a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>">
-								<img src="./assets/img/lampada_<?=$lampada->ESTADO?>.png" alt="Lampada <?=$lampada->ESTADO?>" />
-							</a>
-							<a href="lampada.php?id=<?=$lampada->ID_LAMPADA?>">
-								<p><?=$lampada->NOME?></p>
-							</a>
-						</div>
+					<div class="card card__lampada">
+						<a href="functions/mudar_estado_lampada.php?id=<?= $lampada->ID_LAMPADA ?>&est=<?= $lampada->ESTADO ?>">
+							<img src="./assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada <?= $lampada->ESTADO ?>" />
+						</a>
+						<a href="lampada.php?id=<?= $lampada->ID_LAMPADA ?>">
+							<p><?= $lampada->NOME ?></p>
+						</a>
+					</div>
 				<?php
 				}
 				unset($lampadas);
@@ -88,7 +91,9 @@
 
 		<div class="containers" id="container__grupos">
 			<div class="header__slider">
-				<h2>Grupos</h2>
+				<a class="link__listagem" href="listar_grupos.php">
+					<h2>Grupos</h2>
+				</a>
 				<nav>
 					<a href="cadastro_grupos.php">
 						<img src="assets/img/mais.png" alt="mais" />
@@ -148,13 +153,15 @@
 				unset($est_grp);
 				unset($estado_switch);
 				?>
-				
+
 			</div>
 		</div>
 
 		<div class="containers" id="container__rotinas">
 			<div class="header__slider">
-				<h2>Rotinas</h2>
+				<a class="link__listagem" href="listar_rotinas.php">
+					<h2>Rotinas</h2>
+				</a>
 				<nav>
 					<a href="cadastro_rotinas.php">
 						<img src="assets/img/mais.png" alt="mais" />
@@ -164,26 +171,26 @@
 
 			<div class="slide" id="rotinas">
 				<?php
-					foreach($rotinas as $rotina){
+				foreach ($rotinas as $rotina) {
 				?>
-				<div class="card card__rotinas">
-					<img id="img__relogio" src="assets/img/relogio.png" alt="relogio" />
-					<label for="checkbox-<?=$rotina->ID_ROTINA?>" class="switch">
-						<a href="functions/mudar_estado_grp.php">
-							<input type="checkbox" name="checkbox" id="checkbox-<?=$rotina->ID_ROTINA?>" />
-							<span class="slider"></span>
-						</a>
-					</label>
+					<div class="card card__rotinas">
+						<img id="img__relogio" src="assets/img/relogio.png" alt="relogio" />
+						<label for="checkbox-<?= $rotina->ID_ROTINA ?>" class="switch">
+							<a href="functions/mudar_estado_grp.php">
+								<input type="checkbox" name="checkbox" id="checkbox-<?= $rotina->ID_ROTINA ?>" />
+								<span class="slider"></span>
+							</a>
+						</label>
 
-					<div class="page__titulo">
-						<p><?=$rotina->NOME?></p>
-						<a href="rotina.php?id=<?=$rotina->ID_ROTINA?>">
-							<img src="./assets/img/info.png" alt="">
-						</a>
+						<div class="page__titulo">
+							<p><?= $rotina->NOME ?></p>
+							<a href="rotina.php?id=<?= $rotina->ID_ROTINA ?>">
+								<img src="./assets/img/info.png" alt="">
+							</a>
+						</div>
 					</div>
-				</div>
-				<?php 
-					}
+				<?php
+				}
 				?>
 			</div>
 		</div>
@@ -209,7 +216,7 @@
 				<a href="https://www.flaticon.com/br/icones-gratis/pasta" title="pasta ícones">Pasta: kmg design</a>
 			</div>
 		</div>
-		
+
 		<span>2ºDS - Projeto EPA 2022</span>
 	</footer>
 </body>

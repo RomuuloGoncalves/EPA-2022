@@ -52,7 +52,13 @@ main {
 	/* color of the scroll thumb */
 	background-color: rgba(128, 128, 128, 0.5);
 }
-
+.link__listagem{
+	color: #000;
+	text-decoration: none;
+}
+.link__listagem:visited{
+	color: #000;
+}
 .card__grupo, .card__rotinas {
 	max-width: 300px;
 	padding: 15px 0;
