@@ -3,7 +3,7 @@
 
 ---
 
-## Index -Dashboard
+## Index - Dashboard
 ![image](https://user-images.githubusercontent.com/104324780/196550422-e655de9e-5bf7-4d5f-973c-18c3fdef78d6.png)
 
 ## Cadastros
