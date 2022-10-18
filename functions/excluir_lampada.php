@@ -21,11 +21,5 @@
     $stmt->bindValue(":id", $id);
     $stmt->execute();
 
-    $pag = $_GET["pag"];
-
-    if($pag == "listar_lampada"){
-        header('location:../listar_lampadas.php');
-    }else{
-        header('location:../index.php');
-    }
+    header('location:../index.php');
 ?>
