@@ -19,7 +19,7 @@
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
 }
 
@@ -32,6 +32,10 @@
 }
 
 @media(max-width:340px){
+    .container_lampadas {
+        justify-content: center;
+    }
+
     .card{
         min-width: 200px;
     }

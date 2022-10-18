@@ -166,7 +166,7 @@ header a {
 	}
 }
 
-@media(max-width:425px) {
+@media(max-width:500px) {
 	#container__logo h1{
 		font-size: 1.6em;
 	}

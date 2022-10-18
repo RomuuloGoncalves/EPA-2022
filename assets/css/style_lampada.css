@@ -96,12 +96,14 @@
     color: #000;
 }
 
-.campo__informacoes a:visited {
-    color: #000;
-}
-
 .campo__informacoes img {
     height: 25px;
+}
+
+.campo__informacoes .links {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
 }
 
 @media(max-width:1090px) {

@@ -14,9 +14,9 @@
     $stmt->execute();
     $rotina = $stmt->fetch(PDO::FETCH_OBJ);
 
-    if ($stmt->rowCount() == 0){
-        header('location: ./index.php');
-    }
+    // if ($stmt->rowCount() == 0){
+    //     header('location: ./index.php');
+    // }
 
     $select = 'SELECT * FROM LAMPADAS INNER JOIN LAMPADAS_ROTINA ON LAMPADAS_ROTINA.ID_LAMPADA = LAMPADAS.ID_LAMPADA WHERE LAMPADAS_ROTINA.ID_ROTINA = :id';
     $stmt = $conn->prepare($select);
@@ -38,7 +38,7 @@
 	<title>Rotina - <?=$rotina->NOME?></title>
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="assets/css/style.css" />
-	<link rel="stylesheet" href="assets/css/style_grupo.css">
+	<link rel="stylesheet" href="assets/css/style_paginas.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
@@ -51,7 +51,18 @@
 	</header>
 
 	<main>
-        <?php
+        <div id="titulo__grupo">
+            <div class="wrapper__nome">
+                <h1><?=$rotina->NOME?></h1>
+                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>            </a>
+            </div>
+            <nav>
+                <a href="./index.php">
+                    <img src="./assets/img/seta.png" alt="Voltar">
+                </a>
+            </nav>
+        </div>
+            <?php
             if (isset($_GET['erros']) || isset($_GET['sucesso'])) {
                 if (isset($_GET['erros'])) {
                     $idModal = 'erro';
@@ -83,11 +94,11 @@
                             <button onclick="fecharModal('<?=$idModal?>')" id="botao"> Fechar</button>
                         </div>
                     </div>
-        <?php
-            unset($idModal);
-            unset($txtModal);
-            }
-        ?>
+            <?php
+                unset($idModal);
+                unset($txtModal);
+                }
+            ?>
             <div class="page remover"></div>
             <div class="modal apagar" id="alterarNomeRotina">
                 <div class="texto">
@@ -107,26 +118,17 @@
                     </form>
                 </div>
             </div>
-            <div id="titulo__rotina">
-            <div class="wrapper__nome">
-                <h1><?=$rotina->NOME?></h1>
-                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeRotina');"/>
-            </div>
-            <nav>
-                <a href="index.php">
-                    <img src="assets/img/seta.png" alt="Voltar">
-                </a>
-            </nav>
-        </div>
-        </div>
 
-        <div class="wrapper">
-        <div class="titulo">
+        <div class="content">
+            <div class="header__slider">
                 <h2>Lâmpadas</h2>
-                <a href="./adicionar_lampadas_rotina.php?id=<?=$rotina->ID_ROTINA?>">
-                    <img src="./assets/img/mais.png" alt="adicionar">
-                </a>
-            </div>
+                <nav>
+                    <a href="./adicionar_lampadas_rotina.php?id=<?=$rotina->ID_ROTINA?>">
+                        <img src="assets/img/mais.png" alt="mais" />
+                    </a>
+                </nav>
+            </div>                    
+
             <div class="container_lampadas">
                 <?php
 					foreach($lampadas as $lampada) {

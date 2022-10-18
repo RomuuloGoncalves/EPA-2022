@@ -132,12 +132,12 @@
                     } else {
                         foreach ($rotinas as $rotina) {
                         ?>
-                            <div class="opcao">
+                            <div class="opcao__row">
                                 <label for="rotina-<?= $rotina->ID_ROTINA ?>">
                                     <input type="checkbox" id="rotina-<?= $rotina->ID_ROTINA ?>" name="rotinas_selecionados[]" value="<?= $rotina->ID_ROTINA ?>">
-                                    <div class="card card__lampada">
-                                        <img src="assets/img/engrenagem.svg"/>
+                                    <div class="card card__row">
                                         <p><?= $rotina->NOME ?></p>
+                                        <img src="assets/img/relogio.png"/>
                                     </div>
                                 </label>
                             </div>

@@ -132,11 +132,12 @@
                     } else {
                         foreach ($grupos as $grupo) {
                         ?>
-                            <div class="opcao_grupos_lampada">
+                            <div class="opcao__row">
                                 <label for="grupo-<?= $grupo->ID_GRUPO ?>">
                                     <input type="checkbox" id="grupo-<?= $grupo->ID_GRUPO ?>" name="grupos_selecionados[]" value="<?= $grupo->ID_GRUPO ?>">
-                                    <div class="card card_grupos_lampada">
+                                    <div class="card card__row">
                                         <p><?= $grupo->NOME ?></p>
+                                        <img src="assets/img/pasta-aberta.png"/>
                                     </div>
                                 </label>
                             </div>

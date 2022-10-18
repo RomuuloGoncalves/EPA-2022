@@ -153,9 +153,17 @@
 			<p>Rômulo da Silva Gonçalves</p>
 
 		</div>
-		<a href="https://www.flaticon.com/br/icones-gratis/lampada" title="lâmpada ícones">Ícones lâmpadas por: Freepik
-			- Flaticon</a>
 
+		<div class="text__footer">
+			<h3>Ícones por Flaticon:</h3>
+
+			<div class="creditos">
+				<a href="https://www.flaticon.com/br/icones-gratis/lampada" title="lâmpada ícones">lâmpadas: Freepik</a>
+				<a href="https://www.flaticon.com/br/icones-gratis/relogio" title="relógio ícones">Relógio: daniah saga</a>
+				<a href="https://www.flaticon.com/br/icones-gratis/pasta" title="pasta ícones">Pasta: kmg design</a>
+			</div>
+		</div>
+		
 		<span>2ºDS - Projeto EPA 2022</span>
 	</footer>
 </body>

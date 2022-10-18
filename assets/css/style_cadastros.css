@@ -146,17 +146,27 @@ input[type="checkbox"]:checked ~.card{
   border: 2px solid rgb(116, 116, 192);
 }
 
-.opcao_grupos_lampada{
-  width: 80%;
+.opcao__row{
+  width: 90%;
   height: max-content;
   gap: 10px;
   border-radius: 5px;
 }
 
-.card_grupos_lampada{
+.card__row{
   min-width: 100%;
-  height: 60px;
-  align-items: flex-start;
+  height: 50px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card__row p {
+  width: 300px;
+}
+
+.card__row img{
+  margin-right: 5px;
+  height: 20px;
 }
 
 /* Rotina */

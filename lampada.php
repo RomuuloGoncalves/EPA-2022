@@ -173,9 +173,14 @@
                                 ?>
                                     <div class="campo__informacoes campo__grupo">
                                         <p><?=$rotina->NOME?></p>
-                                        <a href="functions/remover_lampada_rotina.php?idLampada=<?=$id?>&idRotina=<?=$rotina->ID_ROTINA?>">
-                                            <img src="assets/img/close.png" alt="X">
-                                        </a>
+                                        <div class="links">
+                                            <a href="rotina.php?idLampada=<?=$id?>&idRotina=<?=$rotina->ID_ROTINA?>">
+                                                <img src="assets/img/info.png" alt="info">
+                                            </a>
+                                            <a href="functions/remover_lampada_rotina.php?idLampada=<?=$id?>&idRotina=<?=$rotina->ID_ROTINA?>">
+                                                <img src="assets/img/close.png" alt="X">
+                                            </a>
+                                        </div>
                                     </div>
                                 <?php
                             }

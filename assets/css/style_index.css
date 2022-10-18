@@ -155,12 +155,20 @@ footer a:hover {
 	text-decoration: underline;
 }
 
+footer .creditos {
+	margin: 0 15px;
+	width: 200px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 footer span {
 	padding: 10px 0 0;
 	border-top: 1px solid #FFF;
 	width: 90%;
 }
 
+/* Media Query */
 @media(max-width: 440px) {
 	.containers {
 		padding: 0 10px;
