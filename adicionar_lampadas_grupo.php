@@ -44,7 +44,7 @@
         if (!$erros) {
             (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
                 ? $erros .= 'É necessário escolher as lâmpadas para este grupo'
-                : $lampadas_selecionadas = array_filter($lampadas);
+                : $lampadas_selecionadas = array_filter($lampadas_selecionadas);
         }
 
         if (!$erros) {

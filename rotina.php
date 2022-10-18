@@ -14,9 +14,9 @@
     $stmt->execute();
     $rotina = $stmt->fetch(PDO::FETCH_OBJ);
 
-    // if ($stmt->rowCount() == 0){
-    //     header('location: ./index.php');
-    // }
+    if ($stmt->rowCount() == 0){
+        header('location: ./index.php');
+    }
 
     $select = 'SELECT * FROM LAMPADAS INNER JOIN LAMPADAS_ROTINA ON LAMPADAS_ROTINA.ID_LAMPADA = LAMPADAS.ID_LAMPADA WHERE LAMPADAS_ROTINA.ID_ROTINA = :id';
     $stmt = $conn->prepare($select);
@@ -37,9 +37,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Rotina - <?=$rotina->NOME?></title>
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style_modal.css">
 	<link rel="stylesheet" href="assets/css/style.css" />
 	<link rel="stylesheet" href="assets/css/style_paginas.css">
-    <link rel="stylesheet" href="assets/css/style_modal.css">
+    <link rel="stylesheet" href="assets/css/style_grupo.css">
 </head>
 
 <body>
@@ -54,7 +55,7 @@
         <div id="titulo__grupo">
             <div class="wrapper__nome">
                 <h1><?=$rotina->NOME?></h1>
-                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeLampada');"/>            </a>
+                <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarNomeRotina');"/>
             </div>
             <nav>
                 <a href="./index.php">
@@ -102,13 +103,13 @@
             <div class="page remover"></div>
             <div class="modal apagar" id="alterarNomeRotina">
                 <div class="texto">
-                    <div class="titulo">Alterar nome do rotina</div>
+                    <div class="titulo">Alterar nome da rotina</div>
                     <div class="close">
                         <img onclick="fecharModal('alterarNomeRotina')" src="assets/img/close.png" alt="">
                     </div>
                 </div>
                 <div class="formsModal">
-                    <form action="functions/mudar_nome_rotina.php" method="post">
+                    <form action="functions/mudar_nome_rotina.php?id=<?=$rotina->ID_ROTINA?>" method="post">
                         <div class="campos">
                             <label for="nomeNovo">Novo Nome</label>
                             <input id="nomeNovo" type="text" name="nomeNovo">
@@ -118,6 +119,26 @@
                     </form>
                 </div>
             </div>
+
+        <div class="page remover"></div>
+        <div class="modal apagar" id="alterarNomeGrupo">
+            <div class="texto">
+                <div class="titulo">Alterar nome do grupo</div>
+                <div class="close">
+                    <img onclick="fecharModal('alterarNomeGrupo')" src="assets/img/close.png" alt="">
+                </div>
+            </div>
+            <div class="formsModal">
+                <form action="functions/mudar_nome_grp.php" method="post">
+                    <div class="campos">
+                        <label for="nomeNovo">Novo Nome</label>
+                        <input id="nomeNovo" type="text" name="nomeNovo">
+                    </div>
+                    <input type="hidden" name="id" value="<?=$id?>">
+                    <button type="submit" id="salvar">Salvar</button>
+                </form>
+            </div>
+        </div>
 
         <div class="content">
             <div class="header__slider">
@@ -137,7 +158,7 @@
                                 <a class="remover" href="functions/remover_lampada_rotina.php?idLampada=<?=$lampada->ID_LAMPADA?>&idGrupo=<?=$id?>">
                                     <img class="icon_remover" src="assets/img/close.png" alt="X">
                                 </a>
-                                <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&pag=rotina&idGrupo=<?= $rotina->ID_ROTINA ?>">  
+                                <a href="functions/mudar_estado_lampada.php?id=<?=$lampada->ID_LAMPADA?>&est=<?=$lampada->ESTADO?>&id_rotina=<?=$rotina->ID_ROTINA?>&pag=rotina&idGrupo=<?= $rotina->ID_ROTINA ?>">  
                                     <img src="./assets/img/lampada_<?= $lampada->ESTADO ?>.png" alt="Lampada <?= $lampada->ESTADO ?>" />
                                 </a>
                                 <a href="lampada.php?id=<?=$lampada->ID_LAMPADA?>">
@@ -149,11 +170,11 @@
                     unset($lampadas);
 				?>
             </div>
+            <a class="excluir" href="functions/excluir_rotina.php?id=<?=$rotina->ID_ROTINA?>">
+                <p>Excluir rotina</p>
+                <img src="assets/img/lixeira.png" alt="exluir">
+            </a>
         </div>
-        <a class="excluir" href="functions/excluir_rotina.php?id=<?=$rotina->ID_ROTINA?>">
-            <p>Excluir rotina</p>
-            <img src="assets/img/lixeira.png" alt="exluir">
-        </a>
 	</main>
     <script src="assets/js/script.js"></script>
 </body>

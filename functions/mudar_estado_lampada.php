@@ -7,6 +7,7 @@
     $id = (int)$_GET['id'];
     $est = (int)$_GET['est'];
     $idGrupo = (int)$_GET['idGrupo'];
+    $idRotina = (int)$_GET['id_rotina'];
 
     $est = $est === 1 ? 0 : 1;
 
@@ -24,7 +25,10 @@
         header('location: ../lampada.php?id='.$id);
     else if($pag === 'grupo')
         header('location: ../grupo.php?id='.$idGrupo);
-    else
+    else if($pag === 'rotina'){
+        header('location: ../rotina.php?id='.$idRotina);
+    }else{
         header('location: ../index.php');
+    }
 
 ?>

@@ -11,6 +11,10 @@
 	$stmt = $conn->query($select);
 	$lampadas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
+	$select = 'SELECT * FROM ROTINAS';
+	$stmt = $conn->query($select);
+	$rotinas = $stmt->fetchAll(PDO::FETCH_OBJ);
+
 	unset($select);
 	unset($stmt);
 ?>
@@ -38,8 +42,12 @@
 		<input type="checkbox" id="responsive-menu">
 
 		<nav class="menu">
-			<a href="cadastro_lampadas.php">Lâmpadas</a>
-			<a href="cadastro_grupos.php">Grupos</a>
+			<a href="cadastro_lampadas.php">Lâmpadas
+				<img src="assets/img/mais.png" alt="mais">
+			</a>
+			<a href="cadastro_grupos.php">Grupos
+				<img src="assets/img/mais.png" alt="mais">
+			</a>
 			<a href="cadastro_rotinas.php">Rotina 
 				<img src="assets/img/mais.png" alt="mais">
 			</a>
@@ -140,8 +148,46 @@
 				unset($est_grp);
 				unset($estado_switch);
 				?>
+				
 			</div>
 		</div>
+
+		<div class="containers" id="container__rotinas">
+			<div class="header__slider">
+				<h2>Rotinas</h2>
+				<nav>
+					<a href="cadastro_rotinas.php">
+						<img src="assets/img/mais.png" alt="mais" />
+					</a>
+				</nav>
+			</div>
+
+			<div class="slide" id="rotinas">
+				<?php
+					foreach($rotinas as $rotina){
+				?>
+				<div class="card card__rotinas">
+					<img id="img__relogio" src="assets/img/relogio.png" alt="relogio" />
+					<label for="checkbox-<?=$rotina->ID_ROTINA?>" class="switch">
+						<a href="functions/mudar_estado_grp.php">
+							<input type="checkbox" name="checkbox" id="checkbox-<?=$rotina->ID_ROTINA?>" />
+							<span class="slider"></span>
+						</a>
+					</label>
+
+					<div class="page__titulo">
+						<p><?=$rotina->NOME?></p>
+						<a href="rotina.php?id=<?=$rotina->ID_ROTINA?>">
+							<img src="./assets/img/info.png" alt="">
+						</a>
+					</div>
+				</div>
+				<?php 
+					}
+				?>
+			</div>
+		</div>
+
 	</main>
 
 	<footer>
@@ -158,7 +204,7 @@
 			<h3>Ícones por Flaticon:</h3>
 
 			<div class="creditos">
-				<a href="https://www.flaticon.com/br/icones-gratis/lampada" title="lâmpada ícones">lâmpadas: Freepik</a>
+				<a href="https://www.flaticon.com/br/icones-gratis/lampada" title="lâmpada ícones">Lâmpadas: Freepik</a>
 				<a href="https://www.flaticon.com/br/icones-gratis/relogio" title="relógio ícones">Relógio: daniah saga</a>
 				<a href="https://www.flaticon.com/br/icones-gratis/pasta" title="pasta ícones">Pasta: kmg design</a>
 			</div>

@@ -53,14 +53,14 @@ main {
 	background-color: rgba(128, 128, 128, 0.5);
 }
 
-.card__grupo {
+.card__grupo, .card__rotinas {
 	max-width: 300px;
 	padding: 15px 0;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
 
-.card__grupo img {
+.card__grupo img, .card__rotinas img {
 	height: 100px;
 }
 
@@ -131,7 +131,7 @@ input:checked+.slider::before {
 }
 
 footer {
-	height: 25vh;
+	min-height: 25vh;
 	align-items: center;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -164,6 +164,7 @@ footer .creditos {
 
 footer span {
 	padding: 10px 0 0;
+	margin-top: 10px;
 	border-top: 1px solid #FFF;
 	width: 90%;
 }
@@ -183,7 +184,7 @@ footer span {
 		min-width: 200px;
 	}
 
-	.card__grupo,
+	.card__grupo,.card__rotinas,
 	.page__titulo {
 		margin: 0;
 		min-width: 200px;
@@ -193,7 +194,7 @@ footer span {
 		gap: 15px;
 	}
 
-	.card__grupo img {
+	.card__grupo img, .card__rotinas img {
 		height: 150px;
 	}
 
@@ -207,5 +208,9 @@ footer span {
 
 	.switch {
 		margin: 0;
+	}
+
+	#img__relogio{
+		height: 100px;
 	}
 }

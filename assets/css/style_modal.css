@@ -169,6 +169,10 @@
     color: #495057;
 }
 
+#nomeNovo{
+    padding-left: 5px;
+}
+
 @media (max-width:500px){
     .modal{
         width: 300px;
