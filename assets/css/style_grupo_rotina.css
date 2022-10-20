@@ -1,0 +1,68 @@
+.remover {
+    margin-right: 30px;
+    align-self: flex-end;
+}
+
+.icon_remover {
+    opacity: 0;
+    height: 20px !important;
+    transition: all .2s linear;
+}
+
+.content {
+    margin: 30px auto;
+    padding: 0 40px;
+    flex-direction: column;
+}
+
+.container_lampadas {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.header__slider img {
+	height: 50px;
+}
+
+.card__lampada:hover .icon_remover {
+    opacity: 100%;
+}
+
+.informacoes {
+    padding: 10px 20px 10px 10px;
+    width: 100%;
+    min-height: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.hora__rotina, .estado__rotina {
+    width: 170px;
+}
+
+.hora__rotina .wrapper__nome, .hora__rotina p {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.estado__rotina {
+    height: 75px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.informacoes #img__rotina {
+    height: 60px;
+}
+
+/* Media Query */
+@media(max-width:450px){
+    .container_lampadas, .informacoes {
+        justify-content: center;
+    }
+}

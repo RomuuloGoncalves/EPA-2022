@@ -106,6 +106,7 @@
     justify-content: space-between;
 }
 
+/* Media Query */
 @media(max-width:1090px) {
     .imagem img {
         height: 400px;

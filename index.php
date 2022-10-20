@@ -26,8 +26,8 @@ unset($stmt);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Dashboard</title>
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="assets/css/style.css" />
 	<link rel="stylesheet" href="assets/css/style_index.css">
+	<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
@@ -37,8 +37,8 @@ unset($stmt);
 			<h1>EPA-2022</h1>
 		</a>
 
-		<label for="responsive-menu" class="responsive-menu"></label>
 		<input type="checkbox" id="responsive-menu">
+		<label for="responsive-menu" class="responsive-menu"><span></span></label>
 
 		<nav class="menu">
 			<a href="cadastro_lampadas.php">Lâmpadas
@@ -141,7 +141,7 @@ unset($stmt);
 						<div class="page__titulo">
 							<p><?= $grupo->NOME ?></p>
 							<a href="grupo.php?id=<?= $grupo->ID_GRUPO ?>">
-								<img src="./assets/img/info.png" alt="">
+								<img src="./assets/img/info.png" alt="info">
 							</a>
 						</div>
 					</div>
@@ -172,18 +172,16 @@ unset($stmt);
 				foreach ($rotinas as $rotina) {
 				?>
 					<div class="card card__rotinas">
-						<img id="img__relogio" src="assets/img/relogio.png" alt="relogio" />
-						<label for="checkbox-<?= $rotina->ID_ROTINA ?>" class="switch">
-							<a href="functions/mudar_estado_grp.php">
-								<input type="checkbox" name="checkbox" id="checkbox-<?= $rotina->ID_ROTINA ?>" />
-								<span class="slider"></span>
-							</a>
-						</label>
+						<img id="img__relogio" src="assets/img/relogio.png" alt="relogio"/>
+
+						<a href="">
+							<img id="img__rotina" src="assets/img/rotina_<?=$rotina->ESTADO?>.png" alt="Estado <?=$rotina->ESTADO?>"/>
+						</a>
 
 						<div class="page__titulo">
 							<p><?= $rotina->NOME ?></p>
 							<a href="rotina.php?id=<?= $rotina->ID_ROTINA ?>">
-								<img src="./assets/img/info.png" alt="">
+								<img src="./assets/img/info.png" alt="info">
 							</a>
 						</div>
 					</div>
@@ -202,18 +200,9 @@ unset($stmt);
 			<p>Beatriz Meyagusko</p>
 			<p>Pedro de Sousa Vicente</p>
 			<p>Rômulo da Silva Gonçalves</p>
-
 		</div>
 
-		<div class="text__footer">
-			<h3>Ícones por Flaticon:</h3>
-
-			<div class="creditos">
-				<a href="https://www.flaticon.com/br/icones-gratis/lampada" title="lâmpada ícones">Lâmpadas: Freepik</a>
-				<a href="https://www.flaticon.com/br/icones-gratis/relogio" title="relógio ícones">Relógio: daniah saga</a>
-				<a href="https://www.flaticon.com/br/icones-gratis/pasta" title="pasta ícones">Pasta: kmg design</a>
-			</div>
-		</div>
+			<h3>Ícones por <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></h3>
 
 		<span>2ºDS - Projeto EPA 2022</span>
 	</footer>

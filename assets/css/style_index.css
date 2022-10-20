@@ -9,6 +9,34 @@ main {
 	gap: 40px;
 }
 
+.menu {
+	width: 300px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.menu a {
+	display: flex;
+	align-items: center;
+	font-size: 1.15em;
+	transition: .2s;
+}
+
+.menu a:visited{
+	color: #fff;
+}
+
+.menu img {
+	height: 20px;
+	filter: invert(100%);
+}
+
+#responsive-menu {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+}
+
 .containers {
 	margin: 0 40px;
 	padding: 5px 15px;
@@ -59,30 +87,45 @@ main {
 .link__listagem:visited{
 	color: #000;
 }
-.card__grupo, .card__rotinas {
+
+.card__grupo {
 	max-width: 300px;
 	padding: 15px 0;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
 
-.card__grupo img, .card__rotinas img {
+.card__grupo img {
 	height: 100px;
+}
+
+.card__rotinas {
+	max-width: 250px;
+	padding: 15px 0;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.card__rotinas img {
+	height: 50px;
+}
+
+.card__rotinas .page__titulo p {
+	width: 200px;
+	padding-bottom: 10px;
+	text-align: center;
 }
 
 .page__titulo {
 	margin-top: 20px;
-	width: 100%;
+	width: 80%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
 }
 
 .page__titulo img {
 	height: 30px;
-}
-
-.card__lampada a:visited {
-	color: #000;
 }
 
 /* Switch */
@@ -190,7 +233,7 @@ footer span {
 		min-width: 200px;
 	}
 
-	.card__grupo,.card__rotinas,
+	.card__grupo,
 	.page__titulo {
 		margin: 0;
 		min-width: 200px;
@@ -200,7 +243,7 @@ footer span {
 		gap: 15px;
 	}
 
-	.card__grupo img, .card__rotinas img {
+	.card__grupo img {
 		height: 150px;
 	}
 
@@ -216,7 +259,7 @@ footer span {
 		margin: 0;
 	}
 
-	#img__relogio{
-		height: 100px;
+	#img__relogio, #img__rotina {
+		height: 50px;
 	}
 }

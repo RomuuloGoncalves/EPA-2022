@@ -84,6 +84,7 @@ nav{
     opacity: 100%;
 }
 
+/* Media Query */
 @media(max-width:340px) {
     .container {
         justify-content: center;

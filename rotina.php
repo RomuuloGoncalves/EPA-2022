@@ -2,11 +2,10 @@
     if (empty($_GET)) {
         header('location:index.php');
     }
-
-    $id = (int)$_GET['id'];
-    unset($_GET['id']);
-
+    
+    require 'functions/formatarText12h.php';
 	require 'lib/conn.php';
+    $id = (int)$_GET['id'];
 
     $select = 'SELECT * FROM ROTINAS WHERE ID_ROTINA = :id';
     $stmt = $conn->prepare($select);
@@ -40,7 +39,7 @@
     <link rel="stylesheet" href="assets/css/style_modal.css">
 	<link rel="stylesheet" href="assets/css/style.css" />
 	<link rel="stylesheet" href="assets/css/style_paginas.css">
-    <link rel="stylesheet" href="assets/css/style_grupo.css">
+    <link rel="stylesheet" href="assets/css/style_grupo_rotina.css">
 </head>
 
 <body>
@@ -70,7 +69,7 @@
                     $txtModal = $_GET['erros'];
                 } else {
                     $idModal = 'sucesso';
-                    $txtModal = 'Nome alterado com sucesso';
+                    $txtModal = $_GET['sucesso'];
                 }
                 ?>
                 <div class="page">
@@ -121,19 +120,23 @@
             </div>
 
         <div class="page remover"></div>
-        <div class="modal apagar" id="alterarNomeGrupo">
+        <div class="modal apagar" id="alterarHorarioRotina">
             <div class="texto">
-                <div class="titulo">Alterar nome do grupo</div>
+                <div class="titulo">Alterar horário da rotina</div>
                 <div class="close">
-                    <img onclick="fecharModal('alterarNomeGrupo')" src="assets/img/close.png" alt="">
+                    <img onclick="fecharModal('alterarHorarioRotina')" src="assets/img/close.png" alt="">
                 </div>
             </div>
             <div class="formsModal">
-                <form action="functions/mudar_nome_grp.php" method="post">
-                    <div class="campos">
-                        <label for="nomeNovo">Novo Nome</label>
-                        <input id="nomeNovo" type="text" name="nomeNovo">
-                    </div>
+                <form action="functions/mudar_horario_rotina" method="post">
+                        <div class="campos">
+                            <label for="hora_inicio_novo">Horário de início</label>
+                            <input id="hora_inicio_novo" type="time" name="hora_inicio_novo">
+                        </div>
+                        <div class="campos">
+                            <label for="hora_fim_novo">Horário de fim</label>
+                            <input id="hora_fim_novo" type="time" name="hora_fim_novo">
+                        </div>
                     <input type="hidden" name="id" value="<?=$id?>">
                     <button type="submit" id="salvar">Salvar</button>
                 </form>
@@ -141,6 +144,21 @@
         </div>
 
         <div class="content">
+            <div class="informacoes">
+                <div class="hora__rotina">
+                    <div class="wrapper__nome">
+                        <h2>Horários</h2>
+                        <img src="assets/img/editar.png" id="editar" onclick="abrirModal('alterarHorarioRotina');"/>
+                    </div>
+                    <p>Início: <span><?=formatarText12h($rotina->H_INICIO)?></span></p>
+                    <p>Fim: <span><?=formatarText12h($rotina->H_FIM)?></span></p>
+                </div>
+                <div class="estado__rotina">
+                        <p>Estado: <?=($rotina->ESTADO==='0')?"Inativa":"Ativa" ?></p>
+                        <img id="img__rotina" src="assets/img/rotina_<?=$rotina->ESTADO?>.png" alt="estado rotina"/>
+                </div>
+            </div>
+
             <div class="header__slider">
                 <h2>Lâmpadas</h2>
                 <nav>

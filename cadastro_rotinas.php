@@ -26,7 +26,6 @@
 	</header>
     <?php
         if (!empty($_POST)) {
-            require "lib/conn.php";
             $erros = false;
 
             foreach ($_POST as $chave => $valor) {
@@ -55,17 +54,19 @@
                 } else if (!valida_horas($hora_fim)) {
                     $erros = 'Hora de fim invalído';
                 }
-
-                require 'functions/formatar12h.php';
-                $hora_fim = formatar12h($hora_fim);
-                $hora_inicio = formatar12h($hora_inicio);
                 
                 (empty($lampadas_selecionadas) || !isset($lampadas_selecionadas))
-                    ? $erros .= "É necessário escolher as lâmpadas para este grupo"
-                    : $lampadas_selecionadas = array_filter($_POST["lampadas_selecionadas"]);
+                    ? $erros .= 'É necessário escolher as lâmpadas para este grupo'
+                    : $lampadas_selecionadas = array_filter($lampadas_selecionadas);
             }
 
             if (!$erros) {
+                require 'lib/conn.php';
+                require 'functions/formatar12h.php';
+                
+                $hora_inicio = formatar12h($hora_inicio);
+                $hora_fim = formatar12h($hora_fim);
+
                 $insert = 'INSERT INTO ROTINAS VALUES(0, :nome, 0, :h_inicio, :h_fim)';
                 $stmt = $conn->prepare($insert);
                 $stmt->bindValue(':nome', $nome);

@@ -7,6 +7,9 @@
     unset($_GET['id']);
 
 	require 'lib/conn.php';
+	require 'functions/atualizar_json.php';
+
+	atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
 
     $select = "SELECT * FROM GRUPOS WHERE ID_GRUPO = :id";
     $stmt = $conn->prepare($select);
@@ -39,7 +42,7 @@
 	<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/style_paginas.css">
-	<link rel="stylesheet" href="assets/css/style_grupo.css">
+	<link rel="stylesheet" href="assets/css/style_grupo_rotina.css">
     <link rel="stylesheet" href="assets/css/style_modal.css">
 </head>
 
