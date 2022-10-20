@@ -7,7 +7,7 @@
     require 'functions/formatarText12h.php';
 	require 'lib/conn.php';
     
-    atualizar_db_rotinas();
+    // atualizar_db_rotinas();
     $id = (int)$_GET['id'];
 
     $select = 'SELECT * FROM ROTINAS WHERE ID_ROTINA = :id';
