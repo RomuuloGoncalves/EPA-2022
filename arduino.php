@@ -10,7 +10,6 @@
     $rotinas = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     $aux = formatar12h(explode(':', date('H:i')));
-    // echo $aux;
     $hora_atual = explode(':', explode(' ', $aux)[0]);
     $hora_atual[0] = (int)$hora_atual[0];
     $hora_atual[1] = (int)$hora_atual[1];
@@ -20,7 +19,7 @@
         $hora_rotina_inicio  = dividir_horario($rotina->H_INICIO);
         $hora_rotina_fim     = dividir_horario($rotina->H_FIM);
 
-        if ($rotina->ESTADO == 0 && ($periodo_atual == $hora_rotina_inicio['periodo'] && ($hora_rotina_inicio['h'] == $hora_atual[0] && $hora_rotina_inicio['m'] == $hora_atual[1]))) {
+        if ($rotina->ESTADO == 0 && ($periodo_atual == $hora_rotina_inicio['periodo'] && ($hora_rotina_inicio['h'] >= $hora_atual[0] && $hora_rotina_inicio['m'] >= $hora_atual[1]))) {
             $update = 'UPDATE ROTINAS SET ESTADO = 1 WHERE ID_ROTINA = :idRotina';
             $stmt = $conn->prepare($update);
             $stmt->bindValue(':idRotina', $rotina->ID_ROTINA);
@@ -37,7 +36,7 @@
 
             unset($update);
             unset($stmt);
-        } else if ($rotina->ESTADO == 1 && ($periodo_atual == $hora_rotina_fim['periodo'] && ($hora_rotina_fim['h'] == $hora_atual[0] && $hora_rotina_fim['m'] == $hora_atual[1]))) {
+        } else if ($periodo_atual == $hora_rotina_fim['periodo'] && ($hora_rotina_fim['m'] <= $hora_atual[1] && $hora_atual) && $hora_rotina_fim['h'] <= $hora_atual[0]) {
             $update = 'UPDATE ROTINAS SET ESTADO = 0 WHERE ID_ROTINA = :idRotina';
             $stmt = $conn->prepare($update);
             $stmt->bindValue(':idRotina', $rotina->ID_ROTINA);
@@ -66,6 +65,6 @@
         array_push($newJson, json_decode(json_encode($obj)));
     }
 
-    echo json_encode(json_encode($newJson))
+    echo str_replace('"', '\"',json_encode($newJson));
 
 ?>
