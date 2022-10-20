@@ -1,8 +1,7 @@
 <?php
-    if (empty($_GET)){
+    if (empty($_GET))
         header('location: ./index.php');
-    }
-
+    
     require '../lib/conn.php';
     $id = (int) $_GET['id'];
 

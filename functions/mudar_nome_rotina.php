@@ -21,8 +21,8 @@
         $stmt->bindValue(':nomeNovo', $nomeNovo);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
-        header('location:../rotina.php?id='.$id.'&sucesso=true');
+        header('location:../rotina.php?id='.$id.'&sucesso=Nome alterado com sucesso');
     } else {
-        header('location:../lampada.php?id='.$id.'&erros='.$erros);
+        header('location:../rotina.php?id='.$id.'&erros='.$erros);
     }
 ?>
