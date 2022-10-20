@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div class="formsModal">
-                <form action="functions/mudar_horario_rotina" method="post">
+                <form action="functions/mudar_horario_rotina.php" method="post">
                         <div class="campos">
                             <label for="hora_inicio_novo">Horário de início</label>
                             <input id="hora_inicio_novo" type="time" name="hora_inicio_novo">
