@@ -2,9 +2,12 @@
     if (empty($_GET)) {
         header('location:index.php');
     }
-    
+
+    require 'functions/atualizar_db_rotinas.php';
     require 'functions/formatarText12h.php';
 	require 'lib/conn.php';
+    
+    atualizar_db_rotinas();
     $id = (int)$_GET['id'];
 
     $select = 'SELECT * FROM ROTINAS WHERE ID_ROTINA = :id';
@@ -154,7 +157,7 @@
                     <p>Fim: <span><?=formatarText12h($rotina->H_FIM)?></span></p>
                 </div>
                 <div class="estado__rotina">
-                        <p>Estado: <?=($rotina->ESTADO==='0')?"Inativa":"Ativa" ?></p>
+                        <p>Estado: <?=($rotina->ESTADO =='0')?"Inativa":"Ativa" ?></p>
                         <img id="img__rotina" src="assets/img/rotina_<?=$rotina->ESTADO?>.png" alt="estado rotina"/>
                 </div>
             </div>

@@ -7,9 +7,6 @@
     unset($_GET['id']);
 
 	require 'lib/conn.php';
-	require 'functions/atualizar_json.php';
-
-	atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
 
     $select = "SELECT * FROM GRUPOS WHERE ID_GRUPO = :id";
     $stmt = $conn->prepare($select);

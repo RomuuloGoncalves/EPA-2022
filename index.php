@@ -1,5 +1,8 @@
 <?php
+require 'functions/atualizar_db_rotinas.php';
 require 'lib/conn.php';
+
+atualizar_db_rotinas();
 
 $select = 'SELECT * FROM GRUPOS';
 $stmt = $conn->query($select);
@@ -69,6 +72,10 @@ unset($stmt);
 
 			<div class="slide" id="lampadas">
 				<?php
+
+				if(count($lampadas) > 0){
+
+
 				foreach ($lampadas as $lampada) {
 				?>
 					<div class="card card__lampada">
@@ -82,6 +89,13 @@ unset($stmt);
 				<?php
 				}
 				unset($lampadas);
+			}else{
+				?>
+					<div class="texto__aviso">
+							Não há lâmpadas cadastradas, para cadastrar clique <a href="./cadastro_lampadas.php">aqui</a>
+					</div>
+				<?php
+			}
 				?>
 			</div>
 
@@ -101,55 +115,63 @@ unset($stmt);
 
 			<div class="slide" id="grupos">
 				<?php
-				foreach ($grupos as $grupo) {
-					$select = 'SELECT * FROM LAMPADAS_GRUPO INNER JOIN LAMPADAS ON LAMPADAS.ID_LAMPADA = LAMPADAS_GRUPO.ID_LAMPADA WHERE LAMPADAS.ESTADO = 1 AND LAMPADAS_GRUPO.ID_GRUPO = :id_grupo';
-					$stmt = $conn->prepare($select);
-					$stmt->bindValue(':id_grupo', $grupo->ID_GRUPO);
-					$stmt->execute();
-					$qtdd_acessas = $stmt->rowCount();
+				if (count($grupos) > 0) {
+					foreach ($grupos as $grupo) {
+						$select = 'SELECT * FROM LAMPADAS_GRUPO INNER JOIN LAMPADAS ON LAMPADAS.ID_LAMPADA = LAMPADAS_GRUPO.ID_LAMPADA WHERE LAMPADAS.ESTADO = 1 AND LAMPADAS_GRUPO.ID_GRUPO = :id_grupo';
+						$stmt = $conn->prepare($select);
+						$stmt->bindValue(':id_grupo', $grupo->ID_GRUPO);
+						$stmt->execute();
+						$qtdd_acessas = $stmt->rowCount();
 
-					$select = 'SELECT * FROM LAMPADAS_GRUPO WHERE LAMPADAS_GRUPO.ID_GRUPO = :id_grupo';
-					$stmt = $conn->prepare($select);
-					$stmt->bindValue(':id_grupo', $grupo->ID_GRUPO);
-					$stmt->execute();
-					$qtdd_lampadas = $stmt->rowCount();
+						$select = 'SELECT * FROM LAMPADAS_GRUPO WHERE LAMPADAS_GRUPO.ID_GRUPO = :id_grupo';
+						$stmt = $conn->prepare($select);
+						$stmt->bindValue(':id_grupo', $grupo->ID_GRUPO);
+						$stmt->execute();
+						$qtdd_lampadas = $stmt->rowCount();
 
-					unset($select);
-					unset($stmt);
+						unset($select);
+						unset($stmt);
 
-					if ($qtdd_lampadas ===  $qtdd_acessas) {
-						$est_grp = 1;
-						$estado_switch = 'checked';
-					} else {
-						$est_grp = 0;
-						$estado_switch = '';
-					}
+						if ($qtdd_lampadas ===  $qtdd_acessas) {
+							$est_grp = 1;
+							$estado_switch = 'checked';
+						} else {
+							$est_grp = 0;
+							$estado_switch = '';
+						}
 
-					unset($qtdd_lampadas);
-					unset($qtdd_acessas);
+						unset($qtdd_lampadas);
+						unset($qtdd_acessas);
 				?>
-					<div class="card card__grupo">
-						<img src="assets/img/lampada_<?= $est_grp ?>.png" alt="Lampada <?= $est_grp ?>" />
+						<div class="card card__grupo">
+							<img src="assets/img/lampada_<?= $est_grp ?>.png" alt="Lampada <?= $est_grp ?>" />
 
-						<label for="checkbox-<?= $grupo->ID_GRUPO ?>" class="switch">
-							<a href="functions/mudar_estado_grp.php?id=<?= $grupo->ID_GRUPO ?>&est=<?= ($est_grp === 1) ? 0 : 1 ?>">
-								<input type="checkbox" name="checkbox" id="checkbox-<?= $grupo->ID_GRUPO ?>" <?= $estado_switch ?> />
-								<span class="slider"></span>
-							</a>
-						</label>
+							<label for="checkbox-<?= $grupo->ID_GRUPO ?>" class="switch">
+								<a href="functions/mudar_estado_grp.php?id=<?= $grupo->ID_GRUPO ?>&est=<?= ($est_grp === 1) ? 0 : 1 ?>">
+									<input type="checkbox" name="checkbox" id="checkbox-<?= $grupo->ID_GRUPO ?>" <?= $estado_switch ?> />
+									<span class="slider"></span>
+								</a>
+							</label>
 
-						<div class="page__titulo">
-							<p><?= $grupo->NOME ?></p>
-							<a href="grupo.php?id=<?= $grupo->ID_GRUPO ?>">
-								<img src="./assets/img/info.png" alt="info">
-							</a>
+							<div class="page__titulo">
+								<p><?= $grupo->NOME ?></p>
+								<a href="grupo.php?id=<?= $grupo->ID_GRUPO ?>">
+									<img src="./assets/img/info.png" alt="info">
+								</a>
+							</div>
 						</div>
+					<?php
+					}
+					unset($grupos);
+					unset($est_grp);
+					unset($estado_switch);
+				} else {
+					?>
+					<div class="texto__aviso">
+						Não há grupos cadastradss, para cadastrar clique <a href="./cadastro_grupos.php">aqui</a>
 					</div>
 				<?php
 				}
-				unset($grupos);
-				unset($est_grp);
-				unset($estado_switch);
 				?>
 
 			</div>
@@ -169,24 +191,34 @@ unset($stmt);
 
 			<div class="slide" id="rotinas">
 				<?php
-				foreach ($rotinas as $rotina) {
+				if (count($rotinas) > 0) {
+
+					foreach ($rotinas as $rotina) {
 				?>
-					<div class="card card__rotinas">
-						<img id="img__relogio" src="assets/img/relogio.png" alt="relogio"/>
+						<div class="card card__rotinas">
+							<img id="img__relogio" src="assets/img/relogio.png" alt="relogio" />
 
-						<a href="">
-							<img id="img__rotina" src="assets/img/rotina_<?=$rotina->ESTADO?>.png" alt="Estado <?=$rotina->ESTADO?>"/>
-						</a>
-
-						<div class="page__titulo">
-							<p><?= $rotina->NOME ?></p>
-							<a href="rotina.php?id=<?= $rotina->ID_ROTINA ?>">
-								<img src="./assets/img/info.png" alt="info">
+							<a href="">
+								<img id="img__rotina" src="assets/img/rotina_<?= $rotina->ESTADO ?>.png" alt="Estado <?= $rotina->ESTADO ?>" />
 							</a>
+
+							<div class="page__titulo">
+								<p><?= $rotina->NOME ?></p>
+								<a href="rotina.php?id=<?= $rotina->ID_ROTINA ?>">
+									<img src="./assets/img/info.png" alt="info">
+								</a>
+							</div>
 						</div>
+					<?php
+					}
+				} else {
+					?>
+					<div class="texto__aviso">
+						Não há rotinas cadastradas, para cadastrar clique <a href="./cadastro_rotinas.php">aqui</a>
 					</div>
 				<?php
 				}
+
 				?>
 			</div>
 		</div>
@@ -202,7 +234,7 @@ unset($stmt);
 			<p>Rômulo da Silva Gonçalves</p>
 		</div>
 
-			<h3>Ícones por <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></h3>
+		<h3>Ícones por <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></h3>
 
 		<span>2ºDS - Projeto EPA 2022</span>
 	</footer>
