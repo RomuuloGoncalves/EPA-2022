@@ -168,7 +168,7 @@ unset($stmt);
 				} else {
 					?>
 					<div class="texto__aviso">
-						Não há grupos cadastradss, para cadastrar clique <a href="./cadastro_grupos.php">aqui</a>
+						Não há grupos cadastrados, para cadastrar clique <a href="./cadastro_grupos.php">aqui</a>
 					</div>
 				<?php
 				}

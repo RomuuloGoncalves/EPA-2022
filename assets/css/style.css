@@ -123,6 +123,16 @@ header a {
 	align-items: center;
 }
 
+.texto__aviso {
+	font-size: 1.25em;
+	color: #555;
+}
+
+.texto__aviso a {
+	color: #1A427D;
+
+}
+
 /* Media Query */
 @media(max-width:768px) {
 	header {

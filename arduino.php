@@ -12,6 +12,7 @@
         array_push($newJson, json_decode(json_encode($obj)));
     }
 
+    array_push($newJson, json_decode(json_encode(['PORTA'=>'LED_BUILTIN','ESTADO'=>1])));
+    // $newJson .=
     echo str_replace('"', '\"',json_encode($newJson));
-
 ?>
