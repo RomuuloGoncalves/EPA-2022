@@ -1,8 +1,6 @@
 <?php
 require 'lib/conn.php';
-require 'functions/atualizar_json.php';
 
-atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
 $select = 'SELECT * FROM GRUPOS';
 $stmt = $conn->query($select);
 $grupos = $stmt->fetchAll(PDO::FETCH_OBJ);

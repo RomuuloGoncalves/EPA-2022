@@ -1,8 +1,5 @@
 <?php
 require 'lib/conn.php';
-require 'functions/atualizar_json.php';
-
-atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/grupos.json');
 
 $select = "SELECT * FROM GRUPOS";
 $stmt = $conn->query($select);
