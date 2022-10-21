@@ -2,7 +2,7 @@
 require 'functions/atualizar_db_rotinas.php';
 require 'lib/conn.php';
 
-// atualizar_db_rotinas();
+atualizar_db_rotinas();
 
 $select = 'SELECT * FROM GRUPOS';
 $stmt = $conn->query($select);

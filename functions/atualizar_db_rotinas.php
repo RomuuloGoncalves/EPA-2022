@@ -20,7 +20,7 @@
         $hora_rotina_inicio  = dividir_horario($rotina->H_INICIO);
         $hora_rotina_fim     = dividir_horario($rotina->H_FIM);
 
-        if ($rotina->ESTADO == 0 && ($periodo_atual == $hora_rotina_inicio['periodo'] && ($hora_rotina_inicio['h'] >= $hora_atual[0] && $hora_rotina_inicio['m'] >= $hora_atual[1]))) {
+        if ($rotina->ESTADO == 0 && ($periodo_atual == $hora_rotina_inicio['periodo'] && ($hora_rotina_inicio['h'] == $hora_atual[0] && $hora_rotina_inicio['m'] == $hora_atual[1]))) {
             $update = 'UPDATE ROTINAS SET ESTADO = 1 WHERE ID_ROTINA = :idRotina';
             $stmt = $conn->prepare($update);
             $stmt->bindValue(':idRotina', $rotina->ID_ROTINA);
@@ -37,7 +37,7 @@
 
             unset($update);
             unset($stmt);
-        } else if ($periodo_atual == $hora_rotina_fim['periodo'] && ($hora_rotina_fim['m'] <= $hora_atual[1] && $hora_atual) && $hora_rotina_fim['h'] <= $hora_atual[0]) {
+        } else if ($periodo_atual == $hora_rotina_fim['periodo'] && ($hora_rotina_fim['m'] == $hora_atual[1] && $hora_atual) && $hora_rotina_fim['h'] == $hora_atual[0]) {
             $update = 'UPDATE ROTINAS SET ESTADO = 0 WHERE ID_ROTINA = :idRotina';
             $stmt = $conn->prepare($update);
             $stmt->bindValue(':idRotina', $rotina->ID_ROTINA);
