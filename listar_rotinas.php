@@ -1,8 +1,5 @@
 <?php
 require 'lib/conn.php';
-require 'functions/atualizar_json.php';
-
-atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/lampadas.json');
 
 $select = "SELECT * FROM ROTINAS";
 $stmt = $conn->query($select);
@@ -65,7 +62,7 @@ unset($stmt);
                             <img class="icon_remover" src="assets/img/close.png" alt="X">
                         </a>
 
-                        <a href="#">
+                        <a href="rotina.php?id=<?= $rotina->ID_ROTINA ?>">
                             <img src="./assets/img/relogio.png" alt="Relogio-<?= $rotina->ESTADO ?>" />
                         </a>
 

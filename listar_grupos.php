@@ -1,8 +1,5 @@
 <?php
 require 'lib/conn.php';
-require 'functions/atualizar_json.php';
-
-atualizar_json('SELECT PORTA, ESTADO FROM LAMPADAS', 'json/grupos.json');
 
 $select = "SELECT * FROM GRUPOS";
 $stmt = $conn->query($select);
@@ -65,7 +62,7 @@ unset($stmt);
                             <img class="icon_remover" src="assets/img/close.png" alt="X">
                         </a>
 
-                        <a href="functions/mudar_estado_grp.php?id=<?= $grupo->ID_GRUPO ?>&est=<?= $grupo->ESTADO ?>&pag=listar_grupo">
+                        <a href="grupo.php?id=<?=$grupo->ID_GRUPO?>">
                             <img src="./assets/img/pasta-aberta.png" alt="Grupo <?= $grupo->ESTADO ?>" />
                         </a>
                         <a href="grupo.php?id=<?= $grupo->ID_GRUPO ?>">

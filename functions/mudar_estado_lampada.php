@@ -24,7 +24,9 @@
         header('location: ../lampada.php?id='.$id);
     else if($pag === 'grupo')
         header('location: ../grupo.php?id='.$idGrupo);
+    else if($pag === 'listar_lampada')
+        header('location: ../listar_lampadas.php');
     else
-        header('location: ../index.php');
+        header('location: ../index.php')
 
 ?>
