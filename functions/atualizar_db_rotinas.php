@@ -20,7 +20,7 @@
             $hora_rotina_inicio  = dividir_horario($rotina->H_INICIO);
             $hora_rotina_fim     = dividir_horario($rotina->H_FIM);
 
-            $ehMaiorIgualAoInicio = $hora_atual[0] >= $hora_rotina_inicio['h'] || $hora_atual[1] >= $hora_rotina_inicio['m'] && $periodo_atual == $hora_rotina_inicio['periodo'];
+            $ehMaiorIgualAoInicio = $hora_atual[0] >= $hora_rotina_inicio['h'] || $hora_atual[1] >= $hora_rotina_inicio['m'] && ($periodo_atual == $hora_rotina_inicio['periodo'] || $periodo_atual == $hora_rotina_fim['periodo']);
             $ehMenorAoFim = $hora_atual[0] < $hora_rotina_fim['h'] || $hora_atual[1] < $hora_rotina_fim['m'];
             $ehMaiorIgualAoFim = $hora_atual[0] >= $hora_rotina_fim['h'] && $hora_atual[1] >= $hora_rotina_fim['m'] && $periodo_atual == $hora_rotina_fim['periodo'];
 
